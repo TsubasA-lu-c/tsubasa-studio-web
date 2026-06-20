@@ -5,41 +5,99 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>プライバシーポリシー - マイチケット</title>
   <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 40px 24px;
+      background: #FFFFFF;
       color: #111111;
       line-height: 1.8;
     }
-    h1 { font-size: 22px; margin-bottom: 8px; }
-    h2 { font-size: 16px; margin-top: 32px; margin-bottom: 8px; }
-    p { margin: 0 0 16px; }
-    .updated { color: #888888; font-size: 14px; margin-bottom: 32px; }
-    a { color: #1E88E5; }
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+    .app-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: #888888;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-size: 22px;
+      font-weight: 600;
+      color: #111111;
+      margin-bottom: 6px;
+    }
+    .updated {
+      font-size: 13px;
+      color: #888888;
+      margin-bottom: 40px;
+    }
+    .card {
+      border: 1px solid #E0E0E0;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 12px;
+    }
+    h2 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #111111;
+      margin-bottom: 8px;
+    }
+    p {
+      font-size: 14px;
+      color: #111111;
+      line-height: 1.8;
+    }
+    a {
+      color: #1E88E5;
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+    .footer {
+      margin-top: 40px;
+      font-size: 13px;
+      color: #888888;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
-  <h1>プライバシーポリシー</h1>
-  <p class="updated">最終更新日：2026年6月20日</p>
+  <div class="container">
+    <p class="app-name">マイチケット</p>
+    <h1>プライバシーポリシー</h1>
+    <p class="updated">最終更新日：2026年6月20日</p>
 
-  <p>Tsubasa Studio（以下「当方」）は、本アプリ「マイチケット」（以下「本アプリ」）におけるプライバシーの取り扱いについて、以下のとおり定めます。</p>
+    <div class="card">
+      <h2>収集する情報</h2>
+      <p>本アプリは、個人を特定できる情報を収集・送信しません。ユーザーが入力したデータ（フォロー中のアーティスト、チケット申込状況など）はすべて端末内にのみ保存され、外部サーバーには送信されません。</p>
+    </div>
 
-  <h2>収集する情報</h2>
-  <p>本アプリは、個人を特定できる情報を収集・送信しません。ユーザーが入力したデータ（フォロー中のアーティスト、チケット申込状況など）はすべて端末内にのみ保存され、外部サーバーには送信されません。</p>
+    <div class="card">
+      <h2>広告について</h2>
+      <p>本アプリはGoogle AdMob（Google LLC）によるバナー広告を表示します。AdMobは広告配信のために端末の広告識別子（IDFA）などを使用する場合があります。詳細は<a href="https://policies.google.com/privacy" target="_blank">Googleのプライバシーポリシー</a>をご確認ください。</p>
+    </div>
 
-  <h2>広告について</h2>
-  <p>本アプリはGoogle AdMob（Google LLC）によるバナー広告を表示します。AdMobは広告配信のために端末の広告識別子（IDFA）などを使用する場合があります。詳細は<a href="https://policies.google.com/privacy" target="_blank">Googleのプライバシーポリシー</a>をご確認ください。</p>
+    <div class="card">
+      <h2>通知について</h2>
+      <p>本アプリはローカル通知機能を使用します。通知はすべて端末内で生成され、外部サーバーとの通信は行いません。</p>
+    </div>
 
-  <h2>通知について</h2>
-  <p>本アプリはローカル通知機能を使用します。通知はすべて端末内で生成され、外部サーバーとの通信は行いません。</p>
+    <div class="card">
+      <h2>外部サービスとの通信</h2>
+      <p>本アプリはライブ・コンサート情報の取得のため、当方が運営するデータ配信サーバーへアクセスします。この通信にはユーザーの個人情報は含まれません。</p>
+    </div>
 
-  <h2>外部サービスとの通信</h2>
-  <p>本アプリはライブ・コンサート情報の取得のため、当方が運営するデータ配信サーバーへアクセスします。この通信にはユーザーの個人情報は含まれません。</p>
+    <div class="card">
+      <h2>お問い合わせ</h2>
+      <p><a href="mailto:tsubasa.app.studio@gmail.com">tsubasa.app.studio@gmail.com</a></p>
+    </div>
 
-  <h2>お問い合わせ</h2>
-  <p>プライバシーに関するご質問は下記までご連絡ください。<br>
-  <a href="mailto:tsubasa.app.studio@gmail.com">tsubasa.app.studio@gmail.com</a></p>
+    <p class="footer">Tsubasa Studio</p>
+  </div>
 </body>
 </html>
