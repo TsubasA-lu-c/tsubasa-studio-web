@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>サポート - マイチケット</title>
+  <title>サポート - チケノート</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -17,14 +17,14 @@
       margin: 0 auto;
       padding: 48px 24px 80px;
     }
-    .app-name {
-      font-size: 12px;
-      font-weight: 500;
+    .back {
+      font-size: 13px;
       color: #888888;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
+      text-decoration: none;
+      margin-bottom: 24px;
+      display: inline-block;
     }
+    .back:hover { text-decoration: underline; }
     h1 { font-size: 22px; font-weight: 600; margin-bottom: 40px; }
     .card {
       border: 1px solid #E0E0E0;
@@ -46,8 +46,8 @@
 </head>
 <body>
   <div class="container">
-    <p class="app-name">マイチケット</p>
-    <h1>サポート</h1>
+    <a class="back" href="/">← Tsubasa Studio</a>
+    <h1>チケノート サポート</h1>
 
     <div class="card">
       <h2>お問い合わせ</h2>
@@ -68,7 +68,7 @@
 
     <div class="card">
       <h2>プライバシーポリシー</h2>
-      <p><a href="privacy.html">プライバシーポリシーはこちら</a></p>
+      <p><a href="/privacy">プライバシーポリシーはこちら</a></p>
     </div>
 
     <p class="footer">Tsubasa Studio</p>
