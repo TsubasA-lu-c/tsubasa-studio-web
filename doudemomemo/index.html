@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="どうでもメモは、数日後には忘れていそうなことを気軽に書けるiPhoneアプリです。保存すると読めなくなり、キーワードを思い出せたときだけまた読めます。">
+  <meta name="theme-color" content="#FDF7EC">
+  <title>どうでもメモ - Tsubasa Studio</title>
+  <style>
+    :root { --ink:#4a3a33; --muted:#97756b; --paper:#fdf7ec; --card:#fffbf3; --line:#efe6dc; --accent:#795fba; --accent-soft:#ede5fa; --shadow:0 24px 54px rgba(121,95,186,.14); }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif; line-height:1.65; }
+    a { color:inherit; }
+    .wrap { width:min(1120px,calc(100% - 40px)); margin:0 auto; }
+    header { padding:22px 0; }
+    .nav { display:flex; align-items:center; justify-content:space-between; font-size:14px; }
+    .brand { font-weight:700; letter-spacing:.04em; text-decoration:none; }
+    .back { color:var(--muted); text-decoration:none; }
+    .hero { display:grid; grid-template-columns:1.05fr .95fr; gap:64px; align-items:center; min-height:650px; padding:48px 0 72px; }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; padding:7px 13px; border-radius:999px; color:var(--accent); background:var(--accent-soft); font-size:13px; font-weight:700; }
+    h1 { margin:20px 0 18px; font-size:clamp(38px,5.4vw,62px); line-height:1.24; letter-spacing:-.045em; }
+    .lead { max-width:520px; color:var(--muted); font-size:18px; }
+    .badges { display:flex; flex-wrap:wrap; gap:9px; margin-top:28px; }
+    .badges span { border:1px solid var(--line); border-radius:999px; padding:7px 12px; color:#7a6a62; background:var(--card); font-size:13px; }
+    .availability { margin-top:28px; color:var(--muted); font-size:14px; }
+    .phone-stage { min-height:560px; display:grid; place-items:center; border-radius:42px; background:radial-gradient(circle at 80% 12%,#e5d8f7 0,transparent 34%),linear-gradient(145deg,#ede5fa,#fffbf3 55%,#f7f0e6); overflow:hidden; }
+    .phone { position:relative; width:min(280px,74vw); overflow:hidden; border:9px solid #2a231f; border-radius:42px; background:#fdf7ec; box-shadow:0 30px 45px rgba(74,58,51,.25); }
+    .phone img { display:block; width:100%; height:auto; }
+    section { padding:86px 0; }
+    .section-kicker { color:var(--accent); font-size:13px; font-weight:700; letter-spacing:.08em; }
+    .section-title { max-width:670px; margin:8px 0 38px; font-size:clamp(28px,3.6vw,40px); line-height:1.3; letter-spacing:-.03em; }
+    .features { display:grid; grid-template-columns:repeat(2,1fr); gap:15px; }
+    .feature { min-height:200px; padding:27px; border:1px solid var(--line); border-radius:24px; background:var(--card); }
+    .feature-mark { width:45px; height:45px; display:grid; place-items:center; margin-bottom:23px; border-radius:14px; color:var(--accent); background:var(--accent-soft); font-size:20px; }
+    .feature h3 { margin:0 0 8px; font-size:19px; letter-spacing:-.02em; }
+    .feature p { margin:0; color:var(--muted); font-size:14px; }
+    .premium { display:grid; grid-template-columns:1fr auto; gap:30px; align-items:end; padding:42px; border-radius:30px; color:#fffaf5; background:linear-gradient(130deg,#4a3a33,#6c574c 45%,#8b77c9 110%); }
+    .premium .section-kicker { color:#d9cdf5; }
+    .premium h2 { margin:8px 0; font-size:clamp(26px,3.6vw,38px); letter-spacing:-.03em; }
+    .premium p { max-width:570px; margin:0; color:#ece3f8; }
+    .price { min-width:148px; padding:17px 19px; border-radius:18px; color:#4a3a33; background:#fffaf5; text-align:center; font-weight:700; }
+    .price small { display:block; color:#8b77c9; font-size:11px; font-weight:600; }
+    .price strong { display:block; margin-top:2px; font-size:26px; }
+    .support { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .support a { display:block; padding:26px; border-radius:21px; background:var(--accent-soft); text-decoration:none; }
+    .support small { display:block; color:var(--muted); font-size:12px; }
+    .support strong { display:block; margin-top:5px; font-size:19px; color:var(--ink); }
+    footer { padding:32px 0 48px; color:#a2968e; font-size:13px; text-align:center; }
+    @media (max-width:720px) { .wrap { width:min(100% - 32px,560px); } .hero { grid-template-columns:1fr; gap:30px; min-height:0; padding:32px 0 58px; } .hero-copy { order:1; } .phone-stage { min-height:420px; order:2; } .phone { transform:scale(.78); margin:-60px 0; } .features,.support { grid-template-columns:1fr; } .premium { grid-template-columns:1fr; padding:30px; } .price { width:max-content; } section { padding:62px 0; } }
+  </style>
+</head>
+<body>
+  <header class="wrap"><nav class="nav"><a class="brand" href="../index.html">TSUBASA STUDIO</a><a class="back" href="../index.html">スタジオトップへ</a></nav></header>
+  <main>
+    <section class="wrap hero">
+      <div class="hero-copy">
+        <span class="eyebrow">iPhoneアプリ</span>
+        <h1>書いたら、読めなくなる。<br>どうでもいいメモ。</h1>
+        <p class="lead">数日後には忘れていそうな、どうでもいいことを気軽に書くメモアプリです。保存すると内容は読めなくなり、キーワードを思い出せたときだけ、また読めます。</p>
+        <div class="badges"><span>端末内で暗号化</span><span>広告なし</span><span>iOS専用</span></div>
+        <p class="availability">App Store提出準備中です。</p>
+      </div>
+      <div class="phone-stage" aria-label="どうでもメモの書く画面イメージ">
+        <div class="phone"><img src="hero-composer.jpg" alt="どうでもメモの「書く」画面"></div>
+      </div>
+    </section>
+    <section class="wrap">
+      <div class="section-kicker">WHAT YOU CAN DO</div>
+      <h2 class="section-title">どうでもいいことを、書いて、忘れて、たまに読み返す。</h2>
+      <div class="features">
+        <article class="feature"><div class="feature-mark">✎</div><h3>気軽に書ける</h3><p>見出しも整理も不要。数日後には忘れていそうな、ちょっとしたことをそのまま書くだけです。</p></article>
+        <article class="feature"><div class="feature-mark">◐</div><h3>保存すると読めなくなる</h3><p>本文は端末内で暗号化して保存されます。保存した瞬間から、内容はそのままでは読めません。</p></article>
+        <article class="feature"><div class="feature-mark">♡</div><h3>キーワードで、また読める</h3><p>覚えている言葉をいくつか入力すると、記憶が重なって、もう一度読めるようになることがあります。</p></article>
+        <article class="feature"><div class="feature-mark">✦</div><h3>広告も分析SDKもなし</h3><p>書いた内容は端末の外へ送信しません。広告表示や利用状況分析のための外部SDKも使っていません。</p></article>
+      </div>
+    </section>
+    <section class="wrap"><div class="premium"><div><div class="section-kicker">どうでもメモ プレミアム</div><h2>もっと長く、<br>書き残していく。</h2><p>無料版はロック済みメモを10件まで保存できます。プレミアム版（買い切り）にすると、保存件数の上限がなくなります。</p></div><div class="price"><small>買い切り Premium</small><strong>¥300</strong></div></div></section>
+    <section class="wrap"><div class="section-kicker">SUPPORT</div><h2 class="section-title">安心して、使い続けられるように。</h2><div class="support"><a href="../privacy.html"><small>メモの保存・購入について</small><strong>プライバシーポリシー</strong></a><a href="mailto:tsubasa.app.studio@gmail.com?subject=どうでもメモについて"><small>不具合やご意見はこちらへ</small><strong>お問い合わせ</strong></a></div></section>
+  </main>
+  <footer class="wrap">© Tsubasa Studio</footer>
+</body>
+</html>
