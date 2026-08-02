@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="おくすりパズルは、毎日の服薬記録をパズルの達成感につなげるiPhoneアプリです。">
+  <meta name="theme-color" content="#f7f4ee">
+  <title>おくすりパズル - Tsubasa Studio</title>
+  <style>
+    :root { --ink:#172e50; --muted:#756f69; --paper:#fffdf9; --cream:#f7f4ee; --line:#e9e1d8; --green:#438c75; --green-soft:#e7f0eb; --red:#c5523f; --red-soft:#fff0eb; --shadow:0 24px 54px rgba(33,46,58,.13); }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif; line-height:1.65; }
+    a { color:inherit; }
+    .wrap { width:min(1120px,calc(100% - 40px)); margin:0 auto; }
+    header { padding:22px 0; }
+    .nav { display:flex; align-items:center; justify-content:space-between; font-size:14px; }
+    .brand { font-weight:700; letter-spacing:.04em; text-decoration:none; }
+    .back { color:var(--muted); text-decoration:none; }
+    .hero { display:grid; grid-template-columns:1.05fr .95fr; gap:64px; align-items:center; min-height:650px; padding:48px 0 72px; }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; padding:7px 13px; border-radius:999px; color:var(--green); background:var(--green-soft); font-size:13px; font-weight:700; }
+    h1 { margin:20px 0 18px; font-size:clamp(42px,6vw,72px); line-height:1.17; letter-spacing:-.055em; }
+    .lead { max-width:520px; color:var(--muted); font-size:18px; }
+    .badges { display:flex; flex-wrap:wrap; gap:9px; margin-top:28px; }
+    .badges span { border:1px solid var(--line); border-radius:999px; padding:7px 12px; color:#665d57; background:#fff; font-size:13px; }
+    .availability { margin-top:28px; color:var(--muted); font-size:14px; }
+    .phone-stage { min-height:560px; display:grid; place-items:center; border-radius:42px; background:radial-gradient(circle at 80% 12%,#f5c5b7 0,transparent 31%),linear-gradient(145deg,#d9e8df,#fbf8f0 57%,#d9e2ed); overflow:hidden; }
+    .phone { position:relative; width:min(295px,76vw); height:570px; overflow:hidden; border:9px solid #202d3c; border-radius:42px; background:#fffdfb; box-shadow:0 30px 45px rgba(31,42,50,.28); }
+    .island { position:absolute; z-index:3; left:50%; top:11px; width:104px; height:28px; border-radius:18px; background:#171b21; transform:translateX(-50%); }
+    .phone-hero { height:230px; padding:88px 20px 20px; background:linear-gradient(145deg,#e5f1eb,#f8f2e8 62%,#ead5c9); }
+    .tiny { font-size:12px; color:#6f756f; }
+    .phone-hero h2 { margin:5px 0 0; color:var(--ink); font-size:28px; letter-spacing:-.04em; }
+    .profile-pill { display:inline-flex; gap:7px; margin-top:13px; padding:6px 11px; border:1px solid #cfe0d8; border-radius:999px; color:var(--green); background:#fff; font-size:11px; font-weight:700; }
+    .sheet { position:absolute; top:205px; width:100%; min-height:411px; padding:25px 18px; border-radius:28px 28px 0 0; background:#fffdfb; }
+    .sheet-head { display:flex; justify-content:space-between; align-items:center; font-size:16px; font-weight:700; }
+    .sheet-head span { color:#958b84; font-size:12px; font-weight:500; }
+    .puzzle-card { margin:16px 0 18px; padding:14px; border-radius:20px; background:var(--green-soft); }
+    .puzzle-visual { height:92px; display:grid; place-items:center; border-radius:14px; color:#fff; background:linear-gradient(145deg,rgba(27,59,82,.1),rgba(22,47,69,.62)),linear-gradient(135deg,#89b4c4,#3e7181 48%,#d3b578); font-size:25px; font-weight:800; }
+    .puzzle-meta { display:flex; justify-content:space-between; margin-top:9px; color:var(--ink); font-size:12px; font-weight:700; }
+    .dose { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:12px 0; border-top:1px solid #eee5df; font-size:12px; }
+    .dose strong { display:block; font-size:13px; }
+    .dose small { color:#8c847e; }
+    .taken { padding:7px 11px; border-radius:999px; color:#fff; background:var(--red); font-size:11px; font-weight:700; }
+    .tabbar { position:absolute; right:0; bottom:0; left:0; display:flex; justify-content:space-around; padding:11px 7px 13px; border-top:1px solid #eee5df; color:#82776f; background:#fffdfb; font-size:9px; text-align:center; }
+    .tabbar b { color:var(--green); }
+    section { padding:86px 0; }
+    .section-kicker { color:var(--green); font-size:13px; font-weight:700; letter-spacing:.08em; }
+    .section-title { max-width:670px; margin:8px 0 38px; font-size:clamp(30px,4vw,45px); line-height:1.25; letter-spacing:-.04em; }
+    .features { display:grid; grid-template-columns:repeat(2,1fr); gap:15px; }
+    .feature { min-height:220px; padding:27px; border:1px solid var(--line); border-radius:24px; background:#fff; }
+    .feature-mark { width:45px; height:45px; display:grid; place-items:center; margin-bottom:23px; border-radius:14px; color:var(--green); background:var(--green-soft); font-size:22px; }
+    .feature h3 { margin:0 0 8px; font-size:20px; letter-spacing:-.03em; }
+    .feature p { margin:0; color:var(--muted); font-size:14px; }
+    .premium { display:grid; grid-template-columns:1fr auto; gap:30px; align-items:end; padding:42px; border-radius:30px; color:#fffaf5; background:linear-gradient(130deg,#213b55,#315b68 60%,#4d8c78); }
+    .premium .section-kicker { color:#c9eadc; }
+    .premium h2 { margin:8px 0; color:#fffaf5; font-size:clamp(28px,4vw,42px); letter-spacing:-.04em; }
+    .premium p { max-width:570px; margin:0; color:#dfefe8; }
+    .price { min-width:170px; padding:17px 19px; border-radius:18px; color:var(--ink); background:#f3fbf6; text-align:center; font-weight:700; }
+    .price small { display:block; color:#5f8175; font-size:11px; font-weight:600; }
+    .price strong { display:block; margin-top:2px; font-size:22px; }
+    .support { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .support a { display:block; padding:26px; border-radius:21px; background:#f2f5f1; text-decoration:none; }
+    .support small { display:block; color:var(--muted); font-size:12px; }
+    .support strong { display:block; margin-top:5px; font-size:19px; }
+    footer { padding:32px 0 48px; color:#8a817a; font-size:13px; text-align:center; }
+    @media (max-width:720px) { .wrap { width:min(100% - 32px,560px); } .hero { grid-template-columns:1fr; gap:30px; min-height:0; padding:32px 0 58px; } .hero-copy { order:1; } .phone-stage { min-height:455px; order:2; } .phone { transform:scale(.8); margin:-57px 0; } .features,.support,.premium { grid-template-columns:1fr; } .premium { padding:30px; } .price { width:max-content; } section { padding:62px 0; } }
+  </style>
+</head>
+<body>
+  <header class="wrap"><nav class="nav"><a class="brand" href="../index.html">TSUBASA STUDIO</a><a class="back" href="../index.html">スタジオトップへ</a></nav></header>
+  <main>
+    <section class="wrap hero">
+      <div class="hero-copy">
+        <span class="eyebrow">iPhoneアプリ</span>
+        <h1>毎日の服薬を、<br>パズルの達成感に。</h1>
+        <p class="lead">おくすりを飲んだ記録が、少しずつパズルを完成させていく。予定と記録をひとつにまとめて、無理なく続けるための服薬管理アプリです。</p>
+        <div class="badges"><span>服薬記録とリマインダー</span><span>パズルで習慣化</span><span>家族プロフィール</span><span>iOS専用</span></div>
+        <p class="availability">App Storeで配信準備中です。</p>
+      </div>
+      <div class="phone-stage" aria-label="おくすりパズルのホーム画面イメージ"><div class="phone"><div class="island"></div><div class="phone-hero"><div class="tiny">今日のパズル</div><h2>おくすりパズル</h2><span class="profile-pill">😊 わたし</span></div><div class="sheet"><div class="sheet-head">今日の進み具合 <span>詳細を見る</span></div><div class="puzzle-card"><div class="puzzle-visual">🧩</div><div class="puzzle-meta"><span>かぜの処方例</span><span>12 / 21 ピース</span></div></div><div class="sheet-head">今日のおくすり</div><div class="dose"><div><strong>アセトアミノフェン錠</strong><small>朝食後</small></div><span class="taken">飲んだ</span></div><div class="dose"><div><strong>カルボシステイン錠</strong><small>昼食後</small></div><span class="taken">記録する</span></div></div><div class="tabbar"><b>⌂<br>ホーム</b><span>▣<br>カレンダー</span><span>♧<br>きろく</span><span>⚙<br>設定</span></div></div></div>
+    </section>
+    <section class="wrap">
+      <div class="section-kicker">WHAT YOU CAN DO</div>
+      <h2 class="section-title">飲む、記録する、完成する。続ける時間を楽しみに。</h2>
+      <div class="features">
+        <article class="feature"><div class="feature-mark">♧</div><h3>飲むたび、ピースが増える</h3><p>服薬を記録するたびにパズルのピースを解放。完成までの進み具合を目で見て楽しめます。</p></article>
+        <article class="feature"><div class="feature-mark">◷</div><h3>予定と記録を、ひとつに</h3><p>服薬予定をカレンダーで確認し、飲んだ記録をあとから振り返れます。飲み忘れにも気づきやすく。</p></article>
+        <article class="feature"><div class="feature-mark">♧</div><h3>家族分も、プロフィールで</h3><p>プレミアムでは複数のプロフィールを登録。家族ごとに薬と記録を分けて管理できます。</p></article>
+        <article class="feature"><div class="feature-mark">⌁</div><h3>大切な記録を、自分で守る</h3><p>薬の名前、服薬記録、薬袋の写真やパズル用の写真は端末内に保存。自分のペースで管理できます。</p></article>
+      </div>
+    </section>
+    <section class="wrap"><div class="premium"><div><div class="section-kicker">OKUSURI PUZZLE PREMIUM</div><h2>家族の服薬管理を、<br>もっとわかりやすく。</h2><p>複数の家族プロフィールを登録して、薬・予定・服薬記録をプロフィールごとに整理。選択中の家族を切り替えながら使えます。</p></div><div class="price"><small>プレミアム</small><strong>家族プロフィール</strong></div></div></section>
+    <section class="wrap"><div class="section-kicker">SUPPORT</div><h2 class="section-title">安心して、毎日の記録を続けられるように。</h2><div class="support"><a href="../privacy.html"><small>薬・記録・写真の取り扱いについて</small><strong>プライバシーポリシー</strong></a><a href="mailto:tsubasa.app.studio@gmail.com?subject=おくすりパズルについて"><small>不具合やご意見はこちらへ</small><strong>お問い合わせ</strong></a></div></section>
+  </main>
+  <footer class="wrap">© Tsubasa Studio</footer>
+</body>
+</html>

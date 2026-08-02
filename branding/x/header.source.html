@@ -1,0 +1,84 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  html,body{margin:0;padding:0;}
+  svg{display:block;}
+  text{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif;}
+</style>
+</head>
+<body>
+<svg width="1500" height="500" viewBox="0 0 1500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#FFF8F0"/>
+      <stop offset="45%" stop-color="#FFE3EE"/>
+      <stop offset="100%" stop-color="#CFE7FF"/>
+    </linearGradient>
+
+    <linearGradient id="gPink" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#FF8FC0"/>
+      <stop offset="1" stop-color="#FFD3E8"/>
+    </linearGradient>
+    <linearGradient id="gPeach" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#FFAE7A"/>
+      <stop offset="1" stop-color="#FFDDBB"/>
+    </linearGradient>
+    <linearGradient id="gLavender" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#B79CFF"/>
+      <stop offset="1" stop-color="#EBE0FF"/>
+    </linearGradient>
+    <linearGradient id="gSky1" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#5FBBFF"/>
+      <stop offset="1" stop-color="#BFE6FF"/>
+    </linearGradient>
+    <linearGradient id="gSky2" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#3FA0F5"/>
+      <stop offset="1" stop-color="#9CD4FF"/>
+    </linearGradient>
+
+    <g id="wingmark">
+      <g stroke="#4A3B52" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+        <path transform="rotate(-78) scale(0.6)"  fill="url(#gPink)"     d="M0,0 Q-16,-28 -9,-52 Q-4,-63 0,-69 Q4,-63 9,-52 Q16,-28 0,0 Z"/>
+        <path transform="rotate(-42) scale(0.84)" fill="url(#gPeach)"    d="M0,0 Q-16,-28 -9,-52 Q-4,-63 0,-69 Q4,-63 9,-52 Q16,-28 0,0 Z"/>
+        <path transform="rotate(-8) scale(1.05)"  fill="url(#gLavender)" d="M0,0 Q-16,-28 -9,-52 Q-4,-63 0,-69 Q4,-63 9,-52 Q16,-28 0,0 Z"/>
+        <path transform="rotate(26) scale(0.9)"   fill="url(#gSky1)"     d="M0,0 Q-16,-28 -9,-52 Q-4,-63 0,-69 Q4,-63 9,-52 Q16,-28 0,0 Z"/>
+        <path transform="rotate(56) scale(0.68)"  fill="url(#gSky2)"     d="M0,0 Q-16,-28 -9,-52 Q-4,-63 0,-69 Q4,-63 9,-52 Q16,-28 0,0 Z"/>
+      </g>
+      <circle r="13" fill="#FFF8F0" stroke="#4A3B52" stroke-width="5"/>
+      <g fill="#FFD966" stroke="#4A3B52" stroke-width="2.5" stroke-linejoin="round">
+        <path transform="translate(14,-80) scale(0.48) rotate(12)" d="M0,-14 L4,-4 14,0 4,4 0,14 -4,4 -14,0 -4,-4 Z"/>
+      </g>
+      <circle cx="38" cy="-64" r="3.4" fill="#FFD966" stroke="#4A3B52" stroke-width="2"/>
+    </g>
+  </defs>
+
+  <rect x="0" y="0" width="1500" height="500" fill="url(#sky)"/>
+
+  <!-- soft cloud blobs, kept clear of bottom-left avatar zone -->
+  <g fill="#FFFFFF" opacity="0.55">
+    <ellipse cx="1250" cy="430" rx="160" ry="42"/>
+    <ellipse cx="1370" cy="400" rx="110" ry="34"/>
+    <ellipse cx="1120" cy="460" rx="120" ry="30"/>
+  </g>
+  <g fill="#FFFFFF" opacity="0.4">
+    <ellipse cx="260" cy="90" rx="140" ry="34"/>
+    <ellipse cx="150" cy="70" rx="90" ry="26"/>
+  </g>
+
+  <!-- faint scattered wing texture -->
+  <g opacity="0.16">
+    <g transform="translate(1160,110) scale(0.9) rotate(12)"><use href="#wingmark"/></g>
+    <g transform="translate(1330,240) scale(0.55) rotate(-18)"><use href="#wingmark"/></g>
+    <g transform="translate(180,300) scale(0.7) rotate(20)"><use href="#wingmark"/></g>
+    <g transform="translate(980,420) scale(0.5) rotate(-8)"><use href="#wingmark"/></g>
+  </g>
+
+  <!-- main lockup -->
+  <g transform="translate(560,300) scale(3.05)">
+    <use href="#wingmark"/>
+  </g>
+
+  <text x="690" y="270" font-size="86" font-weight="700" fill="#4A3B52" letter-spacing="1">tsubasa.studio</text>
+  <text x="694" y="316" font-size="26" font-weight="500" fill="#8A7A94" letter-spacing="6">INDIE APP STUDIO</text>
+</svg>
+</body></html>
