@@ -105,6 +105,7 @@
     <nav class="language-switcher" aria-label="Language">
       <a href="privacy.html?lang=ja" data-language="ja">日本語</a>
       <a href="privacy.html?lang=en" data-language="en">English</a>
+      <a href="privacy.html?lang=ko" data-language="ko">한국어</a>
       <a href="privacy.html?lang=zh-TW" data-language="zh-TW">繁體中文</a>
       <a href="privacy.html?lang=th" data-language="th">ไทย</a>
     </nav>
@@ -116,7 +117,7 @@
   </div>
   <script>
     (() => {
-      const supportedLanguages = ['ja', 'en', 'zh-TW', 'th'];
+      const supportedLanguages = ['ja', 'en', 'ko', 'zh-TW', 'th'];
       const language = supportedLanguages.includes(new URLSearchParams(window.location.search).get('lang'))
         ? new URLSearchParams(window.location.search).get('lang')
         : 'ja';
@@ -151,6 +152,21 @@
           ],
           apps: ['App-specific Notes', 'Chike Note', 'Only when you choose “Read this page with AI”, the app sends public content shown on the official site, such as performance schedules and headings, together with the artist name, page URL, and page title to our data-processing server for extraction. Processing uses Cloudflare Workers AI. Followed artists, ticket application status, and ticket information stored on your device are not sent through this process. Parts of the extracted result may be cached for up to 24 hours to reduce repeat processing of the same page. You can review and edit AI-generated suggestions before saving them.', 'Sofubi Techo', 'Photos, collection entries, diary entries, and tags are stored only on the device and are not sent to Tsubasa Studio’s servers. This app does not use advertising or third-party analytics SDKs.', 'Backups are saved only to a location selected by the user, such as iCloud Drive or On My iPhone. Premium purchases and payments are processed by Apple through the App Store. Tsubasa Studio does not receive payment information such as credit card numbers.', 'Kusuri Puzzle', 'Medicine names, medication records, photos of medication bags, and photos selected for puzzles are stored on the device and are not sent to Tsubasa Studio’s servers.', 'Text recognition for medication bags is performed on the iPhone. Only when a user selects “Look up this medicine” is the medicine name sent to the browser’s search service.', 'Doudemo Memo', 'Memos you write are encrypted and stored only on your device; they are not sent to Tsubasa Studio’s servers. This app does not use advertising or third-party analytics SDKs.', 'Premium purchases and payments are processed by Apple through the App Store. Tsubasa Studio does not receive payment information such as credit card numbers.'],
           contact: 'Contact',
+        },
+        ko: {
+          pageTitle: '개인정보 처리방침 - Tsubasa Studio',
+          back: '← Tsubasa Studio',
+          title: '개인정보 처리방침',
+          lead: '본 방침은 Tsubasa Studio가 제공하는 모든 앱에 적용됩니다.',
+          updated: '최종 업데이트: 2026년 8월 13일',
+          sections: [
+            ['수집하는 정보', 'Tsubasa Studio가 제공하는 앱은 개인을 식별할 수 있는 정보를 수집하거나 전송하지 않습니다. 특정 앱에 별도의 안내가 없는 한, 사용자가 입력한 데이터는 기기에만 저장되며 외부 서버로 전송되지 않습니다.'],
+            ['광고', '일부 앱은 Google AdMob(Google LLC)이 제공하는 배너 광고를 표시할 수 있습니다. AdMob은 광고 제공을 위해 광고 식별자(IDFA) 또는 이와 유사한 정보를 사용할 수 있습니다. 자세한 내용은 <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google 개인정보처리방침</a>을 확인해 주세요.'],
+            ['알림', '일부 앱은 로컬 알림을 사용합니다. 알림은 모두 기기에서 생성되며 외부 서버와 통신하지 않습니다.'],
+            ['데이터 보관 및 삭제', '데이터는 사용자의 기기에 저장됩니다. 앱에서 개별 항목을 삭제하거나 앱을 삭제하면 기기 내 데이터를 삭제할 수 있습니다. 사용자가 만든 백업 파일은 사용자가 선택한 파일 앱 또는 iCloud Drive의 저장 위치에서 직접 삭제할 수 있습니다.'],
+          ],
+          apps: ['앱별 안내', '치케노트', '사용자가 “이 페이지를 AI로 읽기”를 선택한 경우에만, 현재 표시 중인 공식 사이트에 공개된 공연 일정과 제목 등의 페이지 내용, 아티스트 이름, 페이지 URL 및 페이지 제목을 추출 처리를 위해 당사가 운영하는 데이터 처리 서버로 전송합니다. 처리에는 Cloudflare Workers AI를 사용합니다. 팔로우 중인 아티스트, 티켓 신청 상태, 기기에 저장된 티켓 정보는 이 처리 과정에서 전송되지 않습니다. 같은 페이지의 반복 처리를 줄이기 위해 추출 결과 일부가 최대 24시간 캐시될 수 있습니다. AI가 제안한 내용은 저장 전에 확인하고 수정할 수 있습니다.', '소프비 수첩', '등록한 사진, 컬렉션, 일기 및 태그는 기기에만 저장되며 Tsubasa Studio의 서버로 전송되지 않습니다. 이 앱은 광고 및 외부 사용 분석 SDK를 사용하지 않습니다.', '백업은 iCloud Drive 또는 “나의 iPhone” 등 사용자가 선택한 위치에만 저장됩니다. Premium 구매와 결제는 Apple이 App Store를 통해 처리하며, Tsubasa Studio는 신용카드 번호와 같은 결제 정보를 받지 않습니다.', '쿠스리 퍼즐', '약 이름, 복약 기록, 약 봉투 사진 및 퍼즐에 선택한 사진은 기기에 저장되며 Tsubasa Studio의 서버로 전송되지 않습니다.', '약 봉투의 문자 인식은 iPhone에서 처리됩니다. 사용자가 “이 약 검색”을 선택한 경우에만 약 이름이 브라우저의 검색 서비스로 전송됩니다.', 'Doudemo Memo', '작성한 메모는 기기에서 암호화되어 저장되며 Tsubasa Studio의 서버로 전송되지 않습니다. 이 앱은 광고 및 외부 사용 분석 SDK를 사용하지 않습니다.', 'Premium 구매와 결제는 Apple이 App Store를 통해 처리하며, Tsubasa Studio는 신용카드 번호와 같은 결제 정보를 받지 않습니다.'],
+          contact: '문의',
         },
         'zh-TW': {
           pageTitle: '隱私權政策 - Tsubasa Studio',
