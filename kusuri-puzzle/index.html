@@ -7,90 +7,244 @@
   <meta name="theme-color" content="#f7f4ee">
   <title>おくすりパズル - Tsubasa Studio</title>
   <style>
-    :root { --ink:#172e50; --muted:#756f69; --paper:#fffdf9; --cream:#f7f4ee; --line:#e9e1d8; --green:#438c75; --green-soft:#e7f0eb; --red:#c5523f; --red-soft:#fff0eb; --shadow:0 24px 54px rgba(33,46,58,.13); }
+    :root {
+      --ink:#172e50; --muted:#756f69; --paper:#fffdf9;
+      --card:#f9f7f2; --line:#e9e1d8; --accent:#438c75;
+      --accent-soft:#e7f0eb; --shadow:0 24px 54px rgba(33,46,58,.16);
+      --hero-bg:radial-gradient(circle at 80% 12%,#f5c5b7 0,transparent 31%),linear-gradient(145deg,#d9e8df,#fbf8f0 57%,#d9e2ed); --hero-frame:rgba(67,140,117,.18);
+      --chip:#fff; --button-text:#fff;
+    }
     * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
     body { margin:0; background:var(--paper); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif; line-height:1.65; }
     a { color:inherit; }
-    .wrap { width:min(1120px,calc(100% - 40px)); margin:0 auto; }
+    img { max-width:100%; display:block; }
+    .wrap { width:min(1120px, calc(100% - 40px)); margin:0 auto; }
     header { padding:22px 0; }
-    .nav { display:flex; align-items:center; justify-content:space-between; font-size:14px; }
-    .brand { font-weight:700; letter-spacing:.04em; text-decoration:none; }
+    .nav { display:flex; align-items:center; justify-content:space-between; gap:18px; font-size:14px; }
+    .brand { font-weight:800; letter-spacing:.04em; text-decoration:none; }
     .back { color:var(--muted); text-decoration:none; }
-    .hero { display:grid; grid-template-columns:1.05fr .95fr; gap:64px; align-items:center; min-height:650px; padding:48px 0 72px; }
-    .eyebrow { display:inline-flex; align-items:center; gap:8px; padding:7px 13px; border-radius:999px; color:var(--green); background:var(--green-soft); font-size:13px; font-weight:700; }
-    h1 { margin:20px 0 18px; font-size:clamp(42px,6vw,72px); line-height:1.17; letter-spacing:-.055em; }
-    .lead { max-width:520px; color:var(--muted); font-size:18px; }
+    .hero { display:grid; grid-template-columns:1.04fr .96fr; gap:60px; align-items:center; min-height:650px; padding:48px 0 72px; }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; padding:8px 13px; border-radius:999px; color:var(--accent); background:var(--accent-soft); font-size:13px; font-weight:800; }
+    h1 { margin:20px 0 18px; font-size:clamp(40px, 5.8vw, 70px); line-height:1.15; letter-spacing:-.055em; }
+    .lead { max-width:560px; color:var(--muted); font-size:18px; }
     .badges { display:flex; flex-wrap:wrap; gap:9px; margin-top:28px; }
-    .badges span { border:1px solid var(--line); border-radius:999px; padding:7px 12px; color:#665d57; background:#fff; font-size:13px; }
-    .availability { margin-top:28px; color:var(--muted); font-size:14px; }
-    .phone-stage { min-height:560px; display:grid; place-items:center; border-radius:42px; background:radial-gradient(circle at 80% 12%,#f5c5b7 0,transparent 31%),linear-gradient(145deg,#d9e8df,#fbf8f0 57%,#d9e2ed); overflow:hidden; }
-    .phone { position:relative; width:min(295px,76vw); height:570px; overflow:hidden; border:9px solid #202d3c; border-radius:42px; background:#fffdfb; box-shadow:0 30px 45px rgba(31,42,50,.28); }
-    .island { position:absolute; z-index:3; left:50%; top:11px; width:104px; height:28px; border-radius:18px; background:#171b21; transform:translateX(-50%); }
-    .phone-hero { height:230px; padding:88px 20px 20px; background:linear-gradient(145deg,#e5f1eb,#f8f2e8 62%,#ead5c9); }
-    .tiny { font-size:12px; color:#6f756f; }
-    .phone-hero h2 { margin:5px 0 0; color:var(--ink); font-size:28px; letter-spacing:-.04em; }
-    .profile-pill { display:inline-flex; gap:7px; margin-top:13px; padding:6px 11px; border:1px solid #cfe0d8; border-radius:999px; color:var(--green); background:#fff; font-size:11px; font-weight:700; }
-    .sheet { position:absolute; top:205px; width:100%; min-height:411px; padding:25px 18px; border-radius:28px 28px 0 0; background:#fffdfb; }
-    .sheet-head { display:flex; justify-content:space-between; align-items:center; font-size:16px; font-weight:700; }
-    .sheet-head span { color:#958b84; font-size:12px; font-weight:500; }
-    .puzzle-card { margin:16px 0 18px; padding:14px; border-radius:20px; background:var(--green-soft); }
-    .puzzle-visual { height:92px; display:grid; place-items:center; border-radius:14px; color:#fff; background:linear-gradient(145deg,rgba(27,59,82,.1),rgba(22,47,69,.62)),linear-gradient(135deg,#89b4c4,#3e7181 48%,#d3b578); font-size:25px; font-weight:800; }
-    .puzzle-meta { display:flex; justify-content:space-between; margin-top:9px; color:var(--ink); font-size:12px; font-weight:700; }
-    .dose { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:12px 0; border-top:1px solid #eee5df; font-size:12px; }
-    .dose strong { display:block; font-size:13px; }
-    .dose small { color:#8c847e; }
-    .taken { padding:7px 11px; border-radius:999px; color:#fff; background:var(--red); font-size:11px; font-weight:700; }
-    .tabbar { position:absolute; right:0; bottom:0; left:0; display:flex; justify-content:space-around; padding:11px 7px 13px; border-top:1px solid #eee5df; color:#82776f; background:#fffdfb; font-size:9px; text-align:center; }
-    .tabbar b { color:var(--green); }
-    section { padding:86px 0; }
-    .section-kicker { color:var(--green); font-size:13px; font-weight:700; letter-spacing:.08em; }
-    .section-title { max-width:670px; margin:8px 0 38px; font-size:clamp(30px,4vw,45px); line-height:1.25; letter-spacing:-.04em; }
-    .features { display:grid; grid-template-columns:repeat(2,1fr); gap:15px; }
-    .feature { min-height:220px; padding:27px; border:1px solid var(--line); border-radius:24px; background:#fff; }
-    .feature-mark { width:45px; height:45px; display:grid; place-items:center; margin-bottom:23px; border-radius:14px; color:var(--green); background:var(--green-soft); font-size:22px; }
+    .badges span { border:1px solid var(--line); border-radius:999px; padding:7px 12px; background:var(--chip); color:var(--muted); font-size:13px; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+    .button { display:inline-flex; align-items:center; justify-content:center; min-width:180px; padding:15px 20px; border-radius:16px; font-weight:800; text-decoration:none; }
+    .button.primary { background:var(--accent); color:var(--button-text); }
+    .button.secondary { background:#fff; border:1px solid var(--line); }
+    .availability { margin-top:16px; color:var(--muted); font-size:14px; }
+    .hero-stage { min-height:560px; display:grid; place-items:center; padding:28px; border-radius:42px; background:var(--hero-bg); overflow:hidden; position:relative; }
+    .hero-stage:before, .hero-stage:after { content:""; position:absolute; border-radius:32px; border:2px solid var(--hero-frame); transform:rotate(-12deg); opacity:.55; }
+    .hero-stage:before { width:300px; height:170px; top:46px; right:-10px; }
+    .hero-stage:after { width:210px; height:112px; left:-28px; bottom:55px; opacity:.35; }
+    .hero-shot { position:relative; z-index:1; width:min(400px, 88%); max-height:620px; object-fit:contain; border-radius:32px; box-shadow:var(--shadow); }
+
+    section { padding:84px 0; }
+    .section-kicker { color:var(--accent); font-size:13px; font-weight:800; letter-spacing:.08em; }
+    .section-title { max-width:780px; margin:8px 0 18px; font-size:clamp(30px,4vw,45px); line-height:1.25; letter-spacing:-.04em; }
+    .section-lead { max-width:700px; margin:0 0 34px; color:var(--muted); font-size:16px; }
+    .features { display:grid; grid-template-columns:repeat(2, 1fr); gap:15px; }
+    .feature { min-height:220px; padding:26px; border:1px solid var(--line); border-radius:24px; background:#fff; }
+    .feature-mark { width:46px; height:46px; display:grid; place-items:center; margin-bottom:22px; border-radius:15px; background:var(--accent-soft); color:var(--accent); font-size:22px; }
     .feature h3 { margin:0 0 8px; font-size:20px; letter-spacing:-.03em; }
     .feature p { margin:0; color:var(--muted); font-size:14px; }
-    .premium { display:grid; grid-template-columns:1fr auto; gap:30px; align-items:end; padding:42px; border-radius:30px; color:#fffaf5; background:linear-gradient(130deg,#213b55,#315b68 60%,#4d8c78); }
-    .premium .section-kicker { color:#c9eadc; }
-    .premium h2 { margin:8px 0; color:#fffaf5; font-size:clamp(28px,4vw,42px); letter-spacing:-.04em; }
-    .premium p { max-width:570px; margin:0; color:#dfefe8; }
-    .price { min-width:170px; padding:17px 19px; border-radius:18px; color:var(--ink); background:#f3fbf6; text-align:center; font-weight:700; }
-    .price small { display:block; color:#5f8175; font-size:11px; font-weight:600; }
-    .price strong { display:block; margin-top:2px; font-size:22px; }
+
+    .showcase-shell { border:1px solid var(--line); border-radius:34px; padding:28px; background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.82)); box-shadow:0 18px 44px rgba(0,0,0,.05); }
+    .showcase-top { display:flex; align-items:end; justify-content:space-between; gap:20px; margin-bottom:20px; }
+    .showcase-copy p { margin:10px 0 0; color:var(--muted); font-size:15px; }
+    .carousel-controls { display:flex; align-items:center; gap:10px; flex-shrink:0; }
+    .control-btn { width:48px; height:48px; border:none; border-radius:999px; background:#fff; color:var(--ink); font-size:20px; cursor:pointer; box-shadow:0 12px 30px rgba(0,0,0,.08); border:1px solid var(--line); transition:transform .18s ease, opacity .18s ease; }
+    .control-btn:hover { transform:translateY(-1px); }
+    .control-btn:disabled { opacity:.35; cursor:default; transform:none; }
+    .carousel-counter { min-width:78px; text-align:center; color:var(--muted); font-size:13px; font-weight:700; }
+    .carousel-viewport { overflow:hidden; }
+    .carousel-track { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(280px, 31%); gap:18px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; padding-bottom:8px; scrollbar-width:none; -ms-overflow-style:none; }
+    .carousel-track::-webkit-scrollbar { display:none; }
+    .slide-card { scroll-snap-align:start; min-width:0; }
+    .slide-frame { padding:12px; border-radius:28px; background:var(--card); box-shadow:0 10px 24px rgba(0,0,0,.06); }
+    .slide-frame.dark { background:linear-gradient(180deg, #17181b, #222119); }
+    .slide-frame img { width:100%; height:auto; border-radius:20px; }
+    .slide-meta { padding:14px 6px 0; }
+    .slide-index { display:inline-flex; align-items:center; gap:6px; color:var(--accent); font-size:12px; font-weight:800; letter-spacing:.08em; }
+    .slide-meta h3 { margin:6px 0 6px; font-size:18px; letter-spacing:-.02em; }
+    .slide-meta p { margin:0; color:var(--muted); font-size:14px; }
     .support { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-    .support a { display:block; padding:26px; border-radius:21px; background:#f2f5f1; text-decoration:none; }
+    .support a { display:block; padding:24px; border-radius:22px; background:#f7f3ed; text-decoration:none; }
     .support small { display:block; color:var(--muted); font-size:12px; }
     .support strong { display:block; margin-top:5px; font-size:19px; }
     footer { padding:32px 0 48px; color:#8a817a; font-size:13px; text-align:center; }
-    @media (max-width:720px) { .wrap { width:min(100% - 32px,560px); } .hero { grid-template-columns:1fr; gap:30px; min-height:0; padding:32px 0 58px; } .hero-copy { order:1; } .phone-stage { min-height:455px; order:2; } .phone { transform:scale(.8); margin:-57px 0; } .features,.support,.premium { grid-template-columns:1fr; } .premium { padding:30px; } .price { width:max-content; } section { padding:62px 0; } }
+    @media (max-width: 900px) { .carousel-track { grid-auto-columns:minmax(260px, 45%); } }
+    @media (max-width: 720px) {
+      .wrap { width:min(100% - 32px, 560px); }
+      .hero { grid-template-columns:1fr; gap:30px; min-height:0; padding:32px 0 58px; }
+      .hero-stage { min-height:440px; }
+      .hero-shot { width:min(330px, 88%); }
+      .features, .support { grid-template-columns:1fr; }
+      .showcase-shell { padding:22px; }
+      .showcase-top { flex-direction:column; align-items:flex-start; }
+      .carousel-track { grid-auto-columns:minmax(255px, 86%); }
+      section { padding:64px 0; }
+    }
   </style>
 </head>
 <body>
-  <header class="wrap"><nav class="nav"><a class="brand" href="../index.html">TSUBASA STUDIO</a><a class="back" href="../index.html">スタジオトップへ</a></nav></header>
+  <header class="wrap">
+    <nav class="nav">
+      <a class="brand" href="../index.html">TSUBASA STUDIO</a>
+      <a class="back" href="../index.html">スタジオトップへ</a>
+    </nav>
+  </header>
   <main>
     <section class="wrap hero">
-      <div class="hero-copy">
-        <span class="eyebrow">iPhoneアプリ</span>
-        <h1>毎日の服薬を、<br>パズルの達成感に。</h1>
-        <p class="lead">おくすりを飲んだ記録が、少しずつパズルを完成させていく。予定と記録をひとつにまとめて、無理なく続けるための服薬管理アプリです。</p>
-        <div class="badges"><span>服薬記録とリマインダー</span><span>パズルで習慣化</span><span>家族プロフィール</span><span>iOS専用</span></div>
-        <p class="availability">App Storeで配信準備中です。</p>
+      <div>
+        <span class="eyebrow">服薬記録 × パズル体験</span>
+        <h1>毎日の服薬を、
+続けやすい達成感に。</h1>
+        <p class="lead">おくすりパズルは、毎日の服薬記録をパズルとして可視化するiPhoneアプリです。飲めた日が見えるから、続けるモチベーションにつながります。</p>
+        <div class="badges"><span>服薬記録を見える化</span><span>カレンダーで安心</span><span>完成パズルを記録</span><span>家族プロフィール対応</span></div>
+        <div class="actions"><a class="button primary" href="#screens">画面を見る</a></div>
+        <p class="availability">iPhone向けに配信中です。</p>
       </div>
-      <div class="phone-stage" aria-label="おくすりパズルのホーム画面イメージ"><div class="phone"><div class="island"></div><div class="phone-hero"><div class="tiny">今日のパズル</div><h2>おくすりパズル</h2><span class="profile-pill">😊 わたし</span></div><div class="sheet"><div class="sheet-head">今日の進み具合 <span>詳細を見る</span></div><div class="puzzle-card"><div class="puzzle-visual">🧩</div><div class="puzzle-meta"><span>かぜの処方例</span><span>12 / 21 ピース</span></div></div><div class="sheet-head">今日のおくすり</div><div class="dose"><div><strong>アセトアミノフェン錠</strong><small>朝食後</small></div><span class="taken">飲んだ</span></div><div class="dose"><div><strong>カルボシステイン錠</strong><small>昼食後</small></div><span class="taken">記録する</span></div></div><div class="tabbar"><b>⌂<br>ホーム</b><span>▣<br>カレンダー</span><span>♧<br>きろく</span><span>⚙<br>設定</span></div></div></div>
+      <div class="hero-stage">
+        <img class="hero-shot" src="assets/screenshots/01-home.png" alt="おくすりパズルのホーム画面">
+      </div>
     </section>
+
     <section class="wrap">
-      <div class="section-kicker">WHAT YOU CAN DO</div>
-      <h2 class="section-title">飲む、記録する、完成する。続ける時間を楽しみに。</h2>
+      <div class="section-kicker">FEATURES</div>
+      <h2 class="section-title">飲めた・続けた・終えた、を優しく支える設計。</h2>
+      <p class="section-lead">毎日の服薬を負担感より達成感に変えるための機能を、シンプルにまとめています。</p>
       <div class="features">
-        <article class="feature"><div class="feature-mark">♧</div><h3>飲むたび、ピースが増える</h3><p>服薬を記録するたびにパズルのピースを解放。完成までの進み具合を目で見て楽しめます。</p></article>
-        <article class="feature"><div class="feature-mark">◷</div><h3>予定と記録を、ひとつに</h3><p>服薬予定をカレンダーで確認し、飲んだ記録をあとから振り返れます。飲み忘れにも気づきやすく。</p></article>
-        <article class="feature"><div class="feature-mark">♧</div><h3>家族分も、プロフィールで</h3><p>プレミアムでは複数のプロフィールを登録。家族ごとに薬と記録を分けて管理できます。</p></article>
-        <article class="feature"><div class="feature-mark">⌁</div><h3>大切な記録を、自分で守る</h3><p>薬の名前、服薬記録、薬袋の写真やパズル用の写真は端末内に保存。自分のペースで管理できます。</p></article>
+        <article class="feature">
+          <div class="feature-mark">🧩</div>
+          <h3>ホームで今日を確認</h3>
+          <p>今日のパズルと今日のおくすりをひと目でチェックできます。</p>
+        </article>
+        <article class="feature">
+          <div class="feature-mark">🗓</div>
+          <h3>カレンダーで管理</h3>
+          <p>おくすりと予定を同じ画面で見ながら、毎日の安心につなげます。</p>
+        </article>
+        <article class="feature">
+          <div class="feature-mark">✓</div>
+          <h3>完成パズルを記録</h3>
+          <p>飲み切ったパズルを一覧で振り返り、達成を記録に残せます。</p>
+        </article>
+        <article class="feature">
+          <div class="feature-mark">👪</div>
+          <h3>家族もまとめてサポート</h3>
+          <p>プレミアムで家族プロフィールに対応し、見守りにも使えます。</p>
+        </article></div>
+    </section>
+
+    <section id="screens" class="wrap">
+      <div class="section-kicker">SCREEN SHOWCASE</div>
+      <h2 class="section-title">横にスライドしながら、服薬の流れをひと通り確認。</h2>
+      <p class="section-lead">ホームから記録、完了画面までを横一列のショーケースにして、直感的に見られるようにしました。</p>
+      <div class="showcase-shell" data-carousel>
+        <div class="showcase-top">
+          <div class="showcase-copy">
+            <strong>服薬の流れを、おしゃれに一覧。</strong>
+            <p>横に並んだスクリーンを、左右の矢印で次々に見ていけます。</p>
+          </div>
+          <div class="carousel-controls">
+            <button class="control-btn" type="button" data-prev aria-label="前のスクリーン">←</button>
+            <div class="carousel-counter"><span data-current>1</span> / 5</div>
+            <button class="control-btn" type="button" data-next aria-label="次のスクリーン">→</button>
+          </div>
+        </div>
+        <div class="carousel-viewport">
+          <div class="carousel-track" data-track>
+            
+          <article class="slide-card" role="group" aria-label="1 / 5">
+            <div class="slide-frame ">
+              <img src="assets/screenshots/01-home.png" alt="ホーム画面" loading="lazy">
+            </div>
+            <div class="slide-meta">
+              <span class="slide-index">01</span>
+              <h3>ホーム</h3>
+              <p>今日のパズルと今日のおくすりを最初に確認できます。</p>
+            </div>
+          </article>
+          <article class="slide-card" role="group" aria-label="2 / 5">
+            <div class="slide-frame ">
+              <img src="assets/screenshots/02-calendar.png" alt="カレンダー画面" loading="lazy">
+            </div>
+            <div class="slide-meta">
+              <span class="slide-index">02</span>
+              <h3>カレンダー</h3>
+              <p>服薬予定や日付を見ながら、毎日の流れを整理。</p>
+            </div>
+          </article>
+          <article class="slide-card" role="group" aria-label="3 / 5">
+            <div class="slide-frame ">
+              <img src="assets/screenshots/03-records.png" alt="記録一覧" loading="lazy">
+            </div>
+            <div class="slide-meta">
+              <span class="slide-index">03</span>
+              <h3>パズルのきろく</h3>
+              <p>完成したパズルを一覧で残せます。</p>
+            </div>
+          </article>
+          <article class="slide-card" role="group" aria-label="4 / 5">
+            <div class="slide-frame ">
+              <img src="assets/screenshots/04-record-detail.png" alt="記録詳細" loading="lazy">
+            </div>
+            <div class="slide-meta">
+              <span class="slide-index">04</span>
+              <h3>完了の詳細</h3>
+              <p>完成したパズルの達成感を、詳細画面でじっくり確認。</p>
+            </div>
+          </article>
+          <article class="slide-card" role="group" aria-label="5 / 5">
+            <div class="slide-frame ">
+              <img src="assets/screenshots/05-settings.png" alt="設定画面" loading="lazy">
+            </div>
+            <div class="slide-meta">
+              <span class="slide-index">05</span>
+              <h3>設定</h3>
+              <p>プロフィールやリマインダー設定をまとめて管理。</p>
+            </div>
+          </article>
+          </div>
+        </div>
       </div>
     </section>
-    <section class="wrap"><div class="premium"><div><div class="section-kicker">OKUSURI PUZZLE PREMIUM</div><h2>家族の服薬管理を、<br>もっとわかりやすく。</h2><p>複数の家族プロフィールを登録して、薬・予定・服薬記録をプロフィールごとに整理。選択中の家族を切り替えながら使えます。</p></div><div class="price"><small>プレミアム</small><strong>家族プロフィール</strong></div></div></section>
-    <section class="wrap"><div class="section-kicker">SUPPORT</div><h2 class="section-title">安心して、毎日の記録を続けられるように。</h2><div class="support"><a href="../privacy.html"><small>薬・記録・写真の取り扱いについて</small><strong>プライバシーポリシー</strong></a><a href="mailto:tsubasa.studio@icloud.com?subject=おくすりパズルについて"><small>不具合やご意見はこちらへ</small><strong>お問い合わせ</strong></a></div></section>
+
+    <section class="wrap">
+      <div class="section-kicker">SUPPORT</div>
+      <h2 class="section-title">続ける仕組みを、わかりやすく。</h2>
+      <div class="support"><a href="../privacy.html"><small>取り扱い・データについて</small><strong>プライバシーポリシー</strong></a><a href="mailto:tsubasa.studio@icloud.com?subject=おくすりパズルについて"><small>ご意見・お問い合わせはこちら</small><strong>お問い合わせ</strong></a></div>
+    </section>
   </main>
   <footer class="wrap">© Tsubasa Studio</footer>
+  <script>
+    document.querySelectorAll('[data-carousel]').forEach((root) => {
+      const track = root.querySelector('[data-track]');
+      const prev = root.querySelector('[data-prev]');
+      const next = root.querySelector('[data-next]');
+      const current = root.querySelector('[data-current]');
+      const cards = [...track.children];
+      const total = cards.length;
+      const update = () => {
+        const offsets = cards.map(card => Math.abs(card.offsetLeft - track.scrollLeft));
+        const index = offsets.indexOf(Math.min(...offsets));
+        current.textContent = index + 1;
+        prev.disabled = index <= 0;
+        next.disabled = index >= total - 1;
+      };
+      const scrollToIndex = (index) => {
+        const target = cards[Math.max(0, Math.min(total - 1, index))];
+        track.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
+      };
+      prev.addEventListener('click', () => scrollToIndex(Number(current.textContent) - 2));
+      next.addEventListener('click', () => scrollToIndex(Number(current.textContent)));
+      track.addEventListener('scroll', () => window.requestAnimationFrame(update), { passive:true });
+      window.addEventListener('resize', update);
+      update();
+    });
+  </script>
 </body>
 </html>

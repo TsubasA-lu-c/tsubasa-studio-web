@@ -3,244 +3,200 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta id="meta-description" name="description" content="">
+  <meta name="theme-color" content="#fbf7f2">
   <title>プライバシーポリシー - Tsubasa Studio</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-      background: #FFFFFF;
-      color: #111111;
-      line-height: 1.8;
+    :root{
+      --ink:#1f1a17; --muted:#746d67; --paper:#fbf7f2; --card:#fffdfa; --line:#ece3d9;
+      --accent:#e76943; --accent-soft:#fff1eb; --shadow:0 20px 40px rgba(27,20,15,.08);
     }
-    .container {
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 48px 24px 80px;
-    }
-    .back {
-      font-size: 13px;
-      color: #888888;
-      text-decoration: none;
-      margin-bottom: 24px;
-      display: inline-block;
-    }
-    .back:hover { text-decoration: underline; }
-    .language-switcher {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 0 0 28px;
-    }
-    .language-switcher a {
-      border: 1px solid #D8D8D8;
-      border-radius: 999px;
-      color: #555555;
-      font-size: 12px;
-      line-height: 1;
-      padding: 9px 12px;
-      text-decoration: none;
-    }
-    .language-switcher a[aria-current="true"] {
-      background: #111111;
-      border-color: #111111;
-      color: #FFFFFF;
-    }
-    h1 {
-      font-size: 22px;
-      font-weight: 600;
-      color: #111111;
-      margin-bottom: 6px;
-    }
-    .lead {
-      font-size: 14px;
-      color: #555555;
-      margin-bottom: 8px;
-    }
-    .updated {
-      font-size: 13px;
-      color: #888888;
-      margin-bottom: 40px;
-    }
-    .card {
-      border: 1px solid #E0E0E0;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 12px;
-    }
-    h2 {
-      font-size: 14px;
-      font-weight: 600;
-      color: #111111;
-      margin-bottom: 8px;
-    }
-    h3 {
-      font-size: 13px;
-      font-weight: 600;
-      color: #111111;
-      margin-top: 12px;
-      margin-bottom: 4px;
-    }
-    h3:first-of-type { margin-top: 0; }
-    p {
-      font-size: 14px;
-      color: #111111;
-      line-height: 1.8;
-    }
-    a {
-      color: #1E88E5;
-      text-decoration: none;
-    }
-    a:hover { text-decoration: underline; }
-    .footer {
-      margin-top: 40px;
-      font-size: 13px;
-      color: #888888;
-      text-align: center;
-    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue","Hiragino Sans","Yu Gothic","PingFang TC","Noto Sans Thai",sans-serif;background:linear-gradient(180deg,#fffaf6 0%,#fbf7f2 100%);color:var(--ink);line-height:1.8}
+    a{color:inherit} .wrap{width:min(980px,calc(100% - 40px));margin:0 auto}
+    header{padding:22px 0}
+    .nav{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+    .brand{font-weight:800;letter-spacing:.04em;text-decoration:none}
+    .back{color:var(--muted);text-decoration:none;font-size:14px}
+    .hero{padding:26px 0 34px}
+    .hero-shell{position:relative;overflow:hidden;padding:34px;border:1px solid var(--line);border-radius:34px;background:radial-gradient(circle at 88% 8%,#fde3da 0,transparent 24%),linear-gradient(145deg,#fff3ec,#fff,#f8f5ef);box-shadow:var(--shadow)}
+    .eyebrow{display:inline-flex;padding:8px 13px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:13px;font-weight:800}
+    h1{margin:18px 0 10px;font-size:clamp(34px,5vw,58px);line-height:1.08;letter-spacing:-.05em}
+    .lead{max-width:720px;color:var(--muted);font-size:17px;margin:0 0 8px}
+    .updated{color:#8c837b;font-size:14px;margin:0}
+    .toolbar{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;margin-top:22px}
+    .language-switcher{display:flex;flex-wrap:wrap;gap:8px}
+    .language-switcher a{border:1px solid var(--line);border-radius:999px;color:#665d57;background:#fff;font-size:12px;font-weight:700;line-height:1;padding:10px 13px;text-decoration:none}
+    .language-switcher a[aria-current="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+    .quick-link{display:inline-flex;align-items:center;justify-content:center;padding:13px 16px;border-radius:14px;background:#fff;border:1px solid var(--line);text-decoration:none;font-weight:800}
+    main{padding:18px 0 72px}
+    .section-grid{display:grid;gap:16px}
+    .card{padding:26px;border:1px solid var(--line);border-radius:26px;background:var(--card);box-shadow:0 12px 26px rgba(28,19,15,.04)}
+    .card h2{margin:0 0 12px;font-size:22px;letter-spacing:-.03em}
+    .card p{margin:0;color:#2a241f;font-size:15px}
+    .stack p + p{margin-top:12px}
+    .app-policy{display:grid;grid-template-columns:1fr;gap:14px}
+    .app-block{padding:18px;border-radius:20px;background:#faf6f1;border:1px solid #efe6dc}
+    .app-block h3{margin:0 0 8px;font-size:17px;letter-spacing:-.02em}.app-block p{margin:0;color:#4e473f;font-size:14px}.app-block p + p{margin-top:10px}
+    .contact-card a{color:var(--accent);text-decoration:none;font-weight:800}
+    footer{padding:10px 0 48px;color:#8a817a;font-size:13px;text-align:center}
+    @media (max-width:720px){.wrap{width:min(100% - 32px,560px)}.hero-shell{padding:24px}.toolbar{align-items:flex-start;flex-direction:column}}
   </style>
 </head>
 <body>
-  <div class="container">
-    <a class="back" id="back-link" href="index.html">← Tsubasa Studio</a>
-    <nav class="language-switcher" aria-label="Language">
-      <a href="privacy.html?lang=ja" data-language="ja">日本語</a>
-      <a href="privacy.html?lang=en" data-language="en">English</a>
-      <a href="privacy.html?lang=ko" data-language="ko">한국어</a>
-      <a href="privacy.html?lang=zh-TW" data-language="zh-TW">繁體中文</a>
-      <a href="privacy.html?lang=th" data-language="th">ไทย</a>
+  <header class="wrap">
+    <nav class="nav">
+      <a class="brand" href="index.html">TSUBASA STUDIO</a>
+      <a class="back" id="back-link" href="index.html">← Tsubasa Studio</a>
     </nav>
-    <main id="policy-content">
-      <h1>プライバシーポリシー</h1>
-      <p class="lead">本ポリシーはTsubasa Studioが提供する全てのアプリに適用されます。</p>
-      <p class="updated">最終更新日：2026年7月30日</p>
-    </main>
-  </div>
+  </header>
+
+  <section class="wrap hero">
+    <div class="hero-shell">
+      <span class="eyebrow" id="hero-kicker">Privacy Policy</span>
+      <h1 id="page-title">プライバシーポリシー</h1>
+      <p class="lead" id="page-lead"></p>
+      <p class="updated" id="updated-text"></p>
+      <div class="toolbar">
+        <nav class="language-switcher" aria-label="Language">
+          <a href="privacy.html?lang=ja" data-language="ja">日本語</a>
+          <a href="privacy.html?lang=en" data-language="en">English</a>
+          <a href="privacy.html?lang=ko" data-language="ko">한국어</a>
+          <a href="privacy.html?lang=zh-TW" data-language="zh-TW">繁體中文</a>
+          <a href="privacy.html?lang=th" data-language="th">ไทย</a>
+        </nav>
+        <a class="quick-link" href="mailto:tsubasa.studio@icloud.com">tsubasa.studio@icloud.com</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="wrap">
+    <div class="section-grid" id="policy-content"></div>
+  </main>
+  <footer class="wrap">© Tsubasa Studio</footer>
+
   <script>
     (() => {
       const supportedLanguages = ['ja', 'en', 'ko', 'zh-TW', 'th'];
-      const language = supportedLanguages.includes(new URLSearchParams(window.location.search).get('lang'))
-        ? new URLSearchParams(window.location.search).get('lang')
-        : 'ja';
-
+      const queryLang = new URLSearchParams(window.location.search).get('lang');
+      const language = supportedLanguages.includes(queryLang) ? queryLang : 'ja';
       const content = {
         ja: {
-          pageTitle: 'プライバシーポリシー - Tsubasa Studio',
-          back: '← Tsubasa Studio',
-          title: 'プライバシーポリシー',
-          lead: '本ポリシーはTsubasa Studioが提供する全てのアプリに適用されます。',
-          updated: '最終更新日：2026年8月13日',
+          pageTitle: 'プライバシーポリシー - Tsubasa Studio', heroTitle: 'プライバシーポリシー', heroLead: '本ポリシーは Tsubasa Studio が提供するすべてのアプリに適用されます。共通の方針と、アプリごとの補足事項をまとめています。', back: '← Tsubasa Studio', updated: '最終更新日：2026年8月13日',
           sections: [
             ['収集する情報', 'Tsubasa Studioが提供するアプリは、個人を特定できる情報を収集・送信しません。ユーザーが入力したデータは、各アプリの説明に記載がない限り端末内にのみ保存され、外部サーバーには送信されません。'],
             ['広告について', '一部のアプリはGoogle AdMob（Google LLC）によるバナー広告を表示します。AdMobは広告配信のために端末の広告識別子（IDFA）などを使用する場合があります。詳細は<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Googleのプライバシーポリシー</a>をご確認ください。'],
             ['通知について', '一部のアプリはローカル通知機能を使用します。通知はすべて端末内で生成され、外部サーバーとの通信は行いません。'],
-            ['データの保持と削除', 'データはユーザーの端末に保存されます。アプリ内で各項目を削除するか、アプリを削除すると、端末内のデータを削除できます。ユーザーが作成したバックアップファイルは、保存先の「ファイル」またはiCloud Driveからユーザー自身で削除できます。'],
+            ['データの保持と削除', 'データはユーザーの端末に保存されます。アプリ内で各項目を削除するか、アプリを削除すると、端末内のデータを削除できます。ユーザーが作成したバックアップファイルは、保存先の「ファイル」またはiCloud Driveからユーザー自身で削除できます。']
           ],
-          apps: ['アプリ別の補足事項', 'チケノート', '「このページをAIで読み取る」をユーザーが選んだ場合に限り、表示中の公式サイトに公開されている公演日程・見出しなどのページ内容、アーティスト名、ページURLおよびページタイトルを、抽出処理のため当方が運営するデータ配信サーバーへ送信します。処理にはCloudflare Workers AIを利用します。フォロー中のアーティスト、チケット申込状況、端末内に保存したチケット情報はこの処理に送信しません。抽出結果の一部は、同じページの再処理を減らすため最大24時間キャッシュされる場合があります。AIの候補は保存前にユーザーが確認・修正できます。', 'ソフビ手帳', '登録した写真、コレクション、日記、タグは端末内にのみ保存され、運営者のサーバーへ送信されません。本アプリは広告および外部の利用状況分析SDKを使用しません。', 'バックアップは、ユーザーが選択したiCloud Driveや「このiPhone内」等へ保存されます。Premiumの購入と決済はAppleのApp Storeを通じて行われ、運営者はクレジットカード番号等の支払情報を取得しません。', 'おくすりパズル', '薬の名前、服薬記録、薬袋の写真、パズル用に選んだ写真は端末内に保存され、運営者のサーバーへ送信されません。', '薬袋の文字読み取りはiPhone上で行われます。「この薬について調べる」を選んだ場合のみ、薬の名前がブラウザの検索サービスに送信されます。', 'どうでもメモ', '入力したメモは端末内で暗号化して保存され、運営者のサーバーへ送信されません。本アプリは広告および外部の利用状況分析SDKを使用しません。', 'プレミアム版の購入と決済はAppleのApp Storeを通じて行われ、運営者はクレジットカード番号等の支払情報を取得しません。'],
-          contact: 'お問い合わせ',
+          appPoliciesTitle: 'アプリ別の補足事項',
+          appPolicies: [
+            ['チケノート', ['「このページをAIで読み取る」をユーザーが選んだ場合に限り、表示中の公式サイトに公開されている公演日程・見出しなどのページ内容、アーティスト名、ページURLおよびページタイトルを、抽出処理のため当方が運営するデータ配信サーバーへ送信します。処理にはCloudflare Workers AIを利用します。フォロー中のアーティスト、チケット申込状況、端末内に保存したチケット情報はこの処理に送信しません。', '抽出結果の一部は、同じページの再処理を減らすため最大24時間キャッシュされる場合があります。AIの候補は保存前にユーザーが確認・修正できます。'] ],
+            ['ソフビ手帳', ['登録した写真、コレクション、日記、タグは端末内にのみ保存され、運営者のサーバーへ送信されません。本アプリは広告および外部の利用状況分析SDKを使用しません。', 'バックアップは、ユーザーが選択したiCloud Driveや「このiPhone内」等へ保存されます。Premiumの購入と決済はAppleのApp Storeを通じて行われ、運営者はクレジットカード番号等の支払情報を取得しません。'] ],
+            ['おくすりパズル', ['薬の名前、服薬記録、薬袋の写真、パズル用に選んだ写真は端末内に保存され、運営者のサーバーへ送信されません。', '薬袋の文字読み取りはiPhone上で行われます。「この薬について調べる」を選んだ場合のみ、薬の名前がブラウザの検索サービスに送信されます。'] ],
+            ['どうでもメモ', ['入力したメモは端末内で暗号化して保存され、運営者のサーバーへ送信されません。本アプリは広告および外部の利用状況分析SDKを使用しません。', 'プレミアム版の購入と決済はAppleのApp Storeを通じて行われ、運営者はクレジットカード番号等の支払情報を取得しません。'] ]
+          ],
+          contactTitle: 'お問い合わせ', contactLead: 'プライバシーに関するご質問は、以下のメールアドレスまでご連絡ください。'
         },
         en: {
-          pageTitle: 'Privacy Policy - Tsubasa Studio',
-          back: '← Tsubasa Studio',
-          title: 'Privacy Policy',
-          lead: 'This policy applies to all apps provided by Tsubasa Studio.',
-          updated: 'Last updated: August 13, 2026',
+          pageTitle: 'Privacy Policy - Tsubasa Studio', heroTitle: 'Privacy Policy', heroLead: 'This policy applies to all apps provided by Tsubasa Studio. It summarizes our common policy and app-specific notes.', back: '← Tsubasa Studio', updated: 'Last updated: August 13, 2026',
           sections: [
-            ['Information We Collect', 'Tsubasa Studio does not collect or transmit personally identifiable information. Unless otherwise stated for a specific app, data entered by users is stored only on their device and is not sent to external servers.'],
-            ['Advertising', 'Some apps may display banner advertisements provided by Google AdMob (Google LLC). AdMob may use an advertising identifier (IDFA) or similar information to deliver advertisements. Please see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google’s Privacy Policy</a> for details.'],
-            ['Notifications', 'Some apps use local notifications. These notifications are generated on the device and do not communicate with external servers.'],
-            ['Data Retention and Deletion', 'Data is stored on the user’s device. Users can delete data by removing individual items in the app or by deleting the app. Backup files created by a user can be deleted by the user from their chosen location in Files or iCloud Drive.'],
+            ['Information We Collect', 'Apps provided by Tsubasa Studio do not collect or transmit personally identifiable information. Unless otherwise stated in each app description, data entered by users is stored only on the device and is not transmitted to external servers.'],
+            ['Advertising', 'Some apps may display banner ads provided by Google AdMob (Google LLC). AdMob may use the device advertising identifier (IDFA) and related data to deliver ads. For details, please see the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>.'],
+            ['Notifications', 'Some apps use local notifications. All notifications are generated on the device and do not communicate with external servers.'],
+            ['Data Retention and Deletion', 'Data is stored on the user’s device. Users can delete items within the app or remove the app to delete device-stored data. Backup files created by the user can also be deleted by the user from the Files app or iCloud Drive.']
           ],
-          apps: ['App-specific Notes', 'Chike Note', 'Only when you choose “Read this page with AI”, the app sends public content shown on the official site, such as performance schedules and headings, together with the artist name, page URL, and page title to our data-processing server for extraction. Processing uses Cloudflare Workers AI. Followed artists, ticket application status, and ticket information stored on your device are not sent through this process. Parts of the extracted result may be cached for up to 24 hours to reduce repeat processing of the same page. You can review and edit AI-generated suggestions before saving them.', 'Sofubi Techo', 'Photos, collection entries, diary entries, and tags are stored only on the device and are not sent to Tsubasa Studio’s servers. This app does not use advertising or third-party analytics SDKs.', 'Backups are saved only to a location selected by the user, such as iCloud Drive or On My iPhone. Premium purchases and payments are processed by Apple through the App Store. Tsubasa Studio does not receive payment information such as credit card numbers.', 'Kusuri Puzzle', 'Medicine names, medication records, photos of medication bags, and photos selected for puzzles are stored on the device and are not sent to Tsubasa Studio’s servers.', 'Text recognition for medication bags is performed on the iPhone. Only when a user selects “Look up this medicine” is the medicine name sent to the browser’s search service.', 'Doudemo Memo', 'Memos you write are encrypted and stored only on your device; they are not sent to Tsubasa Studio’s servers. This app does not use advertising or third-party analytics SDKs.', 'Premium purchases and payments are processed by Apple through the App Store. Tsubasa Studio does not receive payment information such as credit card numbers.'],
-          contact: 'Contact',
+          appPoliciesTitle: 'App-specific notes',
+          appPolicies: [
+            ['Chike Note', ['Only when the user chooses “Read this page with AI,” the app sends publicly available page content currently shown on the official website—such as event schedules and headings—along with the artist name, page URL, and page title to our data processing server for extraction. Processing uses Cloudflare Workers AI.', 'Followed artists, ticket application status, and ticket information stored on the device are not sent through this process. Some extraction results may be cached for up to 24 hours to reduce repeat processing. AI suggestions can be reviewed and edited before saving.'] ],
+            ['Sofubi Techo', ['Registered photos, collection data, diary entries, and tags are stored only on the device and are not sent to Tsubasa Studio servers. This app does not use ads or third-party analytics SDKs.', 'Backups are saved only to locations selected by the user, such as iCloud Drive or On My iPhone. Premium purchases and payments are handled by Apple through the App Store, and Tsubasa Studio does not receive payment information such as credit card numbers.'] ],
+            ['Kusuri Puzzle', ['Medicine names, medication records, medicine bag photos, and puzzle photos are stored only on the device and are not sent to Tsubasa Studio servers.', 'Text recognition for medicine bags is performed on the iPhone. Only when the user chooses “Look up this medicine” is the medicine name sent to the browser’s search service.'] ],
+            ['Doudemo Memo', ['Notes entered by the user are encrypted and stored only on the device and are not sent to Tsubasa Studio servers. This app does not use ads or third-party analytics SDKs.', 'Premium purchases and payments are handled by Apple through the App Store, and Tsubasa Studio does not receive payment information such as credit card numbers.'] ]
+          ],
+          contactTitle: 'Contact', contactLead: 'If you have any questions about privacy, please contact us at the email address below.'
         },
         ko: {
-          pageTitle: '개인정보 처리방침 - Tsubasa Studio',
-          back: '← Tsubasa Studio',
-          title: '개인정보 처리방침',
-          lead: '본 방침은 Tsubasa Studio가 제공하는 모든 앱에 적용됩니다.',
-          updated: '최종 업데이트: 2026년 8월 13일',
+          pageTitle: '개인정보 처리방침 - Tsubasa Studio', heroTitle: '개인정보 처리방침', heroLead: '이 정책은 Tsubasa Studio가 제공하는 모든 앱에 적용됩니다. 공통 정책과 앱별 보충 사항을 정리했습니다.', back: '← Tsubasa Studio', updated: '최종 업데이트: 2026년 8월 13일',
           sections: [
-            ['수집하는 정보', 'Tsubasa Studio가 제공하는 앱은 개인을 식별할 수 있는 정보를 수집하거나 전송하지 않습니다. 특정 앱에 별도의 안내가 없는 한, 사용자가 입력한 데이터는 기기에만 저장되며 외부 서버로 전송되지 않습니다.'],
-            ['광고', '일부 앱은 Google AdMob(Google LLC)이 제공하는 배너 광고를 표시할 수 있습니다. AdMob은 광고 제공을 위해 광고 식별자(IDFA) 또는 이와 유사한 정보를 사용할 수 있습니다. 자세한 내용은 <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google 개인정보처리방침</a>을 확인해 주세요.'],
-            ['알림', '일부 앱은 로컬 알림을 사용합니다. 알림은 모두 기기에서 생성되며 외부 서버와 통신하지 않습니다.'],
-            ['데이터 보관 및 삭제', '데이터는 사용자의 기기에 저장됩니다. 앱에서 개별 항목을 삭제하거나 앱을 삭제하면 기기 내 데이터를 삭제할 수 있습니다. 사용자가 만든 백업 파일은 사용자가 선택한 파일 앱 또는 iCloud Drive의 저장 위치에서 직접 삭제할 수 있습니다.'],
+            ['수집하는 정보', 'Tsubasa Studio가 제공하는 앱은 개인을 식별할 수 있는 정보를 수집하거나 전송하지 않습니다. 각 앱 설명에 별도 기재가 없는 한, 사용자가 입력한 데이터는 기기 내에만 저장되며 외부 서버로 전송되지 않습니다.'],
+            ['광고', '일부 앱은 Google AdMob(Google LLC)에서 제공하는 배너 광고를 표시할 수 있습니다. AdMob은 광고 제공을 위해 광고 식별자(IDFA) 등을 사용할 수 있습니다. 자세한 내용은 <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google 개인정보처리방침</a>을 참고해 주세요.'],
+            ['알림', '일부 앱은 로컬 알림 기능을 사용합니다. 모든 알림은 기기 내에서 생성되며 외부 서버와 통신하지 않습니다.'],
+            ['데이터 보관 및 삭제', '데이터는 사용자의 기기에 저장됩니다. 앱 내에서 항목을 삭제하거나 앱을 삭제하면 기기에 저장된 데이터를 제거할 수 있습니다. 사용자가 만든 백업 파일도 파일 앱 또는 iCloud Drive에서 직접 삭제할 수 있습니다.']
           ],
-          apps: ['앱별 안내', '치케노트', '사용자가 “이 페이지를 AI로 읽기”를 선택한 경우에만, 현재 표시 중인 공식 사이트에 공개된 공연 일정과 제목 등의 페이지 내용, 아티스트 이름, 페이지 URL 및 페이지 제목을 추출 처리를 위해 당사가 운영하는 데이터 처리 서버로 전송합니다. 처리에는 Cloudflare Workers AI를 사용합니다. 팔로우 중인 아티스트, 티켓 신청 상태, 기기에 저장된 티켓 정보는 이 처리 과정에서 전송되지 않습니다. 같은 페이지의 반복 처리를 줄이기 위해 추출 결과 일부가 최대 24시간 캐시될 수 있습니다. AI가 제안한 내용은 저장 전에 확인하고 수정할 수 있습니다.', '소프비 수첩', '등록한 사진, 컬렉션, 일기 및 태그는 기기에만 저장되며 Tsubasa Studio의 서버로 전송되지 않습니다. 이 앱은 광고 및 외부 사용 분석 SDK를 사용하지 않습니다.', '백업은 iCloud Drive 또는 “나의 iPhone” 등 사용자가 선택한 위치에만 저장됩니다. Premium 구매와 결제는 Apple이 App Store를 통해 처리하며, Tsubasa Studio는 신용카드 번호와 같은 결제 정보를 받지 않습니다.', '쿠스리 퍼즐', '약 이름, 복약 기록, 약 봉투 사진 및 퍼즐에 선택한 사진은 기기에 저장되며 Tsubasa Studio의 서버로 전송되지 않습니다.', '약 봉투의 문자 인식은 iPhone에서 처리됩니다. 사용자가 “이 약 검색”을 선택한 경우에만 약 이름이 브라우저의 검색 서비스로 전송됩니다.', 'Doudemo Memo', '작성한 메모는 기기에서 암호화되어 저장되며 Tsubasa Studio의 서버로 전송되지 않습니다. 이 앱은 광고 및 외부 사용 분석 SDK를 사용하지 않습니다.', 'Premium 구매와 결제는 Apple이 App Store를 통해 처리하며, Tsubasa Studio는 신용카드 번호와 같은 결제 정보를 받지 않습니다.'],
-          contact: '문의',
+          appPoliciesTitle: '앱별 추가 안내',
+          appPolicies: [
+            ['Chike Note', ['사용자가 “이 페이지를 AI로 읽기”를 선택한 경우에만, 앱은 현재 표시 중인 공식 사이트의 공개된 페이지 내용(공연 일정, 제목 등)과 아티스트 이름, 페이지 URL, 페이지 제목을 추출 처리를 위해 당사가 운영하는 데이터 처리 서버로 전송합니다. 처리에는 Cloudflare Workers AI를 사용합니다.', '팔로우 중인 아티스트, 티켓 신청 상태, 기기에 저장된 티켓 정보는 이 처리로 전송되지 않습니다. 동일한 페이지의 재처리를 줄이기 위해 일부 추출 결과는 최대 24시간 캐시될 수 있으며, 저장 전에 AI 후보 내용을 사용자가 확인·수정할 수 있습니다.'] ],
+            ['Sofubi Techo', ['등록한 사진, 컬렉션 데이터, 일기, 태그는 기기 내에만 저장되며 Tsubasa Studio 서버로 전송되지 않습니다. 이 앱은 광고나 외부 분석 SDK를 사용하지 않습니다.', '백업은 사용자가 선택한 위치(iCloud Drive 또는 내 iPhone 등)에만 저장됩니다. Premium 구매와 결제는 Apple App Store를 통해 처리되며, Tsubasa Studio는 신용카드 번호 등의 결제 정보를 받지 않습니다.'] ],
+            ['Kusuri Puzzle', ['약 이름, 복약 기록, 약봉투 사진, 퍼즐용으로 선택한 사진은 기기 내에만 저장되며 Tsubasa Studio 서버로 전송되지 않습니다.', '약봉투의 텍스트 인식은 iPhone에서 수행됩니다. 사용자가 “이 약을 검색”을 선택한 경우에만 약 이름이 브라우저 검색 서비스로 전송됩니다.'] ],
+            ['Doudemo Memo', ['입력한 메모는 기기 내에서 암호화되어 저장되며 Tsubasa Studio 서버로 전송되지 않습니다. 이 앱은 광고나 외부 분석 SDK를 사용하지 않습니다.', '프리미엄 구매와 결제는 Apple App Store를 통해 처리되며, Tsubasa Studio는 신용카드 번호 등의 결제 정보를 받지 않습니다.'] ]
+          ],
+          contactTitle: '문의', contactLead: '개인정보와 관련한 질문이 있으시면 아래 이메일로 연락해 주세요.'
         },
         'zh-TW': {
-          pageTitle: '隱私權政策 - Tsubasa Studio',
-          back: '← Tsubasa Studio',
-          title: '隱私權政策',
-          lead: '本政策適用於 Tsubasa Studio 提供的所有 App。',
-          updated: '最後更新：2026 年 8 月 13 日',
+          pageTitle: '隱私權政策 - Tsubasa Studio', heroTitle: '隱私權政策', heroLead: '本政策適用於 Tsubasa Studio 提供的所有 App，整理了共通方針與各 App 的補充說明。', back: '← Tsubasa Studio', updated: '最後更新：2026 年 8 月 13 日',
           sections: [
             ['我們蒐集的資訊', 'Tsubasa Studio 不會蒐集或傳送可識別個人的資訊。除非個別 App 另有說明，使用者輸入的資料僅儲存在裝置上，不會傳送至外部伺服器。'],
             ['廣告', '部分 App 可能會顯示由 Google AdMob（Google LLC）提供的橫幅廣告。AdMob 可能為了提供廣告而使用廣告識別碼（IDFA）等資訊。詳情請參閱 <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google 隱私權政策</a>。'],
             ['通知', '部分 App 使用本機通知功能。通知均在裝置上產生，不會與外部伺服器通訊。'],
-            ['資料保留與刪除', '資料儲存在使用者的裝置上。使用者可在 App 中刪除個別項目，或刪除 App 以移除裝置上的資料。使用者建立的備份檔可由使用者在「檔案」或 iCloud Drive 的儲存位置自行刪除。'],
+            ['資料保留與刪除', '資料儲存在使用者的裝置上。使用者可在 App 中刪除個別項目，或刪除 App 以移除裝置上的資料。使用者建立的備份檔可由使用者在「檔案」或 iCloud Drive 的儲存位置自行刪除。']
           ],
-          apps: ['App 專屬說明', 'Chike Note', '僅在您選擇「以 AI 讀取此頁面」時，App 才會將目前顯示之官方網站上公開的演出日程、標題等頁面內容，以及藝人名稱、頁面 URL 和頁面標題，傳送至我們營運的資料處理伺服器以進行擷取。處理使用 Cloudflare Workers AI。追蹤的藝人、購票申請狀態與裝置中儲存的票券資訊不會透過此處理傳送。為減少同一頁面的重複處理，部分擷取結果可能最長快取 24 小時。您可在儲存前確認及修改 AI 提供的候選資料。', 'Sofubi Techo', '已登錄的照片、收藏資料、日記與標籤僅儲存在裝置上，不會傳送至 Tsubasa Studio 的伺服器。本 App 不使用廣告或第三方使用分析 SDK。', '備份僅會儲存至使用者選擇的位置，例如 iCloud Drive 或「我的 iPhone」。Premium 購買與付款由 Apple 透過 App Store 處理。Tsubasa Studio 不會取得信用卡號碼等付款資訊。', 'Kusuri Puzzle', '藥名、服藥記錄、藥袋照片與選作拼圖的照片僅儲存在裝置上，不會傳送至 Tsubasa Studio 的伺服器。', '藥袋文字辨識會在 iPhone 上進行。只有使用者選擇「查詢這個藥物」時，藥名才會傳送至瀏覽器的搜尋服務。', 'Doudemo Memo', '您輸入的備忘錄會在裝置上加密儲存，不會傳送至 Tsubasa Studio 的伺服器。本 App 不使用廣告或第三方使用分析 SDK。', '進階版購買與付款由 Apple 透過 App Store 處理。Tsubasa Studio 不會取得信用卡號碼等付款資訊。'],
-          contact: '聯絡方式',
+          appPoliciesTitle: 'App 專屬說明',
+          appPolicies: [
+            ['Chike Note', ['僅在您選擇「以 AI 讀取此頁面」時，App 才會將目前顯示之官方網站上公開的演出日程、標題等頁面內容，以及藝人名稱、頁面 URL 和頁面標題，傳送至我們營運的資料處理伺服器以進行擷取。處理使用 Cloudflare Workers AI。', '追蹤的藝人、購票申請狀態與裝置中儲存的票券資訊不會透過此處理傳送。為減少同一頁面的重複處理，部分擷取結果可能最長快取 24 小時。您可在儲存前確認及修改 AI 提供的候選資料。'] ],
+            ['Sofubi Techo', ['已登錄的照片、收藏資料、日記與標籤僅儲存在裝置上，不會傳送至 Tsubasa Studio 的伺服器。本 App 不使用廣告或第三方使用分析 SDK。', '備份僅會儲存至使用者選擇的位置，例如 iCloud Drive 或「我的 iPhone」。Premium 購買與付款由 Apple 透過 App Store 處理。Tsubasa Studio 不會取得信用卡號碼等付款資訊。'] ],
+            ['Kusuri Puzzle', ['藥名、服藥記錄、藥袋照片與選作拼圖的照片僅儲存在裝置上，不會傳送至 Tsubasa Studio 的伺服器。', '藥袋文字辨識會在 iPhone 上進行。只有使用者選擇「查詢這個藥物」時，藥名才會傳送至瀏覽器的搜尋服務。'] ],
+            ['Doudemo Memo', ['您輸入的備忘錄會在裝置上加密儲存，不會傳送至 Tsubasa Studio 的伺服器。本 App 不使用廣告或第三方使用分析 SDK。', '進階版購買與付款由 Apple 透過 App Store 處理。Tsubasa Studio 不會取得信用卡號碼等付款資訊。'] ]
+          ],
+          contactTitle: '聯絡方式', contactLead: '若您對隱私有任何疑問，請透過以下電子郵件與我們聯繫。'
         },
         th: {
-          pageTitle: 'นโยบายความเป็นส่วนตัว - Tsubasa Studio',
-          back: '← Tsubasa Studio',
-          title: 'นโยบายความเป็นส่วนตัว',
-          lead: 'นโยบายนี้ใช้กับแอปทั้งหมดที่ให้บริการโดย Tsubasa Studio',
-          updated: 'อัปเดตล่าสุด: 13 สิงหาคม 2026',
+          pageTitle: 'นโยบายความเป็นส่วนตัว - Tsubasa Studio', heroTitle: 'นโยบายความเป็นส่วนตัว', heroLead: 'นโยบายนี้ใช้กับแอปทั้งหมดที่ให้บริการโดย Tsubasa Studio และสรุปแนวทางทั่วไปพร้อมหมายเหตุเฉพาะของแต่ละแอป', back: '← Tsubasa Studio', updated: 'อัปเดตล่าสุด: 13 สิงหาคม 2026',
           sections: [
             ['ข้อมูลที่เราเก็บรวบรวม', 'Tsubasa Studio ไม่เก็บรวบรวมหรือส่งต่อข้อมูลที่ระบุตัวบุคคลได้ เว้นแต่จะระบุไว้เป็นอย่างอื่นสำหรับแอปแต่ละตัว ข้อมูลที่ผู้ใช้ป้อนจะเก็บไว้บนอุปกรณ์เท่านั้น และจะไม่ส่งไปยังเซิร์ฟเวอร์ภายนอก'],
             ['โฆษณา', 'แอปบางตัวอาจแสดงโฆษณาแบนเนอร์จาก Google AdMob (Google LLC) โดย AdMob อาจใช้ตัวระบุโฆษณา (IDFA) หรือข้อมูลที่คล้ายกันเพื่อแสดงโฆษณา โปรดดูรายละเอียดที่ <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">นโยบายความเป็นส่วนตัวของ Google</a>'],
             ['การแจ้งเตือน', 'แอปบางตัวใช้การแจ้งเตือนภายในเครื่อง การแจ้งเตือนทั้งหมดสร้างขึ้นบนอุปกรณ์และไม่มีการสื่อสารกับเซิร์ฟเวอร์ภายนอก'],
-            ['การเก็บรักษาและการลบข้อมูล', 'ข้อมูลจะถูกเก็บไว้บนอุปกรณ์ของผู้ใช้ ผู้ใช้สามารถลบข้อมูลได้โดยลบรายการในแอปหรือถอนการติดตั้งแอป ไฟล์สำรองข้อมูลที่ผู้ใช้สร้างสามารถลบได้จากตำแหน่งที่ผู้ใช้เลือกในแอปไฟล์หรือ iCloud Drive'],
+            ['การเก็บรักษาและการลบข้อมูล', 'ข้อมูลจะถูกเก็บไว้บนอุปกรณ์ของผู้ใช้ ผู้ใช้สามารถลบข้อมูลได้โดยลบรายการในแอปหรือถอนการติดตั้งแอป ไฟล์สำรองข้อมูลที่ผู้ใช้สร้างสามารถลบได้จากตำแหน่งที่ผู้ใช้เลือกในแอปไฟล์หรือ iCloud Drive']
           ],
-          apps: ['ข้อมูลเฉพาะของแอป', 'Chike Note', 'เฉพาะเมื่อคุณเลือก “อ่านหน้านี้ด้วย AI” แอปจะส่งเนื้อหาสาธารณะที่แสดงอยู่บนเว็บไซต์ทางการ เช่น กำหนดการแสดงและหัวข้อ รวมถึงชื่อศิลปิน URL ของหน้า และชื่อหน้า ไปยังเซิร์ฟเวอร์ประมวลผลข้อมูลที่เราดำเนินการเพื่อการดึงข้อมูล โดยใช้ Cloudflare Workers AI ข้อมูลศิลปินที่ติดตาม สถานะการสมัครบัตร และข้อมูลบัตรที่บันทึกไว้ในอุปกรณ์จะไม่ถูกส่งผ่านการประมวลผลนี้ ผลการดึงข้อมูลบางส่วนอาจถูกแคชได้นานสูงสุด 24 ชั่วโมงเพื่อลดการประมวลผลซ้ำของหน้าเดิม คุณสามารถตรวจสอบและแก้ไขข้อมูลที่ AI เสนอก่อนบันทึกได้', 'Sofubi Techo', 'รูปภาพ ข้อมูลคอลเลกชัน บันทึกประจำวัน และแท็กที่ลงทะเบียนจะเก็บไว้บนอุปกรณ์เท่านั้น และจะไม่ส่งไปยังเซิร์ฟเวอร์ของ Tsubasa Studio แอปนี้ไม่ใช้โฆษณาหรือ SDK วิเคราะห์การใช้งานจากภายนอก', 'ข้อมูลสำรองจะบันทึกเฉพาะไปยังตำแหน่งที่ผู้ใช้เลือก เช่น iCloud Drive หรือบน iPhone ของฉัน การซื้อและการชำระเงิน Premium ดำเนินการโดย Apple ผ่าน App Store และ Tsubasa Studio จะไม่ได้รับข้อมูลการชำระเงิน เช่น หมายเลขบัตรเครดิต', 'Kusuri Puzzle', 'ชื่อยา บันทึกการรับประทานยา รูปถุงยา และรูปที่เลือกใช้เป็นจิ๊กซอว์จะเก็บไว้บนอุปกรณ์เท่านั้น และจะไม่ส่งไปยังเซิร์ฟเวอร์ของ Tsubasa Studio', 'การอ่านข้อความบนถุงยาดำเนินการบน iPhone เฉพาะเมื่อผู้ใช้เลือก “ค้นหายานี้” เท่านั้นที่ชื่อยาจะถูกส่งไปยังบริการค้นหาของเบราว์เซอร์', 'Doudemo Memo', 'บันทึกที่คุณเขียนจะถูกเข้ารหัสและเก็บไว้บนอุปกรณ์เท่านั้น จะไม่ถูกส่งไปยังเซิร์ฟเวอร์ของ Tsubasa Studio แอปนี้ไม่ใช้โฆษณาหรือ SDK วิเคราะห์การใช้งานจากภายนอก', 'การซื้อพรีเมียมและการชำระเงินดำเนินการโดย Apple ผ่าน App Store และ Tsubasa Studio จะไม่ได้รับข้อมูลการชำระเงิน เช่น หมายเลขบัตรเครดิต'],
-          contact: 'ติดต่อ',
-        },
+          appPoliciesTitle: 'ข้อมูลเฉพาะของแอป',
+          appPolicies: [
+            ['Chike Note', ['เฉพาะเมื่อคุณเลือก “อ่านหน้านี้ด้วย AI” แอปจะส่งเนื้อหาสาธารณะที่แสดงอยู่บนเว็บไซต์ทางการ เช่น กำหนดการแสดงและหัวข้อ รวมถึงชื่อศิลปิน URL ของหน้า และชื่อหน้า ไปยังเซิร์ฟเวอร์ประมวลผลข้อมูลที่เราดำเนินการเพื่อการดึงข้อมูล โดยใช้ Cloudflare Workers AI', 'ข้อมูลศิลปินที่ติดตาม สถานะการสมัครบัตร และข้อมูลบัตรที่บันทึกไว้ในอุปกรณ์จะไม่ถูกส่งผ่านการประมวลผลนี้ ผลการดึงข้อมูลบางส่วนอาจถูกแคชได้นานสูงสุด 24 ชั่วโมงเพื่อลดการประมวลผลซ้ำของหน้าเดิม คุณสามารถตรวจสอบและแก้ไขข้อมูลที่ AI เสนอก่อนบันทึกได้'] ],
+            ['Sofubi Techo', ['รูปภาพ ข้อมูลคอลเลกชัน บันทึกประจำวัน และแท็กที่ลงทะเบียนจะเก็บไว้บนอุปกรณ์เท่านั้น และจะไม่ส่งไปยังเซิร์ฟเวอร์ของ Tsubasa Studio แอปนี้ไม่ใช้โฆษณาหรือ SDK วิเคราะห์การใช้งานจากภายนอก', 'ข้อมูลสำรองจะบันทึกเฉพาะไปยังตำแหน่งที่ผู้ใช้เลือก เช่น iCloud Drive หรือบน iPhone ของฉัน การซื้อและการชำระเงิน Premium ดำเนินการโดย Apple ผ่าน App Store และ Tsubasa Studio จะไม่ได้รับข้อมูลการชำระเงิน เช่น หมายเลขบัตรเครดิต'] ],
+            ['Kusuri Puzzle', ['ชื่อยา บันทึกการรับประทานยา รูปถุงยา และรูปที่เลือกใช้เป็นจิ๊กซอว์จะเก็บไว้บนอุปกรณ์เท่านั้น และจะไม่ส่งไปยังเซิร์ฟเวอร์ของ Tsubasa Studio', 'การอ่านข้อความบนถุงยาดำเนินการบน iPhone เฉพาะเมื่อผู้ใช้เลือก “ค้นหายานี้” เท่านั้นที่ชื่อยาจะถูกส่งไปยังบริการค้นหาของเบราว์เซอร์'] ],
+            ['Doudemo Memo', ['บันทึกที่คุณเขียนจะถูกเข้ารหัสและเก็บไว้บนอุปกรณ์เท่านั้น จะไม่ถูกส่งไปยังเซิร์ฟเวอร์ของ Tsubasa Studio แอปนี้ไม่ใช้โฆษณาหรือ SDK วิเคราะห์การใช้งานจากภายนอก', 'การซื้อพรีเมียมและการชำระเงินดำเนินการโดย Apple ผ่าน App Store และ Tsubasa Studio จะไม่ได้รับข้อมูลการชำระเงิน เช่น หมายเลขบัตรเครดิต'] ]
+          ],
+          contactTitle: 'ติดต่อ', contactLead: 'หากคุณมีคำถามเกี่ยวกับความเป็นส่วนตัว โปรดติดต่อเราทางอีเมลด้านล่าง'
+        }
       };
 
-      const text = content[language];
+      const t = content[language];
       document.documentElement.lang = language;
-      document.title = text.pageTitle;
-      document.getElementById('back-link').textContent = text.back;
+      document.title = t.pageTitle;
+      document.getElementById('meta-description').setAttribute('content', t.heroLead);
+      document.getElementById('back-link').textContent = t.back;
+      document.getElementById('page-title').textContent = t.heroTitle;
+      document.getElementById('page-lead').textContent = t.heroLead;
+      document.getElementById('updated-text').textContent = t.updated;
       document.querySelectorAll('[data-language]').forEach((link) => {
-        link.setAttribute('aria-current', String(link.dataset.language === language));
+        if (link.dataset.language === language) link.setAttribute('aria-current', 'true');
+        else link.removeAttribute('aria-current');
       });
 
-      const sections = text.sections.map(([heading, body]) => `
-        <section class="card"><h2>${heading}</h2><p>${body}</p></section>
-      `).join('');
-      const [
-        appsHeading, firstAppName, firstAppBody,
-        sofubiName, sofubiBody, sofubiBackup,
-        kusuriName, kusuriBody, kusuriSearch,
-        doudemoMemoName, doudemoMemoBody, doudemoMemoPurchase,
-      ] = text.apps;
-      document.getElementById('policy-content').innerHTML = `
-        <h1>${text.title}</h1>
-        <p class="lead">${text.lead}</p>
-        <p class="updated">${text.updated}</p>
-        ${sections}
+      const container = document.getElementById('policy-content');
+      const generalCards = t.sections.map(([heading, body]) => `<section class="card"><h2>${heading}</h2><p>${body}</p></section>`).join('');
+      const appCards = t.appPolicies.map(([name, paragraphs]) => `<div class="app-block"><h3>${name}</h3>${paragraphs.map(p => `<p>${p}</p>`).join('')}</div>`).join('');
+      container.innerHTML = `
+        ${generalCards}
         <section class="card">
-          <h2>${appsHeading}</h2>
-          <h3>${firstAppName}</h3>
-          <p>${firstAppBody}</p>
-          <h3>${sofubiName}</h3>
-          <p>${sofubiBody}</p>
-          <p>${sofubiBackup}</p>
-          <h3>${kusuriName}</h3>
-          <p>${kusuriBody}</p>
-          <p>${kusuriSearch}</p>
-          <h3>${doudemoMemoName}</h3>
-          <p>${doudemoMemoBody}</p>
-          <p>${doudemoMemoPurchase}</p>
+          <h2>${t.appPoliciesTitle}</h2>
+          <div class="app-policy">${appCards}</div>
         </section>
-        <section class="card">
-          <h2>${text.contact}</h2>
-          <p><a href="mailto:tsubasa.studio@icloud.com">tsubasa.studio@icloud.com</a></p>
+        <section class="card contact-card">
+          <h2>${t.contactTitle}</h2>
+          <div class="stack">
+            <p>${t.contactLead}</p>
+            <p><a href="mailto:tsubasa.studio@icloud.com">tsubasa.studio@icloud.com</a></p>
+          </div>
         </section>
-        <p class="footer">Tsubasa Studio</p>
       `;
     })();
   </script>
