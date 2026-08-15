@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ソフビ手帳は、大切なソフビの写真と記録を自分らしく残せるiPhoneアプリです。">
+  <meta name="theme-color" content="#F8EFE7">
+  <title>ソフビ手帳 - Tsubasa Studio</title>
+  <style>
+    :root { --ink:#26211e; --muted:#746c66; --paper:#fffaf6; --cream:#f8efe7; --line:#eaded5; --accent:#e76943; --shadow:0 24px 54px rgba(67,43,28,.12); }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif; line-height:1.65; }
+    a { color:inherit; }
+    .wrap { width:min(1120px,calc(100% - 40px)); margin:0 auto; }
+    header { padding:22px 0; }
+    .nav { display:flex; align-items:center; justify-content:space-between; font-size:14px; }
+    .brand { font-weight:700; letter-spacing:.04em; text-decoration:none; }
+    .back { color:var(--muted); text-decoration:none; }
+    .hero { display:grid; grid-template-columns:1.05fr .95fr; gap:64px; align-items:center; min-height:650px; padding:48px 0 72px; }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; padding:7px 13px; border-radius:999px; color:#bd4e2d; background:#fff1eb; font-size:13px; font-weight:700; }
+    h1 { margin:20px 0 18px; font-size:clamp(42px,6vw,72px); line-height:1.17; letter-spacing:-.055em; }
+    .lead { max-width:520px; color:var(--muted); font-size:18px; }
+    .badges { display:flex; flex-wrap:wrap; gap:9px; margin-top:28px; }
+    .badges span { border:1px solid var(--line); border-radius:999px; padding:7px 12px; color:#665d57; background:#fff; font-size:13px; }
+    .availability { margin-top:28px; color:var(--muted); font-size:14px; }
+    .phone-stage { min-height:560px; display:grid; place-items:center; border-radius:42px; background:radial-gradient(circle at 80% 12%,#ffd0bd 0,transparent 31%),linear-gradient(145deg,#edc8ad,#fbf6ef 57%,#e2efe8); overflow:hidden; }
+    .phone { position:relative; width:min(295px,76vw); height:570px; overflow:hidden; border:9px solid #27221f; border-radius:42px; background:#fffdfb; box-shadow:0 30px 45px rgba(50,30,17,.28); }
+    .island { position:absolute; z-index:3; left:50%; top:11px; width:104px; height:28px; border-radius:18px; background:#171311; transform:translateX(-50%); }
+    .phone-hero { height:251px; padding:96px 20px 20px; color:#fff; background:linear-gradient(145deg,rgba(46,30,20,.05),rgba(32,18,12,.68)),linear-gradient(135deg,#bc7256,#6f4935 55%,#d99970); }
+    .tiny { font-size:12px; opacity:.9; }
+    .phone-hero h2 { margin:5px 0 0; font-size:29px; letter-spacing:-.04em; }
+    .sheet { position:absolute; top:226px; width:100%; min-height:390px; padding:28px 18px; border-radius:28px 28px 0 0; background:#fffdfb; }
+    .sheet-head { display:flex; justify-content:space-between; align-items:center; font-size:16px; font-weight:700; }
+    .sheet-head span { color:#958b84; font-size:12px; font-weight:500; }
+    .mini-row { display:flex; gap:10px; margin:18px 0 27px; }
+    .mini-card { width:76px; font-size:10px; font-weight:700; }
+    .mini-photo { height:92px; margin-bottom:6px; border-radius:12px; background:linear-gradient(145deg,#4e4037,#d97b51 48%,#e4c6a9); }
+    .mini-card:nth-child(2) .mini-photo { background:linear-gradient(145deg,#edc4b3,#f1f0e1 44%,#9e755d); }
+    .mini-card:nth-child(3) .mini-photo { background:linear-gradient(145deg,#395a48,#b6c68e 54%,#e9b681); }
+    .diary { display:flex; align-items:center; gap:10px; padding-top:8px; border-top:1px solid #eee5df; font-size:12px; }
+    .diary-photo { width:43px; height:43px; border-radius:9px; background:linear-gradient(145deg,#7b5d46,#d88962); }
+    .tabbar { position:absolute; right:0; bottom:0; left:0; display:flex; justify-content:space-around; padding:11px 7px 13px; border-top:1px solid #eee5df; color:#82776f; background:#fffdfb; font-size:9px; }
+    .tabbar b { color:var(--accent); }
+    section { padding:86px 0; }
+    .section-kicker { color:var(--accent); font-size:13px; font-weight:700; letter-spacing:.08em; }
+    .section-title { max-width:670px; margin:8px 0 38px; font-size:clamp(30px,4vw,45px); line-height:1.25; letter-spacing:-.04em; }
+    .features { display:grid; grid-template-columns:repeat(2,1fr); gap:15px; }
+    .feature { min-height:220px; padding:27px; border:1px solid var(--line); border-radius:24px; background:#fff; }
+    .feature-mark { width:45px; height:45px; display:grid; place-items:center; margin-bottom:23px; border-radius:14px; color:var(--accent); background:#fff0e9; font-size:22px; }
+    .feature h3 { margin:0 0 8px; font-size:20px; letter-spacing:-.03em; }
+    .feature p { margin:0; color:var(--muted); font-size:14px; }
+    .premium { display:grid; grid-template-columns:1fr auto; gap:30px; align-items:end; padding:42px; border-radius:30px; color:#fffaf5; background:linear-gradient(130deg,#3e3028,#735240 60%,#b16b50); }
+    .premium .section-kicker { color:#ffcab6; }
+    .premium h2 { margin:8px 0; font-size:clamp(28px,4vw,42px); letter-spacing:-.04em; }
+    .premium p { max-width:570px; margin:0; color:#f4ddd1; }
+    .price { min-width:148px; padding:17px 19px; border-radius:18px; color:#3f3028; background:#fff5ef; text-align:center; font-weight:700; }
+    .price small { display:block; color:#8b6a5b; font-size:11px; font-weight:600; }
+    .price strong { display:block; margin-top:2px; font-size:26px; }
+    .support { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .support a { display:block; padding:26px; border-radius:21px; background:#f6efe9; text-decoration:none; }
+    .support small { display:block; color:var(--muted); font-size:12px; }
+    .support strong { display:block; margin-top:5px; font-size:19px; }
+    footer { padding:32px 0 48px; color:#8a817a; font-size:13px; text-align:center; }
+    @media (max-width:720px) { .wrap { width:min(100% - 32px,560px); } .hero { grid-template-columns:1fr; gap:30px; min-height:0; padding:32px 0 58px; } .hero-copy { order:1; } .phone-stage { min-height:455px; order:2; } .phone { transform:scale(.8); margin:-57px 0; } .features,.support,.premium { grid-template-columns:1fr; } .premium { padding:30px; } .price { width:max-content; } section { padding:62px 0; } }
+  </style>
+</head>
+<body>
+  <header class="wrap"><nav class="nav"><a class="brand" href="../index.html">TSUBASA STUDIO</a><a class="back" href="../index.html">スタジオトップへ</a></nav></header>
+  <main>
+    <section class="wrap hero">
+      <div class="hero-copy">
+        <span class="eyebrow">iPhoneアプリ</span>
+        <h1>写真で残す、<br>私のソフビ手帳</h1>
+        <p class="lead">迎えた一体の写真、思い出、日記をひとつの場所に。眺めるたびに、あなたのコレクションがもっと好きになるアプリです。</p>
+        <div class="badges"><span>写真中心のコレクション</span><span>端末内に保存</span><span>iOS専用</span></div>
+        <p class="availability">App Storeで配信準備中です。</p>
+      </div>
+      <div class="phone-stage" aria-label="ソフビ手帳のホーム画面イメージ"><div class="phone"><div class="island"></div><div class="phone-hero"><div class="tiny">今日のソフビ</div><h2>銀河ヒーロー</h2></div><div class="sheet"><div class="sheet-head">最近迎えたソフビ <span>すべて見る</span></div><div class="mini-row"><div class="mini-card"><div class="mini-photo"></div>黒耀カイジュウ</div><div class="mini-card"><div class="mini-photo"></div>銀河ヒーロー</div><div class="mini-card"><div class="mini-photo"></div>翠甲ガーディアン</div></div><div class="sheet-head">最近の日記 <span>すべて見る</span></div><div class="diary"><div class="diary-photo"></div><div><b>今日届いた！</b><br><span class="tiny" style="color:#847a73">2026.7.24</span></div></div></div><div class="tabbar"><b>⌂<br>ホーム</b><span>◇<br>コレクション</span><span>▱<br>日記</span><span>⚙<br>設定</span></div></div></div>
+    </section>
+    <section class="wrap">
+      <div class="section-kicker">WHAT YOU CAN DO</div>
+      <h2 class="section-title">コレクションを、写真と記憶で育てていく。</h2>
+      <div class="features">
+        <article class="feature"><div class="feature-mark">▣</div><h3>写真で、ちゃんと残す</h3><p>メイン写真から細部まで。Premiumなら一体につき最大9枚の写真を、順番どおりに保存できます。</p></article>
+        <article class="feature"><div class="feature-mark">♡</div><h3>お気に入りを、すぐ眺める</h3><p>大切な一体にはお気に入りを。写真を主役にした一覧から、見たいソフビへすぐ戻れます。</p></article>
+        <article class="feature"><div class="feature-mark">▤</div><h3>その日のことを、日記に</h3><p>飾り方を変えた日やイベントの思い出も、関連するソフビと写真を添えて記録できます。</p></article>
+        <article class="feature"><div class="feature-mark">⌁</div><h3>大切な記録を、自分で守る</h3><p>写真と記録は端末内へ保存。バックアップファイルを書き出して、好きな場所へ保管できます。</p></article>
+      </div>
+    </section>
+    <section class="wrap"><div class="premium"><div><div class="section-kicker">SOFUBI TECHO PREMIUM</div><h2>もっと自由に、<br>ソフビとの記録を。</h2><p>登録数・日記数が無制限に。複数写真と月次・年次まとめで、コレクションをもっと深く楽しめます。</p></div><div class="price"><small>買い切り Premium</small><strong>¥700</strong></div></div></section>
+    <section class="wrap"><div class="section-kicker">SUPPORT</div><h2 class="section-title">安心して、ずっと使えるように。</h2><div class="support"><a href="../privacy.html"><small>写真・記録・購入について</small><strong>プライバシーポリシー</strong></a><a href="mailto:tsubasa.studio@icloud.com?subject=ソフビ手帳について"><small>不具合やご意見はこちらへ</small><strong>お問い合わせ</strong></a></div></section>
+  </main>
+  <footer class="wrap">© Tsubasa Studio</footer>
+</body>
+</html>
