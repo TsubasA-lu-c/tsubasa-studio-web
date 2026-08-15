@@ -34,6 +34,49 @@
     .feature-mark { width:45px; height:45px; display:grid; place-items:center; margin-bottom:23px; border-radius:14px; color:var(--accent); background:var(--accent-soft); font-size:20px; }
     .feature h3 { margin:0 0 8px; font-size:19px; letter-spacing:-.02em; }
     .feature p { margin:0; color:var(--muted); font-size:14px; }
+
+    .hero-marketing {
+      display:block;
+      width:min(390px,88%);
+      max-height:610px;
+      object-fit:contain;
+      border-radius:30px;
+      box-shadow:0 30px 45px rgba(74,58,51,.18);
+    }
+    .screens {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:18px;
+    }
+    .screen-card {
+      margin:0;
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:var(--card);
+    }
+    .screen-card img {
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:18px;
+      box-shadow:0 16px 34px rgba(74,58,51,.08);
+    }
+    .screen-card figcaption {
+      padding:14px 4px 2px;
+    }
+    .screen-card strong {
+      display:block;
+      font-size:18px;
+      letter-spacing:-.02em;
+    }
+    .screen-card span {
+      display:block;
+      margin-top:5px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
     .premium { display:grid; grid-template-columns:1fr auto; gap:30px; align-items:end; padding:42px; border-radius:30px; color:#fffaf5; background:linear-gradient(130deg,#4a3a33,#6c574c 45%,#8b77c9 110%); }
     .premium .section-kicker { color:#d9cdf5; }
     .premium h2 { margin:8px 0; font-size:clamp(26px,3.6vw,38px); letter-spacing:-.03em; }
@@ -46,7 +89,7 @@
     .support small { display:block; color:var(--muted); font-size:12px; }
     .support strong { display:block; margin-top:5px; font-size:19px; color:var(--ink); }
     footer { padding:32px 0 48px; color:#a2968e; font-size:13px; text-align:center; }
-    @media (max-width:720px) { .wrap { width:min(100% - 32px,560px); } .hero { grid-template-columns:1fr; gap:30px; min-height:0; padding:32px 0 58px; } .hero-copy { order:1; } .phone-stage { min-height:420px; order:2; } .phone { transform:scale(.78); margin:-60px 0; } .features,.support { grid-template-columns:1fr; } .premium { grid-template-columns:1fr; padding:30px; } .price { width:max-content; } section { padding:62px 0; } }
+    @media (max-width:720px) { .wrap { width:min(100% - 32px,560px); } .hero { grid-template-columns:1fr; gap:30px; min-height:0; padding:32px 0 58px; } .hero-copy { order:1; } .phone-stage { min-height:420px; order:2; } .phone { transform:scale(.78); margin:-60px 0; } .features,.support,.screens { grid-template-columns:1fr; } .premium { grid-template-columns:1fr; padding:30px; } .price { width:max-content; } section { padding:62px 0; } }
   </style>
 </head>
 <body>
@@ -60,8 +103,8 @@
         <div class="badges"><span>端末内で暗号化</span><span>広告なし</span><span>iOS専用</span></div>
         <p class="availability">App Store提出準備中です。</p>
       </div>
-      <div class="phone-stage" aria-label="どうでもメモの書く画面イメージ">
-        <div class="phone"><img src="hero-composer.jpg" alt="どうでもメモの「書く」画面"></div>
+      <div class="phone-stage" aria-label="どうでもメモの紹介画面">
+        <img class="hero-marketing" src="assets/screenshots/01-composer.png" alt="どうでもメモ - どうでもいいことを気軽に書くメモ">
       </div>
     </section>
     <section class="wrap">
@@ -74,6 +117,34 @@
         <article class="feature"><div class="feature-mark">✦</div><h3>広告も分析SDKもなし</h3><p>書いた内容は端末の外へ送信しません。広告表示や利用状況分析のための外部SDKも使っていません。</p></article>
       </div>
     </section>
+
+    <section class="wrap">
+      <div class="section-kicker">APP SCREENS</div>
+      <h2 class="section-title">書く。ロックする。思い出したら、また読む。</h2>
+      <div class="screens">
+        <figure class="screen-card">
+          <img src="assets/screenshots/01-composer.png" alt="どうでもメモの入力画面" loading="lazy">
+          <figcaption><strong>気軽に書く</strong><span>思いついたことを、そのままメモ。</span></figcaption>
+        </figure>
+        <figure class="screen-card">
+          <img src="assets/screenshots/02-locked.png" alt="ロック済みメモ一覧" loading="lazy">
+          <figcaption><strong>保存すると読めなくなる</strong><span>本文は隠れ、記憶の手がかりだけが残ります。</span></figcaption>
+        </figure>
+        <figure class="screen-card">
+          <img src="assets/screenshots/03-unlock.png" alt="キーワード入力によるロック解除画面" loading="lazy">
+          <figcaption><strong>キーワードを思い出す</strong><span>覚えている言葉を入力して、記憶をたどります。</span></figcaption>
+        </figure>
+        <figure class="screen-card">
+          <img src="assets/screenshots/04-result.png" alt="ロック解除されたメモ画面" loading="lazy">
+          <figcaption><strong>記憶が重なったら読める</strong><span>条件が合えば、保存したメモをもう一度読めます。</span></figcaption>
+        </figure>
+        <figure class="screen-card">
+          <img src="assets/screenshots/05-settings.png" alt="どうでもメモ設定画面" loading="lazy">
+          <figcaption><strong>無料でも10件まで</strong><span>無料版でもロック済みメモを10件まで保存できます。</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
     <section class="wrap"><div class="premium"><div><div class="section-kicker">どうでもメモ プレミアム</div><h2>もっと長く、<br>書き残していく。</h2><p>無料版はロック済みメモを10件まで保存できます。プレミアム版（買い切り）にすると、保存件数の上限がなくなります。</p></div><div class="price"><small>買い切り Premium</small><strong>¥300</strong></div></div></section>
     <section class="wrap"><div class="section-kicker">SUPPORT</div><h2 class="section-title">安心して、使い続けられるように。</h2><div class="support"><a href="../privacy.html"><small>メモの保存・購入について</small><strong>プライバシーポリシー</strong></a><a href="mailto:tsubasa.studio@icloud.com?subject=どうでもメモについて"><small>不具合やご意見はこちらへ</small><strong>お問い合わせ</strong></a></div></section>
   </main>
