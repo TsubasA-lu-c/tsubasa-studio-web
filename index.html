@@ -818,12 +818,14 @@ function requestUpdate(){
 }
 
 let snapTimer=null;
+let snapAnimationFrame=null;
 let snapAnimating=false;
-let snapReleaseTimer=null;
-const SNAP_DELAY=140;
-const SNAP_DURATION_GUARD=700;
+let snapBehaviorOverridden=false;
+let previousScrollBehavior='';
+const SNAP_DELAY=260;
 const SNAP_PROGRESS=.30;
-const SNAP_THRESHOLD=.62;
+const SNAP_THRESHOLD=.46;
+const SNAP_MIN_DISTANCE=14;
 let lastScrollY=scrollY;
 let scrollDirection=0; // 1: down, -1: up
 
@@ -843,8 +845,7 @@ function nearestSnapTarget(){
   candidates.forEach(section=>{
     const targetY=section===hero?section.offsetTop:appSnapY(section);
 
-    // Never snap against the user's latest scroll direction.
-    // This prevents a short downward scroll from being pulled back to the previous stop.
+    // Never pull against the direction the user was scrolling.
     if(scrollDirection>0&&targetY<scrollY-4)return;
     if(scrollDirection<0&&targetY>scrollY+4)return;
 
@@ -859,23 +860,73 @@ function nearestSnapTarget(){
   return best&&best.distance<=viewportLimit?best:null;
 }
 
-function releaseSnapLock(){
+function restoreScrollBehavior(){
+  if(!snapBehaviorOverridden)return;
+  document.documentElement.style.scrollBehavior=previousScrollBehavior;
+  previousScrollBehavior='';
+  snapBehaviorOverridden=false;
+}
+
+function cancelSnapAnimation(){
+  if(snapAnimationFrame!==null){
+    cancelAnimationFrame(snapAnimationFrame);
+    snapAnimationFrame=null;
+  }
   snapAnimating=false;
-  clearTimeout(snapReleaseTimer);
-  snapReleaseTimer=null;
-  lastScrollY=scrollY;
+  restoreScrollBehavior();
+}
+
+function easeOutQuart(t){
+  return 1-Math.pow(1-t,4);
+}
+
+function animateSnapTo(targetY){
+  cancelSnapAnimation();
+
+  const startY=scrollY;
+  const distance=targetY-startY;
+  const absDistance=Math.abs(distance);
+  if(absDistance<SNAP_MIN_DISTANCE)return;
+
+  // Short corrections feel quick; longer corrections decelerate more gently.
+  const duration=clamp(430+absDistance*.42,460,760);
+  const startedAt=performance.now();
+
+  previousScrollBehavior=document.documentElement.style.scrollBehavior;
+  document.documentElement.style.scrollBehavior='auto';
+  snapBehaviorOverridden=true;
+  snapAnimating=true;
+
+  const frame=now=>{
+    if(!snapAnimating)return;
+
+    const t=clamp((now-startedAt)/duration);
+    const eased=easeOutQuart(t);
+    window.scrollTo({top:startY+distance*eased,behavior:'auto'});
+
+    if(t<1){
+      snapAnimationFrame=requestAnimationFrame(frame);
+      return;
+    }
+
+    window.scrollTo({top:targetY,behavior:'auto'});
+    snapAnimationFrame=null;
+    snapAnimating=false;
+    lastScrollY=scrollY;
+    restoreScrollBehavior();
+  };
+
+  snapAnimationFrame=requestAnimationFrame(frame);
 }
 
 function snapToNearest(){
   snapTimer=null;
   if(!desktop()||reduceMotion||snapAnimating)return;
-  const target=nearestSnapTarget();
-  if(!target||Math.abs(scrollY-target.targetY)<3)return;
 
-  snapAnimating=true;
-  scrollTo({top:target.targetY,behavior:'smooth'});
-  clearTimeout(snapReleaseTimer);
-  snapReleaseTimer=setTimeout(releaseSnapLock,SNAP_DURATION_GUARD);
+  const target=nearestSnapTarget();
+  if(!target)return;
+
+  animateSnapTo(target.targetY);
 }
 
 function scheduleSnap(){
@@ -883,6 +934,16 @@ function scheduleSnap(){
   clearTimeout(snapTimer);
   snapTimer=setTimeout(snapToNearest,SNAP_DELAY);
 }
+
+function interruptSnap(){
+  clearTimeout(snapTimer);
+  snapTimer=null;
+  cancelSnapAnimation();
+  lastScrollY=scrollY;
+}
+
+window.addEventListener('wheel',interruptSnap,{passive:true});
+window.addEventListener('touchstart',interruptSnap,{passive:true});
 
 window.addEventListener('scroll',()=>{
   if(!snapAnimating){
@@ -893,19 +954,23 @@ window.addEventListener('scroll',()=>{
   requestUpdate();
   scheduleSnap();
 },{passive:true});
-window.addEventListener('resize',()=>{releaseSnapLock();clearTimeout(snapTimer);requestUpdate()},{passive:true});
+
+window.addEventListener('resize',()=>{
+  interruptSnap();
+  requestUpdate();
+},{passive:true});
 
 dots.forEach(d=>d.addEventListener('click',()=>{
   const section=document.getElementById(d.dataset.target);
   if(!section)return;
+
   const targetY=section.classList.contains('app-section')&&desktop()
     ?(section.offsetTop-headerHeight())+(section.offsetHeight-(innerHeight-headerHeight()))*.30
     :section.offsetTop;
-  snapAnimating=true;
+
   clearTimeout(snapTimer);
-  scrollTo({top:targetY,behavior:'smooth'});
-  clearTimeout(snapReleaseTimer);
-  snapReleaseTimer=setTimeout(releaseSnapLock,SNAP_DURATION_GUARD);
+  snapTimer=null;
+  animateSnapTo(targetY);
 }));
 
 if(matchMedia('(pointer:fine) and (prefers-reduced-motion:no-preference)').matches){
