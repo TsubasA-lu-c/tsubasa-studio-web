@@ -4,1045 +4,539 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#F8EFE7">
-  <link rel="icon" type="image/png" href="assets/icon.png">
   <meta id="meta-description" name="description" content="">
   <meta id="og-title" property="og:title" content="">
   <meta id="og-description" property="og:description" content="">
+  <link rel="icon" type="image/png" href="assets/icon.png">
   <title>Sofubi Journal - Tsubasa Studio</title>
-
   <style>
     :root {
-      --ink:#26211e;
-      --muted:#746c66;
-      --paper:#fffaf6;
-      --line:#eaded5;
-      --accent:#e76943;
-      --accent-dark:#bd4e2d;
+      --ink:#26211e; --muted:#746c66; --paper:#fffaf6; --line:#eaded5;
+      --accent:#e76943; --accent-dark:#bd4e2d;
     }
     * { box-sizing:border-box; }
     html { scroll-behavior:smooth; }
     body {
-      margin:0;
-      background:var(--paper);
-      color:var(--ink);
+      margin:0; background:var(--paper); color:var(--ink);
       font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",
-        "Hiragino Sans","Yu Gothic",Arial,sans-serif;
+        "Hiragino Sans","PingFang TC","Noto Sans TC","Yu Gothic",Arial,sans-serif;
       line-height:1.65;
     }
     a { color:inherit; }
     .wrap { width:min(1120px,calc(100% - 40px)); margin:0 auto; }
-
     header { padding:22px 0; }
     .nav {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:20px;
-      font-size:14px;
+      display:flex; justify-content:space-between; align-items:center; gap:20px; font-size:14px;
     }
-    .brand {
-      font-weight:800;
-      letter-spacing:.04em;
-      text-decoration:none;
-      white-space:nowrap;
-    }
-    .nav-right {
-      display:flex;
-      align-items:center;
-      justify-content:flex-end;
-      gap:18px;
-      flex-wrap:wrap;
-    }
-    .nav-links {
-      display:flex;
-      gap:18px;
-      flex-wrap:wrap;
-    }
-    .nav-links a {
-      color:var(--muted);
-      text-decoration:none;
-    }
-
-    .language-switcher {
-      display:flex;
-      gap:7px;
-    }
+    .brand { font-weight:800; letter-spacing:.04em; text-decoration:none; white-space:nowrap; }
+    .nav-right { display:flex; align-items:center; justify-content:flex-end; gap:18px; flex-wrap:wrap; }
+    .nav-links { display:flex; gap:18px; flex-wrap:wrap; }
+    .nav-links a { color:var(--muted); text-decoration:none; }
+    .language-switcher { display:flex; flex-wrap:wrap; gap:7px; }
     .language-switcher a {
-      border:1px solid var(--line);
-      border-radius:999px;
-      color:#665d57;
-      background:#fff;
-      font-size:12px;
-      font-weight:700;
-      line-height:1;
-      padding:9px 12px;
-      text-decoration:none;
-      transition:.15s ease;
-    }
-    .language-switcher a:hover {
-      border-color:#cbbdb3;
-      text-decoration:none;
+      border:1px solid var(--line); border-radius:999px; color:#665d57; background:#fff;
+      font-size:12px; font-weight:700; line-height:1; padding:9px 12px; text-decoration:none;
     }
     .language-switcher a[aria-current="true"] {
-      background:var(--ink);
-      border-color:var(--ink);
-      color:#fff;
+      background:var(--ink); border-color:var(--ink); color:#fff;
     }
-
     .hero {
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:64px;
-      align-items:center;
-      min-height:650px;
-      padding:48px 0 72px;
+      display:grid; grid-template-columns:1.05fr .95fr; gap:64px; align-items:center;
+      min-height:650px; padding:48px 0 72px;
     }
     .eyebrow {
-      display:inline-flex;
-      padding:7px 13px;
-      border-radius:999px;
-      color:var(--accent-dark);
-      background:#fff1eb;
-      font-size:13px;
-      font-weight:800;
+      display:inline-flex; padding:7px 13px; border-radius:999px;
+      color:var(--accent-dark); background:#fff1eb; font-size:13px; font-weight:800;
     }
     h1 {
-      margin:20px 0 18px;
-      font-size:clamp(42px,6vw,72px);
-      line-height:1.12;
-      letter-spacing:-.055em;
+      margin:20px 0 18px; font-size:clamp(42px,6vw,72px);
+      line-height:1.12; letter-spacing:-.055em;
     }
-    .lead {
-      max-width:590px;
-      color:var(--muted);
-      font-size:18px;
-    }
-    .badges {
-      display:flex;
-      flex-wrap:wrap;
-      gap:9px;
-      margin-top:28px;
-    }
+    .lead { max-width:590px; color:var(--muted); font-size:18px; }
+    .badges { display:flex; flex-wrap:wrap; gap:9px; margin-top:28px; }
     .badges span {
-      border:1px solid var(--line);
-      border-radius:999px;
-      padding:7px 12px;
-      color:#665d57;
-      background:#fff;
-      font-size:13px;
+      border:1px solid var(--line); border-radius:999px; padding:7px 12px;
+      color:#665d57; background:#fff; font-size:13px;
     }
-    .actions {
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:30px;
-    }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
     .button {
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:48px;
-      padding:0 19px;
-      border-radius:14px;
-      text-decoration:none;
-      font-size:14px;
-      font-weight:800;
+      display:inline-flex; align-items:center; justify-content:center; min-height:48px;
+      padding:0 19px; border-radius:14px; text-decoration:none; font-size:14px; font-weight:800;
     }
-    .button:hover { text-decoration:none; }
-    .button-primary {
-      color:#fff;
-      background:var(--ink);
-      box-shadow:0 10px 24px rgba(38,33,30,.16);
-    }
-    .button-secondary {
-      border:1px solid var(--line);
-      background:#fff;
-    }
-    .availability {
-      margin-top:14px;
-      color:var(--muted);
-      font-size:13px;
-    }
+    .button-primary { color:#fff; background:var(--ink); box-shadow:0 10px 24px rgba(38,33,30,.16); }
+    .button-secondary { border:1px solid var(--line); background:#fff; }
+    .availability { margin-top:14px; color:var(--muted); font-size:13px; }
 
     .phone-stage {
-      min-height:560px;
-      display:grid;
-      place-items:center;
-      border-radius:42px;
-      background:
-        radial-gradient(circle at 80% 12%,#ffd0bd 0,transparent 31%),
-        linear-gradient(145deg,#edc8ad,#fbf6ef 57%,#e2efe8);
-      overflow:hidden;
+      min-height:560px; display:grid; place-items:center; border-radius:42px;
+      background:radial-gradient(circle at 80% 12%,#ffd0bd 0,transparent 31%),
+                 linear-gradient(145deg,#edc8ad,#fbf6ef 57%,#e2efe8);
+      overflow:hidden; padding:28px;
     }
-    .phone {
-      position:relative;
-      width:min(295px,76vw);
-      height:570px;
-      overflow:hidden;
-      border:9px solid #27221f;
-      border-radius:42px;
-      background:#fffdfb;
-      box-shadow:0 30px 45px rgba(50,30,17,.28);
+    .hero-screenshot {
+      display:block; width:min(390px,88%); max-height:610px; object-fit:contain;
+      border-radius:34px; box-shadow:0 30px 50px rgba(50,30,17,.22);
     }
-    .island {
-      position:absolute;
-      z-index:3;
-      left:50%;
-      top:11px;
-      width:104px;
-      height:28px;
-      border-radius:18px;
-      background:#171311;
-      transform:translateX(-50%);
-    }
-    .phone-hero {
-      height:251px;
-      padding:96px 20px 20px;
-      color:#fff;
-      background:
-        linear-gradient(145deg,rgba(46,30,20,.05),rgba(32,18,12,.68)),
-        linear-gradient(135deg,#bc7256,#6f4935 55%,#d99970);
-    }
-    .tiny { font-size:12px; opacity:.9; }
-    .phone-hero h2 {
-      margin:5px 0 0;
-      font-size:29px;
-      letter-spacing:-.04em;
-    }
-    .sheet {
-      position:absolute;
-      top:226px;
-      width:100%;
-      min-height:390px;
-      padding:28px 18px;
-      border-radius:28px 28px 0 0;
-      background:#fffdfb;
-    }
-    .sheet-head {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      font-size:16px;
-      font-weight:800;
-    }
-    .sheet-head span {
-      color:#958b84;
-      font-size:12px;
-      font-weight:500;
-    }
-    .mini-row {
-      display:flex;
-      gap:10px;
-      margin:18px 0 27px;
-    }
-    .mini-card {
-      width:76px;
-      font-size:10px;
-      font-weight:700;
-    }
-    .mini-photo {
-      height:92px;
-      margin-bottom:6px;
-      border-radius:12px;
-      background:linear-gradient(145deg,#4e4037,#d97b51 48%,#e4c6a9);
-    }
-    .mini-card:nth-child(2) .mini-photo {
-      background:linear-gradient(145deg,#edc4b3,#f1f0e1 44%,#9e755d);
-    }
-    .mini-card:nth-child(3) .mini-photo {
-      background:linear-gradient(145deg,#395a48,#b6c68e 54%,#e9b681);
-    }
-    .diary {
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding-top:8px;
-      border-top:1px solid #eee5df;
-      font-size:12px;
-    }
-    .diary-photo {
-      width:43px;
-      height:43px;
-      border-radius:9px;
-      background:linear-gradient(145deg,#7b5d46,#d88962);
-    }
-    .tabbar {
-      position:absolute;
-      right:0;
-      bottom:0;
-      left:0;
-      display:flex;
-      justify-content:space-around;
-      padding:11px 7px 13px;
-      border-top:1px solid #eee5df;
-      color:#82776f;
-      background:#fffdfb;
-      font-size:9px;
-    }
-    .tabbar b { color:var(--accent); }
 
     section { padding:86px 0; }
     .section-kicker {
-      color:var(--accent);
-      font-size:13px;
-      font-weight:800;
-      letter-spacing:.08em;
+      color:var(--accent); font-size:13px; font-weight:800; letter-spacing:.08em;
     }
     .section-title {
-      max-width:720px;
-      margin:8px 0 38px;
-      font-size:clamp(30px,4vw,45px);
-      line-height:1.25;
-      letter-spacing:-.04em;
+      max-width:760px; margin:8px 0 38px; font-size:clamp(30px,4vw,45px);
+      line-height:1.25; letter-spacing:-.04em;
     }
-    .features {
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:15px;
-    }
+    .features { display:grid; grid-template-columns:repeat(2,1fr); gap:15px; }
     .feature {
-      min-height:220px;
-      padding:27px;
-      border:1px solid var(--line);
-      border-radius:24px;
-      background:#fff;
+      min-height:220px; padding:27px; border:1px solid var(--line);
+      border-radius:24px; background:#fff;
     }
     .feature-mark {
-      width:45px;
-      height:45px;
-      display:grid;
-      place-items:center;
-      margin-bottom:23px;
-      border-radius:14px;
-      color:var(--accent);
-      background:#fff0e9;
-      font-size:22px;
+      width:45px; height:45px; display:grid; place-items:center; margin-bottom:23px;
+      border-radius:14px; color:var(--accent); background:#fff0e9; font-size:22px;
     }
-    .feature h3 {
-      margin:0 0 8px;
-      font-size:20px;
-      letter-spacing:-.03em;
-    }
-    .feature p {
-      margin:0;
-      color:var(--muted);
-      font-size:14px;
-    }
-
-
-    .hero-screenshot {
-      display:block;
-      width:min(390px,88%);
-      max-height:610px;
-      object-fit:contain;
-      border-radius:34px;
-      box-shadow:0 30px 50px rgba(50,30,17,.22);
-    }
-    .phone-stage .phone { display:none; }
+    .feature h3 { margin:0 0 8px; font-size:20px; letter-spacing:-.03em; }
+    .feature p { margin:0; color:var(--muted); font-size:14px; }
 
     .screens-showcase {
-      display:grid;
-      grid-template-columns:repeat(12,1fr);
-      gap:18px;
-      align-items:start;
+      display:grid; grid-template-columns:repeat(12,1fr); gap:18px; align-items:start;
     }
     .screen-card {
-      margin:0;
-      padding:18px;
-      border:1px solid var(--line);
-      border-radius:26px;
-      background:#fff;
-      overflow:hidden;
+      margin:0; padding:18px; border:1px solid var(--line); border-radius:26px;
+      background:#fff; overflow:hidden;
     }
     .screen-card img {
-      display:block;
-      width:100%;
-      height:auto;
-      border-radius:18px;
-      background:#f8f5f1;
+      display:block; width:100%; height:auto; border-radius:18px; background:#f8f5f1;
     }
-    .screen-card figcaption {
-      padding:14px 4px 2px;
-    }
-    .screen-card strong {
-      display:block;
-      font-size:17px;
-      letter-spacing:-.02em;
-    }
-    .screen-card span {
-      display:block;
-      margin-top:4px;
-      color:var(--muted);
-      font-size:13px;
-    }
-    .screen-card.featured {
-      grid-column:span 7;
-    }
-    .screen-card.standard {
-      grid-column:span 5;
-    }
-    .screen-card.half {
-      grid-column:span 6;
-    }
-
-    .press-download {
-      margin-top:24px;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-    }
-
-    .icon-preview {
-      width:88px;
-      height:88px;
-      margin-top:20px;
-      border-radius:20px;
-      box-shadow:0 12px 28px rgba(0,0,0,.16);
-    }
+    .screen-card figcaption { padding:14px 4px 2px; }
+    .screen-card strong { display:block; font-size:17px; letter-spacing:-.02em; }
+    .screen-card span { display:block; margin-top:4px; color:var(--muted); font-size:13px; }
+    .screen-card.featured { grid-column:span 7; }
+    .screen-card.standard { grid-column:span 5; }
+    .screen-card.half { grid-column:span 6; }
 
     .media-panel {
-      padding:42px;
-      border-radius:30px;
-      color:#fffaf5;
+      padding:42px; border-radius:30px; color:#fffaf5;
       background:linear-gradient(130deg,#3e3028,#735240 60%,#b16b50);
     }
     .media-panel .section-kicker { color:#ffcab6; }
     .media-panel h2 {
-      margin:8px 0 12px;
-      font-size:clamp(28px,4vw,42px);
-      letter-spacing:-.04em;
+      margin:8px 0 12px; font-size:clamp(28px,4vw,42px); letter-spacing:-.04em;
     }
-    .media-panel p {
-      max-width:720px;
-      margin:0;
-      color:#f4ddd1;
-    }
-    .asset-grid {
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:12px;
-      margin-top:28px;
-    }
+    .media-panel p { max-width:760px; margin:0; color:#f4ddd1; }
+    .asset-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:28px; }
     .asset {
-      min-height:150px;
-      padding:22px;
-      border:1px solid rgba(255,255,255,.16);
-      border-radius:20px;
-      background:rgba(255,255,255,.08);
+      min-height:150px; padding:22px; border:1px solid rgba(255,255,255,.16);
+      border-radius:20px; background:rgba(255,255,255,.08);
     }
-    .asset strong {
-      display:block;
-      margin-bottom:7px;
+    .asset strong { display:block; margin-bottom:7px; }
+    .asset span { color:#f4ddd1; font-size:13px; }
+    .icon-preview {
+      width:88px; height:88px; margin-top:20px; border-radius:20px;
+      box-shadow:0 12px 28px rgba(0,0,0,.16);
     }
-    .asset span {
-      color:#f4ddd1;
-      font-size:13px;
-    }
-    .media-actions {
-      margin-top:24px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-    }
+    .media-actions { margin-top:24px; display:flex; flex-wrap:wrap; gap:12px; }
     .media-actions .button-secondary {
-      border-color:rgba(255,255,255,.28);
-      color:#fff;
-      background:rgba(255,255,255,.08);
+      border-color:rgba(255,255,255,.28); color:#fff; background:rgba(255,255,255,.08);
     }
     .press-note {
-      margin-top:30px;
-      padding:24px;
-      border:1px solid var(--line);
-      border-radius:20px;
-      background:#fff;
-      color:var(--muted);
-      font-size:14px;
+      margin-top:30px; padding:24px; border:1px solid var(--line);
+      border-radius:20px; background:#fff; color:var(--muted); font-size:14px;
     }
     .press-note strong { color:var(--ink); }
 
-    .support {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:16px;
-    }
-    .support a {
-      display:block;
-      padding:26px;
-      border-radius:21px;
-      background:#f6efe9;
-      text-decoration:none;
-    }
-    .support small {
-      display:block;
-      color:var(--muted);
-      font-size:12px;
-    }
-    .support strong {
-      display:block;
-      margin-top:5px;
-      font-size:19px;
-    }
-
-    footer {
-      padding:32px 0 48px;
-      color:#8a817a;
-      font-size:13px;
-      text-align:center;
-    }
+    .support { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .support a { display:block; padding:26px; border-radius:21px; background:#f6efe9; text-decoration:none; }
+    .support small { display:block; color:var(--muted); font-size:12px; }
+    .support strong { display:block; margin-top:5px; font-size:19px; }
+    footer { padding:32px 0 48px; color:#8a817a; font-size:13px; text-align:center; }
 
     @media (max-width:820px) {
-      .nav {
-        align-items:flex-start;
-      }
-      .nav-right {
-        gap:12px;
-      }
+      .nav { align-items:flex-start; }
+      .nav-right { gap:12px; }
     }
     @media (max-width:720px) {
-      .wrap {
-        width:min(100% - 32px,560px);
-      }
-      .nav {
-        display:block;
-      }
-      .brand {
-        display:inline-block;
-        margin-bottom:16px;
-      }
-      .nav-right {
-        justify-content:space-between;
-        align-items:center;
-      }
-      .nav-links {
-        gap:10px 14px;
-      }
-      .hero {
-        grid-template-columns:1fr;
-        gap:30px;
-        min-height:0;
-        padding:32px 0 58px;
-      }
-      .hero-copy { order:1; }
-      .phone-stage {
-        min-height:455px;
-        order:2;
-      }
-      .phone {
-        transform:scale(.8);
-        margin:-57px 0;
-      }
-      .features,
-      .support,
-      .asset-grid {
-        grid-template-columns:1fr;
-      }
-      .screen-card.featured,
-      .screen-card.standard,
-      .screen-card.half {
-        grid-column:1 / -1;
-      }
-      .hero-screenshot {
-        width:min(330px,88%);
-      }
-  
-    .hero-screenshot {
-      display:block;
-      width:min(390px,88%);
-      max-height:610px;
-      object-fit:contain;
-      border-radius:34px;
-      box-shadow:0 30px 50px rgba(50,30,17,.22);
-    }
-    .phone-stage .phone { display:none; }
-
-    .screens-showcase {
-      display:grid;
-      grid-template-columns:repeat(12,1fr);
-      gap:18px;
-      align-items:start;
-    }
-    .screen-card {
-      margin:0;
-      padding:18px;
-      border:1px solid var(--line);
-      border-radius:26px;
-      background:#fff;
-      overflow:hidden;
-    }
-    .screen-card img {
-      display:block;
-      width:100%;
-      height:auto;
-      border-radius:18px;
-      background:#f8f5f1;
-    }
-    .screen-card figcaption {
-      padding:14px 4px 2px;
-    }
-    .screen-card strong {
-      display:block;
-      font-size:17px;
-      letter-spacing:-.02em;
-    }
-    .screen-card span {
-      display:block;
-      margin-top:4px;
-      color:var(--muted);
-      font-size:13px;
-    }
-    .screen-card.featured {
-      grid-column:span 7;
-    }
-    .screen-card.standard {
-      grid-column:span 5;
-    }
-    .screen-card.half {
-      grid-column:span 6;
-    }
-
-    .press-download {
-      margin-top:24px;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-    }
-
-    .icon-preview {
-      width:88px;
-      height:88px;
-      margin-top:20px;
-      border-radius:20px;
-      box-shadow:0 12px 28px rgba(0,0,0,.16);
-    }
-
-    .media-panel { padding:30px; }
+      .wrap { width:min(100% - 32px,560px); }
+      .nav { display:block; }
+      .brand { display:inline-block; margin-bottom:16px; }
+      .nav-right { justify-content:space-between; align-items:center; }
+      .nav-links { gap:10px 14px; }
+      .hero { grid-template-columns:1fr; gap:30px; min-height:0; padding:32px 0 58px; }
+      .phone-stage { min-height:455px; }
+      .hero-screenshot { width:min(330px,88%); }
+      .features,.support,.asset-grid { grid-template-columns:1fr; }
+      .screen-card.featured,.screen-card.standard,.screen-card.half { grid-column:1 / -1; }
+      .media-panel { padding:30px; }
       section { padding:62px 0; }
     }
   </style>
 </head>
 <body>
-  <header class="wrap">
-    <nav class="nav">
-      <a class="brand" href="#">TSUBASA STUDIO</a>
-
-      <div class="nav-right">
-        <div class="nav-links">
-          <a id="nav-features" href="#features"></a>
-          <a id="nav-press" href="#press"></a>
-          <a id="nav-appstore" href="https://apps.apple.com/us/app/sofubi-journal/id6795497288" target="_blank" rel="noopener"></a>
-        </div>
-
-        <div class="language-switcher" aria-label="Language">
-          <a href="?lang=ja" data-language="ja">日本語</a>
-          <a href="?lang=en" data-language="en">English</a>
-        </div>
+<header class="wrap">
+  <nav class="nav">
+    <a class="brand" href="#">TSUBASA STUDIO</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a id="nav-features" href="#features"></a>
+        <a id="nav-press" href="#press"></a>
+        <a id="nav-appstore" href="https://apps.apple.com/us/app/sofubi-journal/id6795497288" target="_blank" rel="noopener"></a>
       </div>
-    </nav>
-  </header>
-
-  <main>
-    <section class="wrap hero">
-      <div class="hero-copy">
-        <span class="eyebrow" id="hero-eyebrow"></span>
-        <h1 id="hero-title"></h1>
-        <p class="lead" id="hero-lead"></p>
-
-        <div class="badges" id="hero-badges"></div>
-
-        <div class="actions">
-          <a class="button button-primary" id="hero-appstore" href="https://apps.apple.com/us/app/sofubi-journal/id6795497288" target="_blank" rel="noopener"></a>
-          <a class="button button-secondary" id="hero-press" href="#press"></a>
-        </div>
-
-        <p class="availability" id="hero-availability"></p>
+      <div class="language-switcher" aria-label="Language">
+        <a href="?lang=ja" data-language="ja">日本語</a>
+        <a href="?lang=en" data-language="en">English</a>
+        <a href="?lang=zh-TW" data-language="zh-TW">繁體中文</a>
       </div>
+    </div>
+  </nav>
+</header>
 
-      <div class="phone-stage" id="phone-stage">
-        <img class="hero-screenshot" src="assets/screenshots/01-home.png" alt="Sofubi Journal home screen">
-        <div class="phone">
-          <div class="island"></div>
-          <div class="phone-hero">
-            <div class="tiny" id="phone-today"></div>
-            <h2 id="phone-main-name"></h2>
-          </div>
-          <div class="sheet">
-            <div class="sheet-head">
-              <span id="phone-recent-heading" style="color:inherit;font-size:inherit;font-weight:inherit"></span>
-              <span id="phone-see-all-1"></span>
-            </div>
-            <div class="mini-row">
-              <div class="mini-card"><div class="mini-photo"></div><span id="phone-item-1"></span></div>
-              <div class="mini-card"><div class="mini-photo"></div><span id="phone-item-2"></span></div>
-              <div class="mini-card"><div class="mini-photo"></div><span id="phone-item-3"></span></div>
-            </div>
-            <div class="sheet-head">
-              <span id="phone-journal-heading" style="color:inherit;font-size:inherit;font-weight:inherit"></span>
-              <span id="phone-see-all-2"></span>
-            </div>
-            <div class="diary">
-              <div class="diary-photo"></div>
-              <div>
-                <b id="phone-journal-entry"></b><br>
-                <span class="tiny" id="phone-date" style="color:#847a73"></span>
-              </div>
-            </div>
-          </div>
-          <div class="tabbar">
-            <b id="tab-home"></b>
-            <span id="tab-collection"></span>
-            <span id="tab-journal"></span>
-            <span id="tab-settings"></span>
-          </div>
-        </div>
+<main>
+  <section class="wrap hero">
+    <div>
+      <span class="eyebrow" id="hero-eyebrow"></span>
+      <h1 id="hero-title"></h1>
+      <p class="lead" id="hero-lead"></p>
+      <div class="badges" id="hero-badges"></div>
+      <div class="actions">
+        <a class="button button-primary" id="hero-appstore" href="https://apps.apple.com/us/app/sofubi-journal/id6795497288" target="_blank" rel="noopener"></a>
+        <a class="button button-secondary" id="hero-press" href="#press"></a>
       </div>
-    </section>
+      <p class="availability" id="hero-availability"></p>
+    </div>
+    <div class="phone-stage">
+      <img class="hero-screenshot" id="hero-screenshot" src="" alt="">
+    </div>
+  </section>
 
-    <section class="wrap" id="features">
-      <div class="section-kicker" id="features-kicker"></div>
-      <h2 class="section-title" id="features-title"></h2>
-      <div class="features" id="features-grid"></div>
-    </section>
+  <section class="wrap" id="features">
+    <div class="section-kicker" id="features-kicker"></div>
+    <h2 class="section-title" id="features-title"></h2>
+    <div class="features" id="features-grid"></div>
+  </section>
 
+  <section class="wrap" id="screens">
+    <div class="section-kicker" id="screens-kicker"></div>
+    <h2 class="section-title" id="screens-title"></h2>
+    <div class="screens-showcase">
+      <figure class="screen-card featured">
+        <img data-screen="07-shelf.png" alt="" loading="lazy">
+        <figcaption><strong id="screen-shelf-title"></strong><span id="screen-shelf-body"></span></figcaption>
+      </figure>
+      <figure class="screen-card standard">
+        <img data-screen="02-collection.png" alt="" loading="lazy">
+        <figcaption><strong id="screen-collection-title"></strong><span id="screen-collection-body"></span></figcaption>
+      </figure>
+      <figure class="screen-card half">
+        <img data-screen="04-detail.png" alt="" loading="lazy">
+        <figcaption><strong id="screen-detail-title"></strong><span id="screen-detail-body"></span></figcaption>
+      </figure>
+      <figure class="screen-card half">
+        <img data-screen="05-diary.png" alt="" loading="lazy">
+        <figcaption><strong id="screen-diary-title"></strong><span id="screen-diary-body"></span></figcaption>
+      </figure>
+      <figure class="screen-card half">
+        <img data-screen="03-add.png" alt="" loading="lazy">
+        <figcaption><strong id="screen-add-title"></strong><span id="screen-add-body"></span></figcaption>
+      </figure>
+      <figure class="screen-card half">
+        <img data-screen="06-summary.png" alt="" loading="lazy">
+        <figcaption><strong id="screen-summary-title"></strong><span id="screen-summary-body"></span></figcaption>
+      </figure>
+    </div>
+  </section>
 
-    <section class="wrap" id="screens">
-      <div class="section-kicker" id="screens-kicker"></div>
-      <h2 class="section-title" id="screens-title"></h2>
-
-      <div class="screens-showcase">
-        <figure class="screen-card featured">
-          <img src="assets/screenshots/07-shelf.png" alt="Sofubi Journal digital shelf screen" loading="lazy">
-          <figcaption><strong id="screen-shelf-title"></strong><span id="screen-shelf-body"></span></figcaption>
-        </figure>
-
-        <figure class="screen-card standard">
-          <img src="assets/screenshots/02-collection.png" alt="Sofubi Journal collection screen" loading="lazy">
-          <figcaption><strong id="screen-collection-title"></strong><span id="screen-collection-body"></span></figcaption>
-        </figure>
-
-        <figure class="screen-card half">
-          <img src="assets/screenshots/04-detail.png" alt="Sofubi Journal detail screen" loading="lazy">
-          <figcaption><strong id="screen-detail-title"></strong><span id="screen-detail-body"></span></figcaption>
-        </figure>
-
-        <figure class="screen-card half">
-          <img src="assets/screenshots/05-diary.png" alt="Sofubi Journal diary screen" loading="lazy">
-          <figcaption><strong id="screen-diary-title"></strong><span id="screen-diary-body"></span></figcaption>
-        </figure>
-
-        <figure class="screen-card half">
-          <img src="assets/screenshots/03-add.png" alt="Sofubi Journal add sofubi screen" loading="lazy">
-          <figcaption><strong id="screen-add-title"></strong><span id="screen-add-body"></span></figcaption>
-        </figure>
-
-        <figure class="screen-card half">
-          <img src="assets/screenshots/06-summary.png" alt="Sofubi Journal summary screen" loading="lazy">
-          <figcaption><strong id="screen-summary-title"></strong><span id="screen-summary-body"></span></figcaption>
-        </figure>
+  <section class="wrap" id="press">
+    <div class="media-panel">
+      <div class="section-kicker" id="press-kicker"></div>
+      <h2 id="press-title"></h2>
+      <p id="press-body"></p>
+      <div class="asset-grid" id="asset-grid"></div>
+      <img class="icon-preview" src="assets/icon.png" alt="Sofubi Journal app icon">
+      <div class="media-actions">
+        <a class="button button-primary" id="press-download" href="assets/press/Sofubi-Journal-Press-Kit.zip" download></a>
+        <a class="button button-secondary" id="press-appstore" href="https://apps.apple.com/us/app/sofubi-journal/id6795497288" target="_blank" rel="noopener"></a>
+        <a class="button button-secondary" id="media-inquiry"
+           href="mailto:tsubasa.studio@icloud.com?subject=Sofubi%20Journal%20Press%20Inquiry"></a>
       </div>
-    </section>
+    </div>
+    <div class="press-note" id="press-note"></div>
+  </section>
 
-    <section class="wrap" id="press">
-      <div class="media-panel">
-        <div class="section-kicker" id="press-kicker"></div>
-        <h2 id="press-title"></h2>
-        <p id="press-body"></p>
+  <section class="wrap">
+    <div class="section-kicker" id="about-kicker"></div>
+    <h2 class="section-title" id="about-title"></h2>
+    <p class="lead" id="about-body"></p>
+  </section>
 
-        <div class="asset-grid" id="asset-grid"></div>
+  <section class="wrap">
+    <div class="section-kicker" id="contact-kicker"></div>
+    <h2 class="section-title" id="contact-title"></h2>
+    <div class="support">
+      <a href="https://apps.apple.com/us/app/sofubi-journal/id6795497288" target="_blank" rel="noopener">
+        <small id="contact-appstore-small"></small>
+        <strong id="contact-appstore-strong"></strong>
+      </a>
+      <a href="mailto:tsubasa.studio@icloud.com?subject=Sofubi%20Journal">
+        <small id="contact-email-small"></small>
+        <strong id="contact-email-strong"></strong>
+      </a>
+    </div>
+  </section>
+</main>
 
-        <img class="icon-preview" src="assets/icon.png" alt="Sofubi Journal app icon" loading="lazy">
+<footer class="wrap">© Tsubasa Studio · Sofubi Journal</footer>
 
-        <div class="media-actions">
-          <a class="button button-primary press-download" id="press-download" href="assets/press/Sofubi-Journal-Press-Kit.zip" download></a>
-          <a class="button button-secondary" id="press-appstore" href="https://apps.apple.com/us/app/sofubi-journal/id6795497288" target="_blank" rel="noopener"></a>
-          <a class="button button-secondary" id="media-inquiry"
-             href="mailto:tsubasa.studio@icloud.com?subject=Sofubi%20Journal%20Press%20Inquiry"></a>
-        </div>
-      </div>
+<script>
+(() => {
+  const supportedLanguages = ['ja','en','zh-TW'];
+  const params = new URLSearchParams(window.location.search);
+  const requested = params.get('lang');
+  const language = supportedLanguages.includes(requested) ? requested : 'ja';
 
-      <div class="press-note" id="press-note"></div>
-    </section>
-
-    <section class="wrap">
-      <div class="section-kicker" id="about-kicker"></div>
-      <h2 class="section-title" id="about-title"></h2>
-      <p class="lead" id="about-body"></p>
-    </section>
-
-    <section class="wrap">
-      <div class="section-kicker" id="contact-kicker"></div>
-      <h2 class="section-title" id="contact-title"></h2>
-
-      <div class="support">
-        <a href="https://apps.apple.com/us/app/sofubi-journal/id6795497288" target="_blank" rel="noopener">
-          <small id="contact-appstore-small"></small>
-          <strong id="contact-appstore-strong"></strong>
-        </a>
-        <a href="mailto:tsubasa.studio@icloud.com?subject=Sofubi%20Journal">
-          <small id="contact-email-small"></small>
-          <strong id="contact-email-strong"></strong>
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="wrap">© Tsubasa Studio · Sofubi Journal</footer>
-
-  <script>
-    (() => {
-      const supportedLanguages = ['ja', 'en'];
-      const params = new URLSearchParams(window.location.search);
-      const requestedLanguage = params.get('lang');
-      const language = supportedLanguages.includes(requestedLanguage)
-        ? requestedLanguage
-        : 'ja';
-
-      const content = {
-        ja: {
-          pageTitle: 'ソフビ手帳 - Tsubasa Studio',
-          description: 'ソフビ手帳は、ソフビの写真・記録・コレクションを整理して楽しめる日本発のiPhoneアプリです。',
-          ogTitle: 'ソフビ手帳 — ソフビコレクションを写真で残すiPhoneアプリ',
-          ogDescription: 'ソフビを登録し、写真や日記と一緒にコレクションとして楽しめるiPhoneアプリ。日本の個人開発者が制作。',
-          nav: ['機能', 'プレス', 'App Store'],
-          hero: {
-            eyebrow: '日本発 · iPhoneアプリ',
-            title: '写真で残す、<br>私のソフビ手帳。',
-            lead: 'ソフビ手帳は、ソフビの写真や記録をひとつの場所にまとめ、コレクションそのものを眺めて楽しむためのiPhoneアプリです。',
-            badges: ['写真中心のコレクション', '背景除去', 'デジタル棚', 'iPhone'],
-            appStore: 'App Storeで見る ↗',
-            press: 'プレス・メディア向け',
-            availability: 'App Storeで配信中です。'
-          },
-          phone: {
-            aria: 'ソフビ手帳のアプリ画面イメージ',
-            today: '今日のソフビ',
-            mainName: '銀河ヒーロー',
-            recentHeading: '最近迎えたソフビ',
-            seeAll: 'すべて見る',
-            items: ['黒耀カイジュウ', '銀河ヒーロー', '翠甲ガーディアン'],
-            journalHeading: '最近の日記',
-            journalEntry: '今日届いた！',
-            date: '2026.8.15',
-            tabs: ['⌂<br>ホーム', '◇<br>コレクション', '▱<br>日記', '⚙<br>設定']
-          },
-          features: {
-            kicker: 'できること',
-            title: '管理するだけではなく、眺めて楽しめるコレクションへ。',
-            items: [
-              ['▣', '写真でコレクションを残す', '一体ずつ写真と情報を登録。お気に入りのソフビを、見返しやすい形で整理できます。'],
-              ['✦', '写真の背景をすっきり', '背景を除去して、ソフビそのものが主役になる写真として残せます。'],
-              ['▤', 'デジタル棚に並べる', '登録したソフビを棚に並べ、コレクションを「管理するもの」ではなく「眺めるもの」として楽しめます。'],
-              ['♡', '思い出も一緒に記録', '迎えた日やイベント、飾り方を変えた日などを、写真や日記として残せます。']
-            ]
-          },
-          screens: {
-            kicker: 'アプリ画面',
-            title: 'ソフビ手帳で、コレクションをもっと見やすく、もっと楽しく。',
-            items: {
-              shelf: ['デジタル棚', '背景を除去したソフビを棚に並べ、コレクションそのものを眺めて楽しめます。'],
-              collection: ['コレクション', '写真を主役にした一覧から、お気に入りのソフビをすぐに探せます。'],
-              detail: ['詳細', '写真、メーカー、シリーズ、購入情報、メモなどを一体ごとに記録できます。'],
-              diary: ['日記', '迎えた日やイベント、飾り方を変えた日などの思い出を残せます。'],
-              add: ['かんたん登録', '複数の写真と基本情報をまとめて登録できます。'],
-              summary: ['まとめ', '追加数や写真数などを月・年単位で振り返れます。']
-            }
-          },
-          press: {
-            kicker: 'プレス・メディア',
-            title: 'ソフビ手帳のメディア向け情報',
-            body: 'ソフビ手帳は、日本の個人開発者が制作したソフビコレクション向けiPhoneアプリです。記事やSNS等でご紹介いただく際は、公式スクリーンショットおよびアプリアイコンをご利用いただけます。',
-            assets: [
-              ['アプリアイコン', '記事やアプリ紹介に利用できる1024×1024 PNGを推奨しています。'],
-              ['アプリスクリーンショット', '実際のアプリ画面を掲載するための、加工なしスクリーンショットです。'],
-              ['プロモーション画像', 'SNS投稿や記事のメイン画像に利用できるプロモーション用素材です。']
-            ],
-            appStore: 'App Store ↗',
-            inquiry: 'メディア問い合わせ',
-            download: 'Press Kitをダウンロード ↓',
-            note: '<strong>メディア関係者の方へ：</strong> 上のPress Kitには、アプリアイコンと公式スクリーンショットをまとめています。Sofubi Journalの記事・紹介用途にご利用いただけます。'
-          },
-          about: {
-            kicker: 'このアプリについて',
-            title: '日本から、世界のソフビコレクターへ。',
-            body: 'ソフビ手帳は、日本の個人iOS開発者 Tsubasa Studio が開発しています。コレクションを整理するだけでなく、写真を見返し、並べ、記録そのものを楽しめることを大切にしています。'
-          },
-          contact: {
-            kicker: 'お問い合わせ',
-            title: 'プレス・ご質問・フィードバック',
-            appStoreSmall: 'ダウンロード・アプリ詳細',
-            appStoreStrong: 'App Storeで見る ↗',
-            emailSmall: 'プレス・ご質問・フィードバック',
-            emailStrong: 'Tsubasa Studioへ連絡'
-          }
-        },
-
-        en: {
-          pageTitle: 'Sofubi Journal - Tsubasa Studio',
-          description: 'Sofubi Journal is an iPhone app made in Japan for organizing, documenting, and visually enjoying sofubi collections.',
-          ogTitle: 'Sofubi Journal — An iPhone App for Sofubi Collectors',
-          ogDescription: 'Organize, document, and enjoy your sofubi collection in one visual journal. Made in Japan for collectors worldwide.',
-          nav: ['Features', 'Press', 'App Store'],
-          hero: {
-            eyebrow: 'MADE IN JAPAN · iPHONE APP',
-            title: 'Your sofubi collection,<br>beautifully documented.',
-            lead: 'Sofubi Journal is an iPhone app made in Japan for collectors who want to organize, document, and visually enjoy their sofubi collection in one place.',
-            badges: ['Visual Collection Journal', 'Background Removal', 'Digital Display Shelves', 'iPhone'],
-            appStore: 'View on the App Store ↗',
-            press: 'Press & Media',
-            availability: 'Available now on the App Store.'
-          },
-          phone: {
-            aria: 'Sofubi Journal app preview',
-            today: "Today's Sofubi",
-            mainName: 'Galaxy Hero',
-            recentHeading: 'Recently Added',
-            seeAll: 'See All',
-            items: ['Obsidian Kaiju', 'Galaxy Hero', 'Jade Guardian'],
-            journalHeading: 'Recent Journal',
-            journalEntry: 'Arrived today!',
-            date: 'Aug 15, 2026',
-            tabs: ['⌂<br>Home', '◇<br>Collection', '▱<br>Journal', '⚙<br>Settings']
-          },
-          features: {
-            kicker: 'WHAT YOU CAN DO',
-            title: 'More than a database. A visual home for your sofubi collection.',
-            items: [
-              ['▣', 'Build a visual collection', 'Save each sofubi with photos and collection details, keeping your favorite pieces easy to revisit.'],
-              ['✦', 'Remove photo backgrounds', 'Make each figure stand out by removing distracting backgrounds from collection photos.'],
-              ['▤', 'Display your collection', 'Arrange your sofubi on digital shelves and enjoy the collection as something made to be seen.'],
-              ['♡', 'Keep the memories too', 'Record notes and journal entries alongside your figures, from new arrivals to events and display changes.']
-            ]
-          },
-          screens: {
-            kicker: 'APP SCREENS',
-            title: 'A visual way to organize, remember, and enjoy your sofubi collection.',
-            items: {
-              shelf: ['Digital Shelf', 'Place background-free sofubi on a digital shelf and enjoy your collection as a display.'],
-              collection: ['Collection', 'Browse a photo-first collection and quickly return to your favorite pieces.'],
-              detail: ['Details', 'Keep photos, maker, series, purchase information, and notes together for each sofubi.'],
-              diary: ['Diary', 'Record memories from new arrivals, events, and changes to your display.'],
-              add: ['Easy to Add', 'Register multiple photos and collection details in one place.'],
-              summary: ['Summary', 'Review additions, photos, and collection activity by month or year.']
-            }
-          },
-          press: {
-            kicker: 'PRESS & MEDIA',
-            title: 'Media resources for Sofubi Journal',
-            body: 'Sofubi Journal was independently developed in Japan for the global sofubi collecting community. Editors, writers, and creators are welcome to use official app screenshots and the app icon when covering Sofubi Journal.',
-            assets: [
-              ['App Icon', '1024 × 1024 PNG recommended for articles and listings.'],
-              ['App Screenshots', 'Use clean, unedited app screens for editorial coverage.'],
-              ['Promotional Images', 'Store-style visuals suitable for social posts and feature images.']
-            ],
-            appStore: 'App Store ↗',
-            inquiry: 'Media Inquiry',
-            download: 'Download Press Kit ↓',
-            note: '<strong>For editors:</strong> The Press Kit above includes the official app icon and app screenshots for editorial coverage of Sofubi Journal.'
-          },
-          about: {
-            kicker: 'ABOUT',
-            title: 'Made in Japan for sofubi collectors worldwide.',
-            body: 'Sofubi Journal is developed by Tsubasa Studio, an independent iOS developer based in Japan. The app is designed around a simple idea: a collection should be enjoyable not only to manage, but also to look through.'
-          },
-          contact: {
-            kicker: 'CONTACT',
-            title: 'Press inquiries and feedback',
-            appStoreSmall: 'Download & product details',
-            appStoreStrong: 'View on the App Store ↗',
-            emailSmall: 'Press, questions, and feedback',
-            emailStrong: 'Contact Tsubasa Studio'
-          }
+  const content = {
+    ja: {
+      pageTitle: 'ソフビ手帳 - Tsubasa Studio',
+      description: 'ソフビ手帳は、ソフビの写真・記録・コレクションを整理して楽しめる日本発のiPhoneアプリです。',
+      ogTitle: 'ソフビ手帳 — ソフビコレクションを写真で残すiPhoneアプリ',
+      ogDescription: 'ソフビを登録し、写真や日記と一緒にコレクションとして楽しめるiPhoneアプリ。',
+      nav: ['機能','プレス','App Store'],
+      hero: {
+        eyebrow:'日本発 · iPhoneアプリ',
+        title:'写真で残す、<br>私のソフビ手帳。',
+        lead:'ソフビ手帳は、ソフビの写真や記録をひとつの場所にまとめ、コレクションそのものを眺めて楽しむためのiPhoneアプリです。',
+        badges:['写真中心のコレクション','背景除去','デジタル棚','iPhone'],
+        appStore:'App Storeで見る ↗', press:'プレス・メディア向け', availability:'App Storeで配信中です。'
+      },
+      features: {
+        kicker:'できること',
+        title:'管理するだけではなく、眺めて楽しめるコレクションへ。',
+        items:[
+          ['▣','写真でコレクションを残す','一体ずつ写真と情報を登録。お気に入りのソフビを、見返しやすい形で整理できます。'],
+          ['✦','写真の背景をすっきり','背景を除去して、ソフビそのものが主役になる写真として残せます。'],
+          ['▤','デジタル棚に並べる','登録したソフビを棚に並べ、コレクションを眺めて楽しめます。'],
+          ['♡','思い出も一緒に記録','迎えた日やイベント、飾り方を変えた日などを写真や日記として残せます。']
+        ]
+      },
+      screens: {
+        kicker:'アプリ画面',
+        title:'ソフビ手帳で、コレクションをもっと見やすく、もっと楽しく。',
+        items:{
+          shelf:['デジタル棚','背景を除去したソフビを棚に並べ、コレクションそのものを眺めて楽しめます。'],
+          collection:['コレクション','写真を主役にした一覧から、お気に入りのソフビをすぐに探せます。'],
+          detail:['詳細','写真、メーカー、シリーズ、購入情報、メモなどを一体ごとに記録できます。'],
+          diary:['日記','迎えた日やイベント、飾り方を変えた日などの思い出を残せます。'],
+          add:['かんたん登録','複数の写真と基本情報をまとめて登録できます。'],
+          summary:['まとめ','追加数や写真数などを月・年単位で振り返れます。']
         }
-      };
+      },
+      press: {
+        kicker:'プレス・メディア',
+        title:'ソフビ手帳のメディア向け情報',
+        body:'記事やSNS等でご紹介いただく際は、公式スクリーンショットおよびアプリアイコンをご利用いただけます。',
+        assets:[
+          ['アプリアイコン','記事やアプリ紹介に利用できる1024×1024 PNGです。'],
+          ['アプリスクリーンショット','日本語・英語・繁體中文の公式スクリーンショットを収録しています。'],
+          ['Press Kit','アプリアイコンと全言語のスクリーンショットをZIPでまとめています。']
+        ],
+        download:'Press Kitをダウンロード ↓', appStore:'App Store ↗',
+        inquiry:'メディア問い合わせ',
+        note:'<strong>メディア関係者の方へ：</strong> Press Kit内の公式素材は、Sofubi Journalの記事・紹介用途にご利用いただけます。'
+      },
+      about: {
+        kicker:'このアプリについて',
+        title:'日本から、世界のソフビコレクターへ。',
+        body:'ソフビ手帳は、日本の個人iOS開発者 Tsubasa Studio が開発しています。コレクションを整理するだけでなく、写真を見返し、並べ、記録そのものを楽しめることを大切にしています。'
+      },
+      contact: {
+        kicker:'お問い合わせ', title:'プレス・ご質問・フィードバック',
+        appStoreSmall:'ダウンロード・アプリ詳細', appStoreStrong:'App Storeで見る ↗',
+        emailSmall:'プレス・ご質問・フィードバック', emailStrong:'Tsubasa Studioへ連絡'
+      }
+    },
+    en: {
+      pageTitle:'Sofubi Journal - Tsubasa Studio',
+      description:'Sofubi Journal is an iPhone app made in Japan for organizing, documenting, and visually enjoying sofubi collections.',
+      ogTitle:'Sofubi Journal — An iPhone App for Sofubi Collectors',
+      ogDescription:'Organize, document, and enjoy your sofubi collection in one visual journal. Made in Japan for collectors worldwide.',
+      nav:['Features','Press','App Store'],
+      hero:{
+        eyebrow:'MADE IN JAPAN · iPHONE APP',
+        title:'Your sofubi collection,<br>beautifully documented.',
+        lead:'Sofubi Journal is an iPhone app made in Japan for collectors who want to organize, document, and visually enjoy their sofubi collection in one place.',
+        badges:['Visual Collection Journal','Background Removal','Digital Display Shelves','iPhone'],
+        appStore:'View on the App Store ↗', press:'Press & Media', availability:'Available now on the App Store.'
+      },
+      features:{
+        kicker:'WHAT YOU CAN DO',
+        title:'More than a database. A visual home for your sofubi collection.',
+        items:[
+          ['▣','Build a visual collection','Save each sofubi with photos and collection details, keeping your favorite pieces easy to revisit.'],
+          ['✦','Remove photo backgrounds','Make each figure stand out by removing distracting backgrounds from collection photos.'],
+          ['▤','Display your collection','Arrange your sofubi on digital shelves and enjoy the collection as something made to be seen.'],
+          ['♡','Keep the memories too','Record notes and journal entries alongside your figures, from new arrivals to events and display changes.']
+        ]
+      },
+      screens:{
+        kicker:'APP SCREENS',
+        title:'A visual way to organize, remember, and enjoy your sofubi collection.',
+        items:{
+          shelf:['Digital Shelf','Place background-free sofubi on a digital shelf and enjoy your collection as a display.'],
+          collection:['Collection','Browse a photo-first collection and quickly return to your favorite pieces.'],
+          detail:['Details','Keep photos, maker, series, purchase information, and notes together for each sofubi.'],
+          diary:['Diary','Record memories from new arrivals, events, and changes to your display.'],
+          add:['Easy to Add','Register multiple photos and collection details in one place.'],
+          summary:['Summary','Review additions, photos, and collection activity by month or year.']
+        }
+      },
+      press:{
+        kicker:'PRESS & MEDIA', title:'Media resources for Sofubi Journal',
+        body:'Sofubi Journal was independently developed in Japan for the global sofubi collecting community. Editors, writers, and creators are welcome to use the official app screenshots and app icon when covering Sofubi Journal.',
+        assets:[
+          ['App Icon','1024 × 1024 PNG for articles and listings.'],
+          ['App Screenshots','Official screenshots are included in Japanese, English, and Traditional Chinese.'],
+          ['Press Kit','Download the app icon and all language screenshots in one ZIP file.']
+        ],
+        download:'Download Press Kit ↓', appStore:'App Store ↗', inquiry:'Media Inquiry',
+        note:'<strong>For editors:</strong> The Press Kit includes the official app icon and screenshots for editorial coverage of Sofubi Journal.'
+      },
+      about:{
+        kicker:'ABOUT', title:'Made in Japan for sofubi collectors worldwide.',
+        body:'Sofubi Journal is developed by Tsubasa Studio, an independent iOS developer based in Japan. The app is designed around a simple idea: a collection should be enjoyable not only to manage, but also to look through.'
+      },
+      contact:{
+        kicker:'CONTACT', title:'Press inquiries and feedback',
+        appStoreSmall:'Download & product details', appStoreStrong:'View on the App Store ↗',
+        emailSmall:'Press, questions, and feedback', emailStrong:'Contact Tsubasa Studio'
+      }
+    },
+    'zh-TW': {
+      pageTitle:'Sofubi Journal 軟膠手帳 - Tsubasa Studio',
+      description:'Sofubi Journal 是一款由日本獨立開發者製作的 iPhone App，專為整理、記錄與欣賞 Sofubi 軟膠收藏而設計。',
+      ogTitle:'Sofubi Journal 軟膠手帳 — 專為 Sofubi 收藏家打造的 iPhone App',
+      ogDescription:'用照片、日記與數位展示架整理你的 Sofubi 收藏。日本開發，支援繁體中文。',
+      nav:['功能','媒體資料','App Store'],
+      hero:{
+        eyebrow:'日本開發 · iPhone App',
+        title:'用照片記錄，<br>你的 Sofubi 收藏。',
+        lead:'Sofubi Journal 是一款專為 Sofubi 收藏家打造的 iPhone App，讓你在同一個地方整理照片、收藏資訊與回憶，並以更直覺的方式欣賞自己的收藏。',
+        badges:['以照片為主的收藏管理','背景移除','數位展示架','iPhone'],
+        appStore:'前往 App Store ↗', press:'媒體 / Press Kit', availability:'現已於 App Store 上架。'
+      },
+      features:{
+        kicker:'主要功能',
+        title:'不只是管理收藏，也讓收藏本身更值得欣賞。',
+        items:[
+          ['▣','用照片建立收藏','為每一隻 Sofubi 儲存照片與收藏資訊，隨時回顧自己喜愛的作品。'],
+          ['✦','移除照片背景','去除多餘背景，讓 Sofubi 本體成為照片的主角。'],
+          ['▤','排列在數位展示架','將收藏排列在數位展示架上，把「管理」變成「欣賞」。'],
+          ['♡','一起保存回憶','用日記記錄新入手、活動以及展示方式改變等收藏回憶。']
+        ]
+      },
+      screens:{
+        kicker:'APP 畫面',
+        title:'更直覺地整理、記錄與欣賞你的 Sofubi 收藏。',
+        items:{
+          shelf:['數位展示架','將去背後的 Sofubi 排列在展示架上，像真正陳列收藏一樣欣賞。'],
+          collection:['收藏','以照片為主瀏覽收藏，快速找到喜愛的 Sofubi。'],
+          detail:['詳細資料','每一隻 Sofubi 都能記錄照片、廠商、系列、購買資訊與備註。'],
+          diary:['日記','記錄新收藏到貨、活動與展示變化等回憶。'],
+          add:['輕鬆新增','一次整理多張照片與收藏基本資料。'],
+          summary:['每月 / 每年摘要','依月份或年份回顧收藏數量、照片與活動紀錄。']
+        }
+      },
+      press:{
+        kicker:'媒體 / PRESS',
+        title:'Sofubi Journal 媒體素材',
+        body:'Sofubi Journal 由日本獨立 iOS 開發者製作，並支援繁體中文。媒體、編輯與創作者在介紹本 App 時，可使用官方 App 圖示與螢幕截圖。',
+        assets:[
+          ['App 圖示','提供 1024 × 1024 PNG，可用於文章與 App 介紹。'],
+          ['App 螢幕截圖','Press Kit 收錄日文、英文與繁體中文的官方截圖。'],
+          ['Press Kit','App 圖示與三種語言的螢幕截圖已整理為 ZIP。']
+        ],
+        download:'下載 Press Kit ↓', appStore:'App Store ↗', inquiry:'媒體聯絡',
+        note:'<strong>媒體朋友：</strong> Press Kit 內的官方素材可用於 Sofubi Journal 的新聞、文章與介紹。'
+      },
+      about:{
+        kicker:'關於本 App', title:'從日本，獻給世界各地的 Sofubi 收藏家。',
+        body:'Sofubi Journal 由日本獨立 iOS 開發者 Tsubasa Studio 製作。我們希望收藏不只是被管理，更能透過照片、展示與記錄，成為值得反覆欣賞的內容。'
+      },
+      contact:{
+        kicker:'聯絡我們', title:'媒體合作、問題與意見',
+        appStoreSmall:'下載與 App 詳細資訊', appStoreStrong:'前往 App Store ↗',
+        emailSmall:'媒體合作、問題與意見', emailStrong:'聯絡 Tsubasa Studio'
+      }
+    }
+  };
 
-      const text = content[language];
+  const text = content[language];
+  document.documentElement.lang = language;
+  document.title = text.pageTitle;
+  document.getElementById('meta-description').setAttribute('content', text.description);
+  document.getElementById('og-title').setAttribute('content', text.ogTitle);
+  document.getElementById('og-description').setAttribute('content', text.ogDescription);
 
-      document.documentElement.lang = language;
-      document.title = text.pageTitle;
-      document.getElementById('meta-description').setAttribute('content', text.description);
-      document.getElementById('og-title').setAttribute('content', text.ogTitle);
-      document.getElementById('og-description').setAttribute('content', text.ogDescription);
+  document.querySelectorAll('[data-language]').forEach(link => {
+    link.setAttribute('aria-current', String(link.dataset.language === language));
+  });
 
-      document.querySelectorAll('[data-language]').forEach((link) => {
-        link.setAttribute('aria-current', String(link.dataset.language === language));
-      });
+  document.getElementById('nav-features').textContent = text.nav[0];
+  document.getElementById('nav-press').textContent = text.nav[1];
+  document.getElementById('nav-appstore').textContent = text.nav[2];
 
-      document.getElementById('nav-features').textContent = text.nav[0];
-      document.getElementById('nav-press').textContent = text.nav[1];
-      document.getElementById('nav-appstore').textContent = text.nav[2];
+  document.getElementById('hero-eyebrow').textContent = text.hero.eyebrow;
+  document.getElementById('hero-title').innerHTML = text.hero.title;
+  document.getElementById('hero-lead').textContent = text.hero.lead;
+  document.getElementById('hero-badges').innerHTML = text.hero.badges.map(x => `<span>${x}</span>`).join('');
+  document.getElementById('hero-appstore').textContent = text.hero.appStore;
+  document.getElementById('hero-press').textContent = text.hero.press;
+  document.getElementById('hero-availability').textContent = text.hero.availability;
 
-      document.getElementById('hero-eyebrow').textContent = text.hero.eyebrow;
-      document.getElementById('hero-title').innerHTML = text.hero.title;
-      document.getElementById('hero-lead').textContent = text.hero.lead;
-      document.getElementById('hero-badges').innerHTML =
-        text.hero.badges.map((badge) => `<span>${badge}</span>`).join('');
-      document.getElementById('hero-appstore').textContent = text.hero.appStore;
-      document.getElementById('hero-press').textContent = text.hero.press;
-      document.getElementById('hero-availability').textContent = text.hero.availability;
+  const langDir = language === 'zh-TW' ? 'zh-TW' : language;
+  const hero = document.getElementById('hero-screenshot');
+  hero.src = `assets/screenshots/${langDir}/01-home.png`;
+  hero.alt = language === 'ja' ? 'ソフビ手帳のホーム画面' :
+             language === 'zh-TW' ? 'Sofubi Journal 首頁畫面' :
+             'Sofubi Journal home screen';
 
-      document.getElementById('phone-stage').setAttribute('aria-label', text.phone.aria);
-      document.getElementById('phone-today').textContent = text.phone.today;
-      document.getElementById('phone-main-name').textContent = text.phone.mainName;
-      document.getElementById('phone-recent-heading').textContent = text.phone.recentHeading;
-      document.getElementById('phone-see-all-1').textContent = text.phone.seeAll;
-      document.getElementById('phone-item-1').textContent = text.phone.items[0];
-      document.getElementById('phone-item-2').textContent = text.phone.items[1];
-      document.getElementById('phone-item-3').textContent = text.phone.items[2];
-      document.getElementById('phone-journal-heading').textContent = text.phone.journalHeading;
-      document.getElementById('phone-see-all-2').textContent = text.phone.seeAll;
-      document.getElementById('phone-journal-entry').textContent = text.phone.journalEntry;
-      document.getElementById('phone-date').textContent = text.phone.date;
-      document.getElementById('tab-home').innerHTML = text.phone.tabs[0];
-      document.getElementById('tab-collection').innerHTML = text.phone.tabs[1];
-      document.getElementById('tab-journal').innerHTML = text.phone.tabs[2];
-      document.getElementById('tab-settings').innerHTML = text.phone.tabs[3];
+  document.querySelectorAll('[data-screen]').forEach(img => {
+    img.src = `assets/screenshots/${langDir}/${img.dataset.screen}`;
+  });
 
-      document.getElementById('features-kicker').textContent = text.features.kicker;
-      document.getElementById('features-title').textContent = text.features.title;
-      document.getElementById('features-grid').innerHTML =
-        text.features.items.map(([mark, title, body]) => `
-          <article class="feature">
-            <div class="feature-mark">${mark}</div>
-            <h3>${title}</h3>
-            <p>${body}</p>
-          </article>
-        `).join('');
+  document.getElementById('features-kicker').textContent = text.features.kicker;
+  document.getElementById('features-title').textContent = text.features.title;
+  document.getElementById('features-grid').innerHTML = text.features.items.map(([mark,title,body]) => `
+    <article class="feature"><div class="feature-mark">${mark}</div><h3>${title}</h3><p>${body}</p></article>
+  `).join('');
 
+  document.getElementById('screens-kicker').textContent = text.screens.kicker;
+  document.getElementById('screens-title').textContent = text.screens.title;
+  ['shelf','collection','detail','diary','add','summary'].forEach(key => {
+    document.getElementById(`screen-${key}-title`).textContent = text.screens.items[key][0];
+    document.getElementById(`screen-${key}-body`).textContent = text.screens.items[key][1];
+  });
 
-      document.getElementById('screens-kicker').textContent = text.screens.kicker;
-      document.getElementById('screens-title').textContent = text.screens.title;
+  document.getElementById('press-kicker').textContent = text.press.kicker;
+  document.getElementById('press-title').textContent = text.press.title;
+  document.getElementById('press-body').textContent = text.press.body;
+  document.getElementById('asset-grid').innerHTML = text.press.assets.map(([title,body]) => `
+    <div class="asset"><strong>${title}</strong><span>${body}</span></div>
+  `).join('');
+  document.getElementById('press-download').textContent = text.press.download;
+  document.getElementById('press-appstore').textContent = text.press.appStore;
+  document.getElementById('media-inquiry').textContent = text.press.inquiry;
+  document.getElementById('press-note').innerHTML = text.press.note;
 
-      const screenKeys = ['shelf', 'collection', 'detail', 'diary', 'add', 'summary'];
-      screenKeys.forEach((key) => {
-        document.getElementById(`screen-${key}-title`).textContent = text.screens.items[key][0];
-        document.getElementById(`screen-${key}-body`).textContent = text.screens.items[key][1];
-      });
+  document.getElementById('about-kicker').textContent = text.about.kicker;
+  document.getElementById('about-title').textContent = text.about.title;
+  document.getElementById('about-body').textContent = text.about.body;
 
-      document.getElementById('press-kicker').textContent = text.press.kicker;
-      document.getElementById('press-title').textContent = text.press.title;
-      document.getElementById('press-body').textContent = text.press.body;
-      document.getElementById('asset-grid').innerHTML =
-        text.press.assets.map(([title, body]) => `
-          <div class="asset">
-            <strong>${title}</strong>
-            <span>${body}</span>
-          </div>
-        `).join('');
-      document.getElementById('press-appstore').textContent = text.press.appStore;
-      document.getElementById('media-inquiry').textContent = text.press.inquiry;
-      document.getElementById('press-download').textContent = text.press.download;
-      document.getElementById('press-note').innerHTML = text.press.note;
-
-      document.getElementById('about-kicker').textContent = text.about.kicker;
-      document.getElementById('about-title').textContent = text.about.title;
-      document.getElementById('about-body').textContent = text.about.body;
-
-      document.getElementById('contact-kicker').textContent = text.contact.kicker;
-      document.getElementById('contact-title').textContent = text.contact.title;
-      document.getElementById('contact-appstore-small').textContent = text.contact.appStoreSmall;
-      document.getElementById('contact-appstore-strong').textContent = text.contact.appStoreStrong;
-      document.getElementById('contact-email-small').textContent = text.contact.emailSmall;
-      document.getElementById('contact-email-strong').textContent = text.contact.emailStrong;
-    })();
-  </script>
+  document.getElementById('contact-kicker').textContent = text.contact.kicker;
+  document.getElementById('contact-title').textContent = text.contact.title;
+  document.getElementById('contact-appstore-small').textContent = text.contact.appStoreSmall;
+  document.getElementById('contact-appstore-strong').textContent = text.contact.appStoreStrong;
+  document.getElementById('contact-email-small').textContent = text.contact.emailSmall;
+  document.getElementById('contact-email-strong').textContent = text.contact.emailStrong;
+})();
+</script>
 </body>
 </html>
