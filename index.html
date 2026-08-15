@@ -378,8 +378,8 @@ button{font:inherit;color:inherit}
   background:var(--section-accent);
   opacity:var(--aura-opacity,.08);
   filter:blur(95px);
-  transform:scale(var(--aura-scale,.78));
-  will-change:transform,opacity;
+  transform:translateZ(0);
+  will-change:opacity;
 }
 .device{
   --scroll-x:90px;
@@ -638,11 +638,20 @@ const heroWrap=hero.querySelector('.wrap');
 const heroArt=hero.querySelector('.hero-art');
 const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const desktop=()=>innerWidth>900;
-const headerHeight=()=>header.getBoundingClientRect().height||(innerWidth<=600?66:76);
+let cachedHeaderHeight=innerWidth<=600?66:76;
+let sectionMetrics=new Map();
+const headerHeight=()=>cachedHeaderHeight;
 
 function syncViewportVars(){
+  cachedHeaderHeight=header.getBoundingClientRect().height||(innerWidth<=600?66:76);
   document.documentElement.style.setProperty('--viewport-h',`${window.innerHeight}px`);
-  document.documentElement.style.setProperty('--header-h',`${headerHeight()}px`);
+  document.documentElement.style.setProperty('--header-h',`${cachedHeaderHeight}px`);
+
+  // Cache layout metrics here instead of forcing layout reads on every scroll frame.
+  sectionMetrics=new Map(colorSections.map(section=>[
+    section,
+    {top:section.offsetTop,height:section.offsetHeight}
+  ]));
 }
 
 const clamp=(v,min=0,max=1)=>Math.min(max,Math.max(min,v));
@@ -664,6 +673,15 @@ const mixColor=(a,b,t)=>{
 
 let ticking=false;
 let currentId='top';
+const motionNodes=new Map(appSections.map(section=>[
+  section,
+  {
+    copy:section.querySelector('.app-copy'),
+    device:section.querySelector('.device'),
+    aura:section.querySelector('.aura'),
+    ghost:section.querySelector('.ghost-word')
+  }
+]));
 
 function sectionProgress(section){
   if(!desktop()){
@@ -672,8 +690,10 @@ function sectionProgress(section){
   }
   const h=headerHeight();
   const stickyHeight=Math.max(1,innerHeight-h);
-  const start=section.offsetTop-h;
-  const travel=Math.max(1,section.offsetHeight-stickyHeight);
+  const metric=sectionMetrics.get(section);
+  if(!metric)return 0;
+  const start=metric.top-h;
+  const travel=Math.max(1,metric.height-stickyHeight);
   return clamp((scrollY-start)/travel);
 }
 
@@ -683,10 +703,9 @@ function envelope(p){
 
 function updateAppSection(section){
   const p=sectionProgress(section);
-  const copy=section.querySelector('.app-copy');
-  const device=section.querySelector('.device');
-  const aura=section.querySelector('.aura');
-  const ghost=section.querySelector('.ghost-word');
+  const nodes=motionNodes.get(section);
+  if(!nodes)return;
+  const {copy,device,aura,ghost}=nodes;
 
   if(ghost){
     const ghostShift=desktop()?lerp(54,-54,p):0;
@@ -712,7 +731,6 @@ function updateAppSection(section){
     device.style.setProperty('--scroll-rx','0deg');
     device.style.setProperty('--scroll-scale',scale.toFixed(4));
     aura.style.setProperty('--aura-opacity',(0.06+vis*.10).toFixed(3));
-    aura.style.setProperty('--aura-scale',(0.90+vis*.10).toFixed(3));
     return;
   }
 
@@ -746,12 +764,13 @@ function updateAppSection(section){
   device.style.setProperty('--scroll-rx',`${rx.toFixed(2)}deg`);
   device.style.setProperty('--scroll-scale',scale.toFixed(4));
   aura.style.setProperty('--aura-opacity',(0.06+vis*.13).toFixed(3));
-  aura.style.setProperty('--aura-scale',(0.86+vis*.30).toFixed(3));
 }
 
 function updateHero(){
   if(!desktop()||reduceMotion)return;
-  const p=clamp(scrollY/Math.max(1,hero.offsetHeight*.82));
+  const heroMetric=sectionMetrics.get(hero);
+  const heroHeight=heroMetric?heroMetric.height:innerHeight;
+  const p=clamp(scrollY/Math.max(1,heroHeight*.82));
   heroWrap.style.transform=`translate3d(0,${(-34*p).toFixed(1)}px,0)`;
   heroWrap.style.opacity=String(1-p*.52);
   heroArt.style.transform=`translate3d(0,${(24*p).toFixed(1)}px,0) rotate(${(1.8*p).toFixed(2)}deg) scale(${(1-.03*p).toFixed(4)})`;
@@ -759,12 +778,17 @@ function updateHero(){
 
 function updateBackground(){
   const y=scrollY+innerHeight*.5;
-  const points=colorSections.map(section=>({
-    section,
-    center:section.offsetTop+Math.min(section.offsetHeight,innerHeight)*.5,
-    bg:section.dataset.bg,
-    fg:section.dataset.fg||'#171513'
-  }));
+  const points=colorSections.map(section=>{
+    const metric=sectionMetrics.get(section);
+    const top=metric?metric.top:0;
+    const height=metric?metric.height:innerHeight;
+    return {
+      section,
+      center:top+Math.min(height,innerHeight)*.5,
+      bg:section.dataset.bg,
+      fg:section.dataset.fg||'#171513'
+    };
+  });
 
   let a=points[0],b=points[0],t=0;
   if(y<=points[0].center){
@@ -791,7 +815,10 @@ function updateBackground(){
   let nearest=colorSections[0];
   let nearestD=Infinity;
   colorSections.forEach(section=>{
-    const center=section.offsetTop+Math.min(section.offsetHeight,innerHeight)*.5;
+    const metric=sectionMetrics.get(section);
+    const top=metric?metric.top:0;
+    const height=metric?metric.height:innerHeight;
+    const center=top+Math.min(height,innerHeight)*.5;
     const d=Math.abs(y-center);
     if(d<nearestD){nearest=section;nearestD=d}
   });
@@ -801,7 +828,6 @@ function updateBackground(){
 
 function update(){
   ticking=false;
-  syncViewportVars();
   header.classList.toggle('compact',scrollY>40);
   if(!reduceMotion){
     updateHero();
@@ -830,11 +856,13 @@ let lastScrollY=scrollY;
 let scrollDirection=0; // 1: down, -1: up
 
 function appSnapY(section){
-  if(!desktop()||!section.classList.contains('app-section'))return section.offsetTop;
+  const metric=sectionMetrics.get(section);
+  if(!metric)return 0;
+  if(!desktop()||!section.classList.contains('app-section'))return metric.top;
   const h=headerHeight();
   const stickyHeight=Math.max(1,innerHeight-h);
-  const travel=Math.max(1,section.offsetHeight-stickyHeight);
-  return (section.offsetTop-h)+(travel*SNAP_PROGRESS);
+  const travel=Math.max(1,metric.height-stickyHeight);
+  return (metric.top-h)+(travel*SNAP_PROGRESS);
 }
 
 function nearestSnapTarget(){
@@ -957,6 +985,7 @@ window.addEventListener('scroll',()=>{
 
 window.addEventListener('resize',()=>{
   interruptSnap();
+  syncViewportVars();
   requestUpdate();
 },{passive:true});
 
@@ -964,9 +993,11 @@ dots.forEach(d=>d.addEventListener('click',()=>{
   const section=document.getElementById(d.dataset.target);
   if(!section)return;
 
+  const metric=sectionMetrics.get(section);
+  if(!metric)return;
   const targetY=section.classList.contains('app-section')&&desktop()
-    ?(section.offsetTop-headerHeight())+(section.offsetHeight-(innerHeight-headerHeight()))*.30
-    :section.offsetTop;
+    ?(metric.top-headerHeight())+(metric.height-(innerHeight-headerHeight()))*.30
+    :metric.top;
 
   clearTimeout(snapTimer);
   snapTimer=null;
