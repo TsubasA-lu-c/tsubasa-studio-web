@@ -9,7 +9,9 @@
 :root{
   --viewport-h:100vh;
   --header-h:76px;
-  --desktop-visual-y:280px;
+  /* Desktop base offsets. Change only --desktop-device-y to move the app screenshots up/down without affecting the text block. */
+  --desktop-copy-y:280px;
+  --desktop-device-y:400px;
   --bg:#f6f0e8;
   --fg:#171513;
   --muted:#736d67;
@@ -94,7 +96,7 @@ button{font:inherit}
 }
 .app-copy{align-self:center}
 .device-stage{align-self:stretch}
-.app-copy{position:relative;z-index:4;opacity:var(--copy-opacity,.18);transform:translate3d(0,calc(var(--copy-y,48px) + var(--desktop-visual-y)),0);will-change:transform,opacity}
+.app-copy{position:relative;z-index:4;opacity:var(--copy-opacity,.18);transform:translate3d(0,calc(var(--copy-y,48px) + var(--desktop-copy-y)),0);will-change:transform,opacity}
 .num{font-size:12px;font-weight:800;letter-spacing:.18em;color:var(--section-accent);margin-bottom:26px}
 .app-section h2{font-size:clamp(48px,6.5vw,94px);line-height:.98;letter-spacing:-.064em;margin:0 0 18px;font-weight:900}
 .category{font-size:13px;letter-spacing:.08em;color:var(--section-muted);font-weight:750;margin-bottom:30px}
@@ -105,7 +107,7 @@ button{font:inherit}
 .link-secondary{border:1px solid rgba(20,18,16,.11);background:rgba(255,255,255,.38)}
 .link-primary b{font-size:17px;line-height:1;font-weight:500}
 
-.device-stage{height:100%;max-height:none;min-height:0;position:relative;display:grid;place-items:center;perspective:1300px;transform:translateY(var(--desktop-visual-y))}
+.device-stage{height:100%;max-height:none;min-height:0;position:relative;display:grid;place-items:center;perspective:1300px;transform:translateY(var(--desktop-device-y))}
 .aura{position:absolute;width:78%;aspect-ratio:1;border-radius:50%;background:var(--section-accent);opacity:var(--aura-opacity,.08);filter:blur(70px);transform:scale(var(--aura-scale,.78));will-change:transform,opacity}
 .device{
   --scroll-x:90px; --scroll-y:42px; --scroll-ry:-11deg; --scroll-rx:3deg; --scroll-scale:.92;
@@ -137,7 +139,7 @@ button{font:inherit}
 }
 
 @media(max-width:900px){
-  :root{--desktop-visual-y:0px}
+  :root{--desktop-copy-y:0px;--desktop-device-y:0px}
   .progress{display:none}.navlinks{display:none}
   .hero .wrap,.app-section .wrap{grid-template-columns:1fr;gap:36px}
   .hero{padding-top:118px}.hero h1{font-size:clamp(58px,16vw,94px)}.hero-art{height:380px}
@@ -450,8 +452,74 @@ function requestUpdate(){
   }
 }
 
-window.addEventListener('scroll',requestUpdate,{passive:true});
-window.addEventListener('resize',requestUpdate,{passive:true});
+
+// Snap to the nearest app's presentation point after scrolling settles.
+// Keeps native scrolling intact and only corrects the final resting position.
+let snapTimer=null;
+let snapAnimating=false;
+let snapReleaseTimer=null;
+const SNAP_DELAY=140;
+const SNAP_DURATION_GUARD=700;
+const SNAP_PROGRESS=.30;
+const SNAP_THRESHOLD=.62;
+
+function appSnapY(section){
+  if(!desktop() || !section.classList.contains('app-section')) return section.offsetTop;
+  const h=headerHeight();
+  const stickyHeight=Math.max(1,innerHeight-h);
+  const travel=Math.max(1,section.offsetHeight-stickyHeight);
+  return (section.offsetTop-h)+(travel*SNAP_PROGRESS);
+}
+
+function nearestSnapTarget(){
+  if(!desktop() || reduceMotion) return null;
+
+  const candidates=[hero, ...appSections];
+  let best=null;
+  let bestDistance=Infinity;
+
+  candidates.forEach(section=>{
+    const targetY=section===hero ? section.offsetTop : appSnapY(section);
+    const distance=Math.abs(scrollY-targetY);
+    if(distance<bestDistance){
+      best={section,targetY,distance};
+      bestDistance=distance;
+    }
+  });
+
+  // Only snap while reasonably close to a presentation point.
+  // This avoids dragging the user backward while intentionally crossing sections.
+  const viewportLimit=innerHeight*SNAP_THRESHOLD;
+  return best && best.distance<=viewportLimit ? best : null;
+}
+
+function releaseSnapLock(){
+  snapAnimating=false;
+  clearTimeout(snapReleaseTimer);
+  snapReleaseTimer=null;
+}
+
+function snapToNearest(){
+  snapTimer=null;
+  if(!desktop() || reduceMotion || snapAnimating) return;
+
+  const target=nearestSnapTarget();
+  if(!target || Math.abs(scrollY-target.targetY)<3) return;
+
+  snapAnimating=true;
+  scrollTo({top:target.targetY,behavior:'smooth'});
+  clearTimeout(snapReleaseTimer);
+  snapReleaseTimer=setTimeout(releaseSnapLock,SNAP_DURATION_GUARD);
+}
+
+function scheduleSnap(){
+  if(!desktop() || reduceMotion || snapAnimating) return;
+  clearTimeout(snapTimer);
+  snapTimer=setTimeout(snapToNearest,SNAP_DELAY);
+}
+
+window.addEventListener('scroll',()=>{requestUpdate();scheduleSnap();},{passive:true});
+window.addEventListener('resize',()=>{releaseSnapLock();clearTimeout(snapTimer);requestUpdate();},{passive:true});
 
 dots.forEach(d=>d.addEventListener('click',()=>{
   const section=document.getElementById(d.dataset.target);
@@ -460,7 +528,11 @@ dots.forEach(d=>d.addEventListener('click',()=>{
   const targetY=section.classList.contains('app-section') && desktop()
     ? (section.offsetTop-headerHeight())+(section.offsetHeight-(innerHeight-headerHeight()))*.30
     : section.offsetTop;
+  snapAnimating=true;
+  clearTimeout(snapTimer);
   scrollTo({top:targetY,behavior:'smooth'});
+  clearTimeout(snapReleaseTimer);
+  snapReleaseTimer=setTimeout(releaseSnapLock,SNAP_DURATION_GUARD);
 }));
 
 if(matchMedia('(pointer:fine) and (prefers-reduced-motion:no-preference)').matches){
