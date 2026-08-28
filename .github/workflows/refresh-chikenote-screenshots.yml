@@ -12,7 +12,7 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     env:
-      ARTIFACT_URL: "https://sdmntprseasia.oaiusercontent.com/files/00000000-a1a0-8207-87fc-46fdf8a45671/raw?se=2026-08-28T16%3A05%3A32Z&sp=r&sv=2026-02-06&sr=b&scid=e8bc4687-89fb-5453-a779-aed3660d8ea7&skoid=0765b554-4b90-4fa2-9d6d-0055a2427910&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-08-28T03%3A37%3A42Z&ske=2026-08-29T03%3A37%3A42Z&sks=b&skv=2026-02-06&sig=p4ziVxbmfc9uEsgQB0JtMZx5PA/U77hwJRFlvooNIjs%3D"
+      ARTIFACT_URL: "https://sdmntprindiasocentral.oaiusercontent.com/files/00000000-23d4-8211-8474-e5d79db3a709/raw?se=2026-08-28T16%3A13%3A36Z&sp=r&sv=2026-02-06&sr=b&scid=7f4901b7-2102-5758-a8bc-87197a2b5bbb&skoid=0765b554-4b90-4fa2-9d6d-0055a2427910&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-08-28T03%3A21%3A58Z&ske=2026-08-29T03%3A21%3A58Z&sks=b&skv=2026-02-06&sig=kvtSEVXPIXGdCZuEFbxUmAn0FTLXS9bc6lqDzQO7E7g%3D"
     steps:
       - uses: actions/checkout@v4
 
