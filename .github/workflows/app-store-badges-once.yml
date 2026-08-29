@@ -1,0 +1,132 @@
+name: Apply App Store badges once
+
+on:
+  push:
+    branches:
+      - fix/app-store-badges
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/app-store-badges
+          fetch-depth: 0
+
+      - name: Add official App Store badges
+        shell: bash
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+
+          BADGE_JA = "https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ja-jp?size=250x83"
+          LEGAL = "Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc."
+
+          def replace(path, old, new):
+              p = Path(path)
+              text = p.read_text(encoding="utf-8")
+              count = text.count(old)
+              if count != 1:
+                  raise RuntimeError(f"{path}: expected exactly one match, found {count}: {old[:80]!r}")
+              p.write_text(text.replace(old, new), encoding="utf-8")
+
+          # Brand top page: make the official badge the primary store CTA for every app.
+          replace(
+              "index.html",
+              ".links{display:flex;align-items:center;gap:12px;flex-wrap:wrap}\n",
+              ".links{display:flex;align-items:center;gap:12px;flex-wrap:wrap}\n"
+              ".app-store-badge{display:inline-flex;line-height:0;flex:0 0 auto}\n"
+              ".app-store-badge img{display:block;height:45px;width:auto;max-width:none}\n",
+          )
+
+          root_links = {
+              '<div class="links"><a class="link-primary" href="chikenote/">アプリ紹介 <b>→</b></a><a class="link-secondary" href="chikenote/support.html">サポート</a></div>':
+              f'<div class="links"><a class="app-store-badge" href="https://apps.apple.com/jp/app/id6786529944" aria-label="App Storeでチケノートを表示"><img src="{BADGE_JA}" alt="App Storeからダウンロード"></a><a class="link-secondary" href="chikenote/">アプリ紹介 →</a><a class="link-secondary" href="chikenote/support.html">サポート</a></div>',
+              '<div class="links"><a class="link-primary" href="sofubi-techo/">アプリ紹介 <b>→</b></a></div>':
+              f'<div class="links"><a class="app-store-badge" href="https://apps.apple.com/jp/app/id6795497288" aria-label="App Storeでソフビ手帳を表示"><img src="{BADGE_JA}" alt="App Storeからダウンロード"></a><a class="link-secondary" href="sofubi-techo/">アプリ紹介 →</a></div>',
+              '<div class="links"><a class="link-primary" href="kusuri-puzzle/">アプリ紹介 <b>→</b></a></div>':
+              f'<div class="links"><a class="app-store-badge" href="https://apps.apple.com/jp/app/id6797041590" aria-label="App Storeでおくすりパズルを表示"><img src="{BADGE_JA}" alt="App Storeからダウンロード"></a><a class="link-secondary" href="kusuri-puzzle/">アプリ紹介 →</a></div>',
+              '<div class="links"><a class="link-primary" href="doudemomemo/">アプリ紹介 <b>→</b></a></div>':
+              f'<div class="links"><a class="app-store-badge" href="https://apps.apple.com/jp/app/id6797142266" aria-label="App Storeでどうでもメモを表示"><img src="{BADGE_JA}" alt="App Storeからダウンロード"></a><a class="link-secondary" href="doudemomemo/">アプリ紹介 →</a></div>',
+          }
+          for old, new in root_links.items():
+              replace("index.html", old, new)
+
+          replace(
+              "index.html",
+              ".end a{display:inline-flex;padding:13px 18px;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:12px;font-weight:800}\n",
+              ".end a{display:inline-flex;padding:13px 18px;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:12px;font-weight:800}\n"
+              ".apple-legal{display:block;max-width:680px;margin:28px auto 0;color:#77716b;font-size:9px;line-height:1.6}\n",
+          )
+          replace(
+              "index.html",
+              '<div class="wrap"><div class="kicker">TSUBASA STUDIO</div><h2>Support</h2><p>お問い合わせとプライバシーポリシー。</p><a href="privacy.html">プライバシーポリシー →</a></div>',
+              f'<div class="wrap"><div class="kicker">TSUBASA STUDIO</div><h2>Support</h2><p>お問い合わせとプライバシーポリシー。</p><a href="privacy.html">プライバシーポリシー →</a><small class="apple-legal">{LEGAL}</small></div>',
+          )
+
+          def patch_standard_page(path, app_id, app_name):
+              replace(
+                  path,
+                  '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n',
+                  f'<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<meta name="apple-itunes-app" content="app-id={app_id}">\n',
+              )
+              replace(
+                  path,
+                  '.btn:hover{transform:translateY(-2px)}\n',
+                  '.btn:hover{transform:translateY(-2px)}\n'
+                  '.app-store-badge{display:inline-flex;line-height:0;flex:0 0 auto}\n'
+                  '.app-store-badge img{display:block;height:50px;width:auto;max-width:none}\n',
+              )
+              replace(
+                  path,
+                  '<div class="hero-actions"><a class="btn primary" href="#screens">主な画面</a></div>',
+                  f'<div class="hero-actions"><a class="app-store-badge" href="https://apps.apple.com/jp/app/id{app_id}" aria-label="App Storeで{app_name}を表示"><img src="{BADGE_JA}" alt="App Storeからダウンロード"></a><a class="btn ghost" href="#screens">主な画面</a></div>',
+              )
+
+          patch_standard_page("chikenote/index.html", "6786529944", "チケノート")
+          patch_standard_page("kusuri-puzzle/index.html", "6797041590", "おくすりパズル")
+          patch_standard_page("doudemomemo/index.html", "6797142266", "どうでもメモ")
+
+          # Sofubi Journal is multilingual, so localize the official Apple badge with the page language.
+          replace(
+              "sofubi-techo/index.html",
+              '<meta name="viewport" content="width=device-width, initial-scale=1.0">',
+              '<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="apple-itunes-app" content="app-id=6795497288">',
+          )
+          replace(
+              "sofubi-techo/index.html",
+              '.btn.ghost{border:1px solid var(--line);background:#fff}.visual{',
+              '.btn.ghost{border:1px solid var(--line);background:#fff}.app-store-badge{display:inline-flex;line-height:0;flex:0 0 auto}.app-store-badge img{display:block;height:50px;width:auto;max-width:none}.visual{',
+          )
+          replace(
+              "sofubi-techo/index.html",
+              '<div class="actions"><a class="btn primary" href="#screens" id="screenBtn"></a><a class="btn ghost" href="assets/press/Sofubi-Journal-Press-Kit.zip" id="pressBtn"></a></div>',
+              f'<div class="actions"><a class="app-store-badge" id="appStoreLink" href="https://apps.apple.com/jp/app/id6795497288" aria-label="Sofubi Journal on the App Store"><img id="appStoreBadge" src="{BADGE_JA}" alt="App Storeからダウンロード"></a><a class="btn ghost" href="#screens" id="screenBtn"></a><a class="btn ghost" href="assets/press/Sofubi-Journal-Press-Kit.zip" id="pressBtn"></a></div>',
+          )
+          replace(
+              "sofubi-techo/index.html",
+              "let lang='ja';const $=s=>document.querySelector(s);const render=()=>{const d=data[lang];",
+              "let lang='ja';const $=s=>document.querySelector(s);const badgeLocales={ja:'ja-jp',en:'en-us','zh-TW':'zh-tw'};const appStoreRegions={ja:'jp',en:'us','zh-TW':'tw'};const badgeAlt={ja:'App Storeからダウンロード',en:'Download on the App Store','zh-TW':'在 App Store 下載'};const render=()=>{const d=data[lang];",
+          )
+          replace(
+              "sofubi-techo/index.html",
+              "$('#screenBtn').textContent=d.screenBtn;$('#pressBtn').textContent=d.pressBtn;",
+              "$('#screenBtn').textContent=d.screenBtn;$('#pressBtn').textContent=d.pressBtn;$('#appStoreLink').href=`https://apps.apple.com/${appStoreRegions[lang]}/app/id6795497288`;$('#appStoreBadge').src=`https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/${badgeLocales[lang]}?size=250x83`;$('#appStoreBadge').alt=badgeAlt[lang];",
+          )
+
+          # The workflow is intentionally one-shot; remove it from the resulting feature branch.
+          workflow = Path('.github/workflows/app-store-badges-once.yml')
+          if workflow.exists():
+              workflow.unlink()
+          PY
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Add official App Store download badges"
+          git push origin HEAD:fix/app-store-badges
