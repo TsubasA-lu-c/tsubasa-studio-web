@@ -260,6 +260,7 @@ button{font:inherit;color:inherit}
 .ol2{right:-3%;top:31%;animation:floatB 8s ease-in-out infinite}
 .ol3{left:16%;bottom:12%;animation:floatA 9s ease-in-out infinite reverse}
 .ol4{right:7%;bottom:2%;animation:floatB 7.5s ease-in-out infinite reverse}
+.ol5{right:24%;top:2%;animation:floatA 8.5s ease-in-out infinite}
 @keyframes floatA{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-12px,0)}}
 @keyframes floatB{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,11px,0)}}
 
@@ -448,6 +449,11 @@ button{font:inherit;color:inherit}
 .sofubi{--section-bg:#f7efe7;--section-accent:#e96b47;--section-fg:#211c18;--section-muted:#776e66}
 .kusuri{--section-bg:#eaf1ed;--section-accent:#3f8a72;--section-fg:#17314e;--section-muted:#61746c}
 .doudemo{--section-bg:#f3edf8;--section-accent:#876ed4;--section-fg:#4b3b35;--section-muted:#806f68}
+.okataduke{--section-bg:#f7f2e8;--section-accent:#a95f34;--section-fg:#211b18;--section-muted:#766d65}
+.store-pending{display:inline-flex;align-items:center;padding:13px 16px;border-radius:999px;border:1px dashed color-mix(in srgb,var(--section-fg) 22%,transparent);font-size:12px;font-weight:850;color:var(--section-muted);background:color-mix(in srgb,#fff 28%,transparent)}
+.house-device{width:100%;aspect-ratio:9/19.5;border-radius:32px;background:linear-gradient(#f8f0df,#f0dfc9);padding:44px 17px 17px;position:relative;overflow:hidden}
+.house-device:before{content:"";position:absolute;top:11px;left:50%;width:88px;height:24px;border-radius:18px;background:#211b18;transform:translateX(-50%)}
+.house-device .hd-kicker{font-size:9px;font-weight:900;letter-spacing:.1em;color:#9b735a}.house-device strong{display:block;margin-top:2px;font-size:23px;letter-spacing:-.05em}.house-room{height:43%;margin-top:15px;border-radius:16px;border:1px solid #d8bea0;background:linear-gradient(#ead4b7 63%,#be8d63 63%);position:relative;overflow:hidden}.house-room:before{content:"";position:absolute;left:15%;bottom:17%;width:48%;height:27%;background:#966342;box-shadow:72px -20px 0 -12px #75533c,90px 4px 0 -4px #c7a17a}.house-room:after{content:"CAT";position:absolute;right:10%;bottom:14%;padding:6px 7px;border-radius:8px;background:#2d2824;color:#fff;font-size:8px;font-weight:900}.house-timer{margin-top:14px;padding:13px;border-radius:15px;background:#fff9ef;border:1px solid #dec7ad}.house-timer small{display:block;color:#8d7768;font-size:9px}.house-timer b{display:block;font-size:24px;letter-spacing:-.04em}.house-start{margin-top:9px;padding:9px;border-radius:11px;background:#a95f34;color:#fff;text-align:center;font-size:10px;font-weight:900}
 .ticket .link-primary{background:#fff;color:#171613}
 .ticket .link-secondary{color:#fff;border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.06)}
 .ticket .device{background:rgba(255,255,255,.055);border-color:rgba(255,255,255,.2);box-shadow:0 58px 120px rgba(0,0,0,.32),0 16px 46px rgba(0,0,0,.18)}
@@ -541,6 +547,7 @@ button{font:inherit;color:inherit}
   <button aria-label="ソフビ手帳" data-target="sofubi"><span class="p-num">02</span><span class="p-line"></span><span class="p-name">SOFUBI</span></button>
   <button aria-label="おくすりパズル" data-target="kusuri"><span class="p-num">03</span><span class="p-line"></span><span class="p-name">KUSURI</span></button>
   <button aria-label="どうでもメモ" data-target="doudemo"><span class="p-num">04</span><span class="p-line"></span><span class="p-name">MEMO</span></button>
+  <button aria-label="おかたづけハウス" data-target="okataduke"><span class="p-num">05</span><span class="p-line"></span><span class="p-name">HOUSE</span></button>
 </nav>
 
 <section class="hero" id="top" data-bg="#f6f0e8" data-fg="#171513">
@@ -549,7 +556,7 @@ button{font:inherit;color:inherit}
       <div class="kicker">INDEPENDENT iOS STUDIO / JAPAN</div>
       <h1><span>TSUBASA</span><span>STUDIO.</span></h1>
       <p class="hero-copy">小さなアイデアを、iPhoneアプリに。</p>
-      <div class="hero-meta"><span>04 APPS</span><span>EST. 2026</span><span>BUILT FOR iPHONE</span></div>
+      <div class="hero-meta"><span>05 APPS</span><span>EST. 2026</span><span>BUILT FOR iPHONE</span></div>
       <a class="scroll-hint" href="#ticket"><i></i>EXPLORE APPS</a>
     </div>
     <div class="hero-art" aria-hidden="true">
@@ -560,6 +567,7 @@ button{font:inherit;color:inherit}
       <div class="orbit-label ol2"><span>02</span>SOFUBI JOURNAL</div>
       <div class="orbit-label ol3"><span>03</span>KUSURI PUZZLE</div>
       <div class="orbit-label ol4"><span>04</span>DOUDEMO MEMO</div>
+      <div class="orbit-label ol5"><span>05</span>OKATADUKE HOUSE</div>
     </div>
   </div>
 </section>
@@ -569,7 +577,7 @@ button{font:inherit;color:inherit}
   <div class="wrap">
     <div class="ghost-word" aria-hidden="true">TICKET</div>
     <div class="app-copy">
-      <div class="num">01 / 04</div>
+      <div class="num">01 / 05</div>
       <div class="category">ライブチケット管理</div>
       <h2>チケノート</h2>
       <p class="description">申込・当落・入金・公演日をまとめて管理。</p>
@@ -587,7 +595,7 @@ button{font:inherit;color:inherit}
   <div class="wrap">
     <div class="ghost-word" aria-hidden="true">SOFUBI</div>
     <div class="app-copy">
-      <div class="num">02 / 04</div>
+      <div class="num">02 / 05</div>
       <div class="category">ソフビコレクション</div>
       <h2>ソフビ手帳</h2>
       <p class="description">写真、日記、デジタル棚でコレクションを記録。</p>
@@ -605,7 +613,7 @@ button{font:inherit;color:inherit}
   <div class="wrap">
     <div class="ghost-word" aria-hidden="true">KUSURI</div>
     <div class="app-copy">
-      <div class="num">03 / 04</div>
+      <div class="num">03 / 05</div>
       <div class="category">服薬記録</div>
       <h2>おくすり<br>パズル</h2>
       <p class="description">服薬記録をパズルで振り返る。</p>
@@ -623,7 +631,7 @@ button{font:inherit;color:inherit}
   <div class="wrap">
     <div class="ghost-word" aria-hidden="true">MEMO</div>
     <div class="app-copy">
-      <div class="num">04 / 04</div>
+      <div class="num">04 / 05</div>
       <div class="category">メモ</div>
       <h2>どうでも<br>メモ</h2>
       <p class="description">保存すると読めなくなる、ロック式メモ。</p>
@@ -633,6 +641,24 @@ button{font:inherit;color:inherit}
       <div class="aura"></div>
       <div class="device" data-tilt><img src="assets/doudemo.png" alt="どうでもメモ"></div>
       <div class="device-label">DOUDEMO MEMO / 04</div>
+    </div>
+  </div>
+</section>
+
+<section class="app-section okataduke" id="okataduke" data-bg="#f7f2e8" data-fg="#211b18">
+  <div class="wrap">
+    <div class="ghost-word" aria-hidden="true">HOUSE</div>
+    <div class="app-copy">
+      <div class="num">05 / 05</div>
+      <div class="category">片付けタイマー</div>
+      <h2>おかたづけ<br>ハウス</h2>
+      <p class="description">まず5分。片付けた時間で6つの部屋と相棒の暮らしが育つ。</p>
+      <div class="links"><span class="store-pending">App Store 公開準備中</span><a class="link-secondary" href="okataduke/">アプリ紹介 →</a><a class="link-secondary" href="okataduke/support.html">サポート</a></div>
+    </div>
+    <div class="device-stage">
+      <div class="aura"></div>
+      <div class="device" data-tilt><div class="house-device"><span class="hd-kicker">LIVING ROOM</span><strong>リビング Lv.3</strong><div class="house-room"></div><div class="house-timer"><small>今日の片付け</small><b>15:00</b><div class="house-start">5分だけ始める</div></div></div></div>
+      <div class="device-label">OKATADUKE HOUSE / 05</div>
     </div>
   </div>
 </section>
