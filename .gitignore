@@ -7,3 +7,5 @@
 *.p8
 *.p12
 *.mobileprovision
+
+# Keep Cloudflare Pages production deploys tied to main pushes.
