@@ -50,7 +50,6 @@
       <a class="back" id="back-link" href="index.html">← Tsubasa Studio</a>
     </nav>
   </header>
-
   <section class="wrap hero">
     <div class="hero-shell">
       <span class="eyebrow" id="hero-kicker">Privacy Policy</span>
@@ -69,23 +68,21 @@
       </div>
     </div>
   </section>
-
-  <main class="wrap">
-    <div class="section-grid" id="policy-content"></div>
-  </main>
+  <main class="wrap"><div class="section-grid" id="policy-content"></div></main>
   <footer class="wrap">© Tsubasa Studio</footer>
-
   <script>
     (() => {
       const supportedLanguages = ['ja', 'en', 'ko', 'zh-TW', 'th'];
       const queryLang = new URLSearchParams(window.location.search).get('lang');
       const language = supportedLanguages.includes(queryLang) ? queryLang : 'ja';
+      const googlePrivacyLink = '<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google</a>';
+      const googlePartnerLink = '<a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">Google</a>';
       const content = {
         ja: {
-          pageTitle: 'プライバシーポリシー - Tsubasa Studio', heroTitle: 'プライバシーポリシー', heroLead: '本ポリシーは Tsubasa Studio が提供するすべてのアプリに適用されます。共通の方針と、アプリごとの補足事項をまとめています。', back: '← Tsubasa Studio', updated: '最終更新日：2026年8月13日',
+          pageTitle: 'プライバシーポリシー - Tsubasa Studio', heroTitle: 'プライバシーポリシー', heroLead: '本ポリシーは Tsubasa Studio が提供するすべてのアプリに適用されます。共通の方針と、アプリごとの補足事項をまとめています。', back: '← Tsubasa Studio', updated: '最終更新日：2026年9月11日',
           sections: [
-            ['収集する情報', 'Tsubasa Studioが提供するアプリは、個人を特定できる情報を収集・送信しません。ユーザーが入力したデータは、各アプリの説明に記載がない限り端末内にのみ保存され、外部サーバーには送信されません。'],
-            ['広告について', '一部のアプリはGoogle AdMob（Google LLC）によるバナー広告を表示します。AdMobは広告配信のために端末の広告識別子（IDFA）などを使用する場合があります。詳細は<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Googleのプライバシーポリシー</a>をご確認ください。'],
+            ['収集する情報', 'Tsubasa Studioは、各アプリでユーザーが入力したデータを、アプリ別の補足事項に記載がある場合を除き、当方が運営するサーバーへ送信しません。入力したデータは原則として端末内に保存されます。一部のアプリでは、広告配信などのため第三者が提供するSDKを利用しており、サービス提供に必要な範囲で端末情報等が取得・送信される場合があります。'],
+            ['広告について', '一部のアプリでは、Google LLCが提供するGoogle AdMobを利用し、バナー広告、インタースティシャル広告、リワード広告などを表示する場合があります。Google Mobile Ads SDKでは、広告配信、広告効果の測定、不正防止、サービス改善などのため、IPアドレス、端末識別子、広告に関する情報、アプリの操作情報、診断情報、パフォーマンス情報等が取得または利用される場合があります。地域や利用状況に応じてGoogle User Messaging Platform（UMP）を利用し、広告に関する同意確認やプライバシー設定を提供します。詳細は' + googlePrivacyLink + 'のプライバシーポリシーおよび' + googlePartnerLink + 'による情報利用の説明をご確認ください。'],
             ['通知について', '一部のアプリはローカル通知機能を使用します。通知はすべて端末内で生成され、外部サーバーとの通信は行いません。'],
             ['データの保持と削除', 'データはユーザーの端末に保存されます。アプリ内で各項目を削除するか、アプリを削除すると、端末内のデータを削除できます。ユーザーが作成したバックアップファイルは、保存先の「ファイル」またはiCloud Driveからユーザー自身で削除できます。']
           ],
@@ -94,15 +91,16 @@
             ['チケノート', ['「このページをAIで読み取る」をユーザーが選んだ場合に限り、表示中の公式サイトに公開されている公演日程・見出しなどのページ内容、アーティスト名、ページURLおよびページタイトルを、抽出処理のため当方が運営するデータ配信サーバーへ送信します。処理にはCloudflare Workers AIを利用します。フォロー中のアーティスト、チケット申込状況、端末内に保存したチケット情報はこの処理に送信しません。', '抽出結果の一部は、同じページの再処理を減らすため最大24時間キャッシュされる場合があります。AIの候補は保存前にユーザーが確認・修正できます。'] ],
             ['ソフビ手帳', ['登録した写真、コレクション、日記、タグは端末内にのみ保存され、運営者のサーバーへ送信されません。本アプリは広告および外部の利用状況分析SDKを使用しません。', 'バックアップは、ユーザーが選択したiCloud Driveや「このiPhone内」等へ保存されます。Premiumの購入と決済はAppleのApp Storeを通じて行われ、運営者はクレジットカード番号等の支払情報を取得しません。'] ],
             ['おくすりパズル', ['薬の名前、服薬記録、薬袋の写真、パズル用に選んだ写真は端末内に保存され、運営者のサーバーへ送信されません。', '薬袋の文字読み取りはiPhone上で行われます。「この薬について調べる」を選んだ場合のみ、薬の名前がブラウザの検索サービスに送信されます。'] ],
-            ['どうでもメモ', ['入力したメモは端末内で暗号化して保存され、運営者のサーバーへ送信されません。本アプリは広告および外部の利用状況分析SDKを使用しません。', 'プレミアム版の購入と決済はAppleのApp Storeを通じて行われ、運営者はクレジットカード番号等の支払情報を取得しません。'] ]
+            ['どうでもメモ', ['入力したメモは端末内で暗号化して保存され、運営者のサーバーへ送信されません。本アプリは広告および外部の利用状況分析SDKを使用しません。', 'プレミアム版の購入と決済はAppleのApp Storeを通じて行われ、運営者はクレジットカード番号等の支払情報を取得しません。'] ],
+            ['ほどく。', ['ゲームの進行状況や設定などのデータは端末内に保存され、Tsubasa Studioが運営するサーバーへ送信されません。', '本アプリではGoogle AdMobを利用し、一定の条件を満たしたステージクリア後にインタースティシャル広告を表示する場合があります。また、ヒント機能の一部でリワード広告を利用します。広告配信にはGoogle Mobile Ads SDKおよびGoogle User Messaging Platformを使用し、地域や同意状態に応じて広告に関する選択画面が表示される場合があります。必要な場合はアプリの設定画面から広告のプライバシー設定を変更できます。', '本アプリでは現在、App Tracking Transparencyによるトラッキング許可の要求は行っていません。'] ]
           ],
           contactTitle: 'お問い合わせ', contactLead: 'プライバシーに関するご質問は、以下のメールアドレスまでご連絡ください。'
         },
         en: {
-          pageTitle: 'Privacy Policy - Tsubasa Studio', heroTitle: 'Privacy Policy', heroLead: 'This policy applies to all apps provided by Tsubasa Studio. It summarizes our common policy and app-specific notes.', back: '← Tsubasa Studio', updated: 'Last updated: August 13, 2026',
+          pageTitle: 'Privacy Policy - Tsubasa Studio', heroTitle: 'Privacy Policy', heroLead: 'This policy applies to all apps provided by Tsubasa Studio. It summarizes our common policy and app-specific notes.', back: '← Tsubasa Studio', updated: 'Last updated: September 11, 2026',
           sections: [
-            ['Information We Collect', 'Apps provided by Tsubasa Studio do not collect or transmit personally identifiable information. Unless otherwise stated in each app description, data entered by users is stored only on the device and is not transmitted to external servers.'],
-            ['Advertising', 'Some apps may display banner ads provided by Google AdMob (Google LLC). AdMob may use the device advertising identifier (IDFA) and related data to deliver ads. For details, please see the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>.'],
+            ['Information We Collect', 'Tsubasa Studio does not send data entered by users to servers operated by us unless otherwise stated in the app-specific notes. User-entered data is generally stored on the device. Some apps use third-party SDKs for services such as advertising, and device-related information may be collected or transmitted as necessary to provide those services.'],
+            ['Advertising', 'Some apps use Google AdMob, provided by Google LLC, and may display banner, interstitial, or rewarded ads. The Google Mobile Ads SDK may collect or use information such as IP addresses, device identifiers, advertising data, app interactions, diagnostics, and performance information for purposes including ad delivery, measurement, fraud prevention, and service improvement. Depending on region and consent status, Google User Messaging Platform (UMP) may be used to provide consent choices and privacy controls. For details, see the ' + googlePrivacyLink + ' Privacy Policy and ' + googlePartnerLink + ' information about how Google uses data from apps and sites that use its services.'],
             ['Notifications', 'Some apps use local notifications. All notifications are generated on the device and do not communicate with external servers.'],
             ['Data Retention and Deletion', 'Data is stored on the user’s device. Users can delete items within the app or remove the app to delete device-stored data. Backup files created by the user can also be deleted by the user from the Files app or iCloud Drive.']
           ],
@@ -111,15 +109,16 @@
             ['Chike Note', ['Only when the user chooses “Read this page with AI,” the app sends publicly available page content currently shown on the official website—such as event schedules and headings—along with the artist name, page URL, and page title to our data processing server for extraction. Processing uses Cloudflare Workers AI.', 'Followed artists, ticket application status, and ticket information stored on the device are not sent through this process. Some extraction results may be cached for up to 24 hours to reduce repeat processing. AI suggestions can be reviewed and edited before saving.'] ],
             ['Sofubi Techo', ['Registered photos, collection data, diary entries, and tags are stored only on the device and are not sent to Tsubasa Studio servers. This app does not use ads or third-party analytics SDKs.', 'Backups are saved only to locations selected by the user, such as iCloud Drive or On My iPhone. Premium purchases and payments are handled by Apple through the App Store, and Tsubasa Studio does not receive payment information such as credit card numbers.'] ],
             ['Kusuri Puzzle', ['Medicine names, medication records, medicine bag photos, and puzzle photos are stored only on the device and are not sent to Tsubasa Studio servers.', 'Text recognition for medicine bags is performed on the iPhone. Only when the user chooses “Look up this medicine” is the medicine name sent to the browser’s search service.'] ],
-            ['Doudemo Memo', ['Notes entered by the user are encrypted and stored only on the device and are not sent to Tsubasa Studio servers. This app does not use ads or third-party analytics SDKs.', 'Premium purchases and payments are handled by Apple through the App Store, and Tsubasa Studio does not receive payment information such as credit card numbers.'] ]
+            ['Doudemo Memo', ['Notes entered by the user are encrypted and stored only on the device and are not sent to Tsubasa Studio servers. This app does not use ads or third-party analytics SDKs.', 'Premium purchases and payments are handled by Apple through the App Store, and Tsubasa Studio does not receive payment information such as credit card numbers.'] ],
+            ['ほどく。', ['Game progress and settings are stored on the device and are not sent to servers operated by Tsubasa Studio.', 'This app uses Google AdMob and may display interstitial ads after stage completion when certain conditions are met. Rewarded ads are also used for some hint features. Google Mobile Ads SDK and Google User Messaging Platform are used for ad delivery, and privacy or consent choices may be shown depending on the user’s region and consent status. When required, advertising privacy settings can be changed from the app settings.', 'This app currently does not request tracking authorization through App Tracking Transparency.'] ]
           ],
           contactTitle: 'Contact', contactLead: 'If you have any questions about privacy, please contact us at the email address below.'
         },
         ko: {
-          pageTitle: '개인정보 처리방침 - Tsubasa Studio', heroTitle: '개인정보 처리방침', heroLead: '이 정책은 Tsubasa Studio가 제공하는 모든 앱에 적용됩니다. 공통 정책과 앱별 보충 사항을 정리했습니다.', back: '← Tsubasa Studio', updated: '최종 업데이트: 2026년 8월 13일',
+          pageTitle: '개인정보 처리방침 - Tsubasa Studio', heroTitle: '개인정보 처리방침', heroLead: '이 정책은 Tsubasa Studio가 제공하는 모든 앱에 적용됩니다. 공통 정책과 앱별 보충 사항을 정리했습니다.', back: '← Tsubasa Studio', updated: '최종 업데이트: 2026년 9월 11일',
           sections: [
-            ['수집하는 정보', 'Tsubasa Studio가 제공하는 앱은 개인을 식별할 수 있는 정보를 수집하거나 전송하지 않습니다. 각 앱 설명에 별도 기재가 없는 한, 사용자가 입력한 데이터는 기기 내에만 저장되며 외부 서버로 전송되지 않습니다.'],
-            ['광고', '일부 앱은 Google AdMob(Google LLC)에서 제공하는 배너 광고를 표시할 수 있습니다. AdMob은 광고 제공을 위해 광고 식별자(IDFA) 등을 사용할 수 있습니다. 자세한 내용은 <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google 개인정보처리방침</a>을 참고해 주세요.'],
+            ['수집하는 정보', 'Tsubasa Studio는 앱별 추가 안내에 별도로 명시된 경우를 제외하고 사용자가 앱에 입력한 데이터를 당사가 운영하는 서버로 전송하지 않습니다. 사용자가 입력한 데이터는 원칙적으로 기기에 저장됩니다. 일부 앱은 광고 제공 등의 목적으로 제3자 SDK를 사용하며, 서비스 제공에 필요한 범위에서 기기 관련 정보가 수집되거나 전송될 수 있습니다.'],
+            ['광고', '일부 앱은 Google LLC가 제공하는 Google AdMob을 사용하며 배너, 전면, 리워드 광고 등을 표시할 수 있습니다. Google Mobile Ads SDK는 광고 제공, 효과 측정, 부정 사용 방지, 서비스 개선 등의 목적으로 IP 주소, 기기 식별자, 광고 관련 정보, 앱 상호작용, 진단 정보 및 성능 정보 등을 수집하거나 사용할 수 있습니다. 지역 및 동의 상태에 따라 Google User Messaging Platform(UMP)을 사용하여 광고 동의 선택과 개인정보 설정을 제공할 수 있습니다. 자세한 내용은 ' + googlePrivacyLink + ' 개인정보처리방침과 ' + googlePartnerLink + '의 Google 서비스 사용 앱 및 사이트의 정보 이용 안내를 확인해 주세요.'],
             ['알림', '일부 앱은 로컬 알림 기능을 사용합니다. 모든 알림은 기기 내에서 생성되며 외부 서버와 통신하지 않습니다.'],
             ['데이터 보관 및 삭제', '데이터는 사용자의 기기에 저장됩니다. 앱 내에서 항목을 삭제하거나 앱을 삭제하면 기기에 저장된 데이터를 제거할 수 있습니다. 사용자가 만든 백업 파일도 파일 앱 또는 iCloud Drive에서 직접 삭제할 수 있습니다.']
           ],
@@ -128,15 +127,16 @@
             ['Chike Note', ['사용자가 “이 페이지를 AI로 읽기”를 선택한 경우에만, 앱은 현재 표시 중인 공식 사이트의 공개된 페이지 내용(공연 일정, 제목 등)과 아티스트 이름, 페이지 URL, 페이지 제목을 추출 처리를 위해 당사가 운영하는 데이터 처리 서버로 전송합니다. 처리에는 Cloudflare Workers AI를 사용합니다.', '팔로우 중인 아티스트, 티켓 신청 상태, 기기에 저장된 티켓 정보는 이 처리로 전송되지 않습니다. 동일한 페이지의 재처리를 줄이기 위해 일부 추출 결과는 최대 24시간 캐시될 수 있으며, 저장 전에 AI 후보 내용을 사용자가 확인·수정할 수 있습니다.'] ],
             ['Sofubi Techo', ['등록한 사진, 컬렉션 데이터, 일기, 태그는 기기 내에만 저장되며 Tsubasa Studio 서버로 전송되지 않습니다. 이 앱은 광고나 외부 분석 SDK를 사용하지 않습니다.', '백업은 사용자가 선택한 위치(iCloud Drive 또는 내 iPhone 등)에만 저장됩니다. Premium 구매와 결제는 Apple App Store를 통해 처리되며, Tsubasa Studio는 신용카드 번호 등의 결제 정보를 받지 않습니다.'] ],
             ['Kusuri Puzzle', ['약 이름, 복약 기록, 약봉투 사진, 퍼즐용으로 선택한 사진은 기기 내에만 저장되며 Tsubasa Studio 서버로 전송되지 않습니다.', '약봉투의 텍스트 인식은 iPhone에서 수행됩니다. 사용자가 “이 약을 검색”을 선택한 경우에만 약 이름이 브라우저 검색 서비스로 전송됩니다.'] ],
-            ['Doudemo Memo', ['입력한 메모는 기기 내에서 암호화되어 저장되며 Tsubasa Studio 서버로 전송되지 않습니다. 이 앱은 광고나 외부 분석 SDK를 사용하지 않습니다.', '프리미엄 구매와 결제는 Apple App Store를 통해 처리되며, Tsubasa Studio는 신용카드 번호 등의 결제 정보를 받지 않습니다.'] ]
+            ['Doudemo Memo', ['입력한 메모는 기기 내에서 암호화되어 저장되며 Tsubasa Studio 서버로 전송되지 않습니다. 이 앱은 광고나 외부 분석 SDK를 사용하지 않습니다.', '프리미엄 구매와 결제는 Apple App Store를 통해 처리되며, Tsubasa Studio는 신용카드 번호 등의 결제 정보를 받지 않습니다.'] ],
+            ['ほどく。', ['게임 진행 상황과 설정 등은 기기에 저장되며 Tsubasa Studio가 운영하는 서버로 전송되지 않습니다.', '이 앱은 Google AdMob을 사용하며 일정 조건을 충족한 스테이지 클리어 후 전면 광고가 표시될 수 있습니다. 일부 힌트 기능에서는 리워드 광고를 사용합니다. 광고 제공에는 Google Mobile Ads SDK와 Google User Messaging Platform을 사용하며, 지역 및 동의 상태에 따라 광고 관련 선택 화면이 표시될 수 있습니다. 필요한 경우 앱 설정에서 광고 개인정보 설정을 변경할 수 있습니다.', '이 앱은 현재 App Tracking Transparency를 통한 추적 권한을 요청하지 않습니다.'] ]
           ],
           contactTitle: '문의', contactLead: '개인정보와 관련한 질문이 있으시면 아래 이메일로 연락해 주세요.'
         },
         'zh-TW': {
-          pageTitle: '隱私權政策 - Tsubasa Studio', heroTitle: '隱私權政策', heroLead: '本政策適用於 Tsubasa Studio 提供的所有 App，整理了共通方針與各 App 的補充說明。', back: '← Tsubasa Studio', updated: '最後更新：2026 年 8 月 13 日',
+          pageTitle: '隱私權政策 - Tsubasa Studio', heroTitle: '隱私權政策', heroLead: '本政策適用於 Tsubasa Studio 提供的所有 App，整理了共通方針與各 App 的補充說明。', back: '← Tsubasa Studio', updated: '最後更新：2026 年 9 月 11 日',
           sections: [
-            ['我們蒐集的資訊', 'Tsubasa Studio 不會蒐集或傳送可識別個人的資訊。除非個別 App 另有說明，使用者輸入的資料僅儲存在裝置上，不會傳送至外部伺服器。'],
-            ['廣告', '部分 App 可能會顯示由 Google AdMob（Google LLC）提供的橫幅廣告。AdMob 可能為了提供廣告而使用廣告識別碼（IDFA）等資訊。詳情請參閱 <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google 隱私權政策</a>。'],
+            ['我們蒐集的資訊', '除非在個別 App 的補充說明中另有記載，Tsubasa Studio 不會將使用者在 App 中輸入的資料傳送至我們營運的伺服器。使用者輸入的資料原則上僅儲存在裝置上。部分 App 為提供廣告等服務使用第三方 SDK，相關裝置資訊可能在提供服務所需的範圍內被蒐集或傳送。'],
+            ['廣告', '部分 App 使用 Google LLC 提供的 Google AdMob，可能顯示橫幅、插頁式或獎勵廣告。Google Mobile Ads SDK 可能為廣告投放、成效衡量、防止濫用與改善服務等目的，蒐集或使用 IP 位址、裝置識別碼、廣告資料、App 互動資訊、診斷資訊與效能資訊等。依所在地區與同意狀態，可能透過 Google User Messaging Platform（UMP）提供廣告同意選項與隱私設定。詳情請參閱 ' + googlePrivacyLink + ' 隱私權政策，以及 ' + googlePartnerLink + ' 關於使用 Google 服務之 App 與網站資料使用方式的說明。'],
             ['通知', '部分 App 使用本機通知功能。通知均在裝置上產生，不會與外部伺服器通訊。'],
             ['資料保留與刪除', '資料儲存在使用者的裝置上。使用者可在 App 中刪除個別項目，或刪除 App 以移除裝置上的資料。使用者建立的備份檔可由使用者在「檔案」或 iCloud Drive 的儲存位置自行刪除。']
           ],
@@ -145,15 +145,16 @@
             ['Chike Note', ['僅在您選擇「以 AI 讀取此頁面」時，App 才會將目前顯示之官方網站上公開的演出日程、標題等頁面內容，以及藝人名稱、頁面 URL 和頁面標題，傳送至我們營運的資料處理伺服器以進行擷取。處理使用 Cloudflare Workers AI。', '追蹤的藝人、購票申請狀態與裝置中儲存的票券資訊不會透過此處理傳送。為減少同一頁面的重複處理，部分擷取結果可能最長快取 24 小時。您可在儲存前確認及修改 AI 提供的候選資料。'] ],
             ['Sofubi Techo', ['已登錄的照片、收藏資料、日記與標籤僅儲存在裝置上，不會傳送至 Tsubasa Studio 的伺服器。本 App 不使用廣告或第三方使用分析 SDK。', '備份僅會儲存至使用者選擇的位置，例如 iCloud Drive 或「我的 iPhone」。Premium 購買與付款由 Apple 透過 App Store 處理。Tsubasa Studio 不會取得信用卡號碼等付款資訊。'] ],
             ['Kusuri Puzzle', ['藥名、服藥記錄、藥袋照片與選作拼圖的照片僅儲存在裝置上，不會傳送至 Tsubasa Studio 的伺服器。', '藥袋文字辨識會在 iPhone 上進行。只有使用者選擇「查詢這個藥物」時，藥名才會傳送至瀏覽器的搜尋服務。'] ],
-            ['Doudemo Memo', ['您輸入的備忘錄會在裝置上加密儲存，不會傳送至 Tsubasa Studio 的伺服器。本 App 不使用廣告或第三方使用分析 SDK。', '進階版購買與付款由 Apple 透過 App Store 處理。Tsubasa Studio 不會取得信用卡號碼等付款資訊。'] ]
+            ['Doudemo Memo', ['您輸入的備忘錄會在裝置上加密儲存，不會傳送至 Tsubasa Studio 的伺服器。本 App 不使用廣告或第三方使用分析 SDK。', '進階版購買與付款由 Apple 透過 App Store 處理。Tsubasa Studio 不會取得信用卡號碼等付款資訊。'] ],
+            ['ほどく。', ['遊戲進度與設定等資料儲存在裝置上，不會傳送至 Tsubasa Studio 營運的伺服器。', '本 App 使用 Google AdMob，當符合一定條件時，可能在完成關卡後顯示插頁式廣告；部分提示功能會使用獎勵廣告。廣告投放使用 Google Mobile Ads SDK 與 Google User Messaging Platform，依地區與同意狀態可能顯示廣告相關選擇畫面。必要時可在 App 設定中變更廣告隱私設定。', '本 App 目前不會透過 App Tracking Transparency 要求追蹤授權。'] ]
           ],
           contactTitle: '聯絡方式', contactLead: '若您對隱私有任何疑問，請透過以下電子郵件與我們聯繫。'
         },
         th: {
-          pageTitle: 'นโยบายความเป็นส่วนตัว - Tsubasa Studio', heroTitle: 'นโยบายความเป็นส่วนตัว', heroLead: 'นโยบายนี้ใช้กับแอปทั้งหมดที่ให้บริการโดย Tsubasa Studio และสรุปแนวทางทั่วไปพร้อมหมายเหตุเฉพาะของแต่ละแอป', back: '← Tsubasa Studio', updated: 'อัปเดตล่าสุด: 13 สิงหาคม 2026',
+          pageTitle: 'นโยบายความเป็นส่วนตัว - Tsubasa Studio', heroTitle: 'นโยบายความเป็นส่วนตัว', heroLead: 'นโยบายนี้ใช้กับแอปทั้งหมดที่ให้บริการโดย Tsubasa Studio และสรุปแนวทางทั่วไปพร้อมหมายเหตุเฉพาะของแต่ละแอป', back: '← Tsubasa Studio', updated: 'อัปเดตล่าสุด: 11 กันยายน 2026',
           sections: [
-            ['ข้อมูลที่เราเก็บรวบรวม', 'Tsubasa Studio ไม่เก็บรวบรวมหรือส่งต่อข้อมูลที่ระบุตัวบุคคลได้ เว้นแต่จะระบุไว้เป็นอย่างอื่นสำหรับแอปแต่ละตัว ข้อมูลที่ผู้ใช้ป้อนจะเก็บไว้บนอุปกรณ์เท่านั้น และจะไม่ส่งไปยังเซิร์ฟเวอร์ภายนอก'],
-            ['โฆษณา', 'แอปบางตัวอาจแสดงโฆษณาแบนเนอร์จาก Google AdMob (Google LLC) โดย AdMob อาจใช้ตัวระบุโฆษณา (IDFA) หรือข้อมูลที่คล้ายกันเพื่อแสดงโฆษณา โปรดดูรายละเอียดที่ <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">นโยบายความเป็นส่วนตัวของ Google</a>'],
+            ['ข้อมูลที่เราเก็บรวบรวม', 'Tsubasa Studio จะไม่ส่งข้อมูลที่ผู้ใช้ป้อนในแอปไปยังเซิร์ฟเวอร์ที่เราดำเนินการ เว้นแต่จะระบุไว้ในหมายเหตุเฉพาะของแต่ละแอป โดยทั่วไปข้อมูลที่ผู้ใช้ป้อนจะจัดเก็บไว้บนอุปกรณ์ แอปบางตัวใช้ SDK ของบุคคลที่สามเพื่อให้บริการ เช่น การโฆษณา และข้อมูลเกี่ยวกับอุปกรณ์อาจถูกเก็บรวบรวมหรือส่งต่อเท่าที่จำเป็นต่อการให้บริการดังกล่าว'],
+            ['โฆษณา', 'แอปบางตัวใช้ Google AdMob ซึ่งให้บริการโดย Google LLC และอาจแสดงโฆษณาแบนเนอร์ โฆษณาคั่นระหว่างหน้า หรือโฆษณาแบบมีรางวัล Google Mobile Ads SDK อาจเก็บรวบรวมหรือใช้ข้อมูล เช่น ที่อยู่ IP ตัวระบุอุปกรณ์ ข้อมูลโฆษณา การโต้ตอบภายในแอป ข้อมูลการวินิจฉัย และข้อมูลประสิทธิภาพ เพื่อการแสดงโฆษณา การวัดผล การป้องกันการทุจริต และการปรับปรุงบริการ ทั้งนี้อาจใช้ Google User Messaging Platform (UMP) เพื่อแสดงตัวเลือกความยินยอมและการตั้งค่าความเป็นส่วนตัวตามภูมิภาคและสถานะความยินยอม โปรดดูรายละเอียดในนโยบายความเป็นส่วนตัวของ ' + googlePrivacyLink + ' และคำอธิบายของ ' + googlePartnerLink + ' เกี่ยวกับการใช้ข้อมูลจากแอปและเว็บไซต์ที่ใช้บริการของ Google'],
             ['การแจ้งเตือน', 'แอปบางตัวใช้การแจ้งเตือนภายในเครื่อง การแจ้งเตือนทั้งหมดสร้างขึ้นบนอุปกรณ์และไม่มีการสื่อสารกับเซิร์ฟเวอร์ภายนอก'],
             ['การเก็บรักษาและการลบข้อมูล', 'ข้อมูลจะถูกเก็บไว้บนอุปกรณ์ของผู้ใช้ ผู้ใช้สามารถลบข้อมูลได้โดยลบรายการในแอปหรือถอนการติดตั้งแอป ไฟล์สำรองข้อมูลที่ผู้ใช้สร้างสามารถลบได้จากตำแหน่งที่ผู้ใช้เลือกในแอปไฟล์หรือ iCloud Drive']
           ],
@@ -162,12 +163,12 @@
             ['Chike Note', ['เฉพาะเมื่อคุณเลือก “อ่านหน้านี้ด้วย AI” แอปจะส่งเนื้อหาสาธารณะที่แสดงอยู่บนเว็บไซต์ทางการ เช่น กำหนดการแสดงและหัวข้อ รวมถึงชื่อศิลปิน URL ของหน้า และชื่อหน้า ไปยังเซิร์ฟเวอร์ประมวลผลข้อมูลที่เราดำเนินการเพื่อการดึงข้อมูล โดยใช้ Cloudflare Workers AI', 'ข้อมูลศิลปินที่ติดตาม สถานะการสมัครบัตร และข้อมูลบัตรที่บันทึกไว้ในอุปกรณ์จะไม่ถูกส่งผ่านการประมวลผลนี้ ผลการดึงข้อมูลบางส่วนอาจถูกแคชได้นานสูงสุด 24 ชั่วโมงเพื่อลดการประมวลผลซ้ำของหน้าเดิม คุณสามารถตรวจสอบและแก้ไขข้อมูลที่ AI เสนอก่อนบันทึกได้'] ],
             ['Sofubi Techo', ['รูปภาพ ข้อมูลคอลเลกชัน บันทึกประจำวัน และแท็กที่ลงทะเบียนจะเก็บไว้บนอุปกรณ์เท่านั้น และจะไม่ส่งไปยังเซิร์ฟเวอร์ของ Tsubasa Studio แอปนี้ไม่ใช้โฆษณาหรือ SDK วิเคราะห์การใช้งานจากภายนอก', 'ข้อมูลสำรองจะบันทึกเฉพาะไปยังตำแหน่งที่ผู้ใช้เลือก เช่น iCloud Drive หรือบน iPhone ของฉัน การซื้อและการชำระเงิน Premium ดำเนินการโดย Apple ผ่าน App Store และ Tsubasa Studio จะไม่ได้รับข้อมูลการชำระเงิน เช่น หมายเลขบัตรเครดิต'] ],
             ['Kusuri Puzzle', ['ชื่อยา บันทึกการรับประทานยา รูปถุงยา และรูปที่เลือกใช้เป็นจิ๊กซอว์จะเก็บไว้บนอุปกรณ์เท่านั้น และจะไม่ส่งไปยังเซิร์ฟเวอร์ของ Tsubasa Studio', 'การอ่านข้อความบนถุงยาดำเนินการบน iPhone เฉพาะเมื่อผู้ใช้เลือก “ค้นหายานี้” เท่านั้นที่ชื่อยาจะถูกส่งไปยังบริการค้นหาของเบราว์เซอร์'] ],
-            ['Doudemo Memo', ['บันทึกที่คุณเขียนจะถูกเข้ารหัสและเก็บไว้บนอุปกรณ์เท่านั้น จะไม่ถูกส่งไปยังเซิร์ฟเวอร์ของ Tsubasa Studio แอปนี้ไม่ใช้โฆษณาหรือ SDK วิเคราะห์การใช้งานจากภายนอก', 'การซื้อพรีเมียมและการชำระเงินดำเนินการโดย Apple ผ่าน App Store และ Tsubasa Studio จะไม่ได้รับข้อมูลการชำระเงิน เช่น หมายเลขบัตรเครดิต'] ]
+            ['Doudemo Memo', ['บันทึกที่คุณเขียนจะถูกเข้ารหัสและเก็บไว้บนอุปกรณ์เท่านั้น จะไม่ถูกส่งไปยังเซิร์ฟเวอร์ของ Tsubasa Studio แอปนี้ไม่ใช้โฆษณาหรือ SDK วิเคราะห์การใช้งานจากภายนอก', 'การซื้อพรีเมียมและการชำระเงินดำเนินการโดย Apple ผ่าน App Store และ Tsubasa Studio จะไม่ได้รับข้อมูลการชำระเงิน เช่น หมายเลขบัตรเครดิต'] ],
+            ['ほどく。', ['ความคืบหน้าของเกมและการตั้งค่าจะถูกจัดเก็บไว้บนอุปกรณ์ และจะไม่ส่งไปยังเซิร์ฟเวอร์ที่ Tsubasa Studio ดำเนินการ', 'แอปนี้ใช้ Google AdMob และอาจแสดงโฆษณาคั่นระหว่างหน้าหลังจากผ่านด่านเมื่อเป็นไปตามเงื่อนไขที่กำหนด รวมถึงใช้โฆษณาแบบมีรางวัลสำหรับคุณสมบัติคำใบ้บางส่วน การแสดงโฆษณาใช้ Google Mobile Ads SDK และ Google User Messaging Platform โดยอาจแสดงตัวเลือกเกี่ยวกับโฆษณาตามภูมิภาคและสถานะความยินยอม และสามารถเปลี่ยนการตั้งค่าความเป็นส่วนตัวของโฆษณาจากหน้าการตั้งค่าของแอปเมื่อจำเป็น', 'ขณะนี้แอปนี้ไม่ได้ขออนุญาตการติดตามผ่าน App Tracking Transparency'] ]
           ],
           contactTitle: 'ติดต่อ', contactLead: 'หากคุณมีคำถามเกี่ยวกับความเป็นส่วนตัว โปรดติดต่อเราทางอีเมลด้านล่าง'
         }
       };
-
       const t = content[language];
       document.documentElement.lang = language;
       document.title = t.pageTitle;
@@ -180,23 +181,13 @@
         if (link.dataset.language === language) link.setAttribute('aria-current', 'true');
         else link.removeAttribute('aria-current');
       });
-
       const container = document.getElementById('policy-content');
       const generalCards = t.sections.map(([heading, body]) => `<section class="card"><h2>${heading}</h2><p>${body}</p></section>`).join('');
       const appCards = t.appPolicies.map(([name, paragraphs]) => `<div class="app-block"><h3>${name}</h3>${paragraphs.map(p => `<p>${p}</p>`).join('')}</div>`).join('');
       container.innerHTML = `
         ${generalCards}
-        <section class="card">
-          <h2>${t.appPoliciesTitle}</h2>
-          <div class="app-policy">${appCards}</div>
-        </section>
-        <section class="card contact-card">
-          <h2>${t.contactTitle}</h2>
-          <div class="stack">
-            <p>${t.contactLead}</p>
-            <p><a href="mailto:tsubasa.studio@icloud.com">tsubasa.studio@icloud.com</a></p>
-          </div>
-        </section>
+        <section class="card"><h2>${t.appPoliciesTitle}</h2><div class="app-policy">${appCards}</div></section>
+        <section class="card contact-card"><h2>${t.contactTitle}</h2><div class="stack"><p>${t.contactLead}</p><p><a href="mailto:tsubasa.studio@icloud.com">tsubasa.studio@icloud.com</a></p></div></section>
       `;
     })();
   </script>
