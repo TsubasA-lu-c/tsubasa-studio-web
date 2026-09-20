@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "status": "UNAPPROVED_WEAPON_GUIDE",
+  "body_motion_authority": "D:\\Projects\\super-pixel-art-generator\\artifacts\\canonical-redraw\\right-facing-run-h3-to-spag-v1\\pixel-paintover-v1\\paintover-frames",
+  "canonical_sword_authority": {
+    "path": "D:\\Projects\\super-pixel-art-generator\\references\\minimax-h3\\swordsman-4.40h-clean.png",
+    "sha256": "b493575e197bf49491360964fe00b20b512e4fe38a7c90f88fa46cb29c47598f"
+  },
+  "weapon_hand": "rear/image-left hand, fixed across F0-F7",
+  "body_arm_policy": "free/non-weapon arm keeps body-motion counter-swing; sword arm uses controlled low-amplitude participation",
+  "one_axis_rule": true,
+  "per_frame_scale": false,
+  "final_art_whole_body": true,
+  "spec": "D:\\Projects\\super-pixel-art-generator\\config\\h3-stage-c-right-facing-v4-weapon-attachment-guide-v1.json",
+  "axes": [
+    130.96566836521973,
+    131.4565645186549,
+    131.4565645186549,
+    131.5909719004845,
+    131.60028584087675,
+    131.32280902015725,
+    131.32280902015725,
+    131.5909719004845
+  ],
+  "axis_seam_delta_deg": 0.6253035352647771,
+  "frames": [
+    {
+      "display_frame": 0,
+      "source_frame": 22,
+      "phase": "left_contact",
+      "arm_mode": "rear_hold",
+      "weapon_hand": [
+        807,
+        526
+      ],
+      "wrist": [
+        775,
+        487
+      ],
+      "axis_delta": [
+        -369,
+        425
+      ],
+      "axis_angle_deg": 130.96566836521973,
+      "sword_length_px": 562.8374543329539,
+      "body_path": "body/F00.png",
+      "guide_path": "guide/F00.png"
+    },
+    {
+      "display_frame": 1,
+      "source_frame": 24,
+      "phase": "left_support",
+      "arm_mode": "rear_recovery",
+      "weapon_hand": [
+        793,
+        393
+      ],
+      "wrist": [
+        775,
+        422
+      ],
+      "axis_delta": [
+        -356,
+        403
+      ],
+      "axis_angle_deg": 131.4565645186549,
+      "sword_length_px": 537.7220471581949,
+      "body_path": "body/F01.png",
+      "guide_path": "guide/F01.png"
+    },
+    {
+      "display_frame": 2,
+      "source_frame": 25,
+      "phase": "left_push_off",
+      "arm_mode": "rear_recovery",
+      "weapon_hand": [
+        795,
+        395
+      ],
+      "wrist": [
+        777,
+        424
+      ],
+      "axis_delta": [
+        -356,
+        403
+      ],
+      "axis_angle_deg": 131.4565645186549,
+      "sword_length_px": 537.7220471581949,
+      "body_path": "body/F02.png",
+      "guide_path": "guide/F02.png"
+    },
+    {
+      "display_frame": 3,
+      "source_frame": 27,
+      "phase": "flight_a",
+      "arm_mode": "rear_hold",
+      "weapon_hand": [
+        811,
+        516
+      ],
+      "wrist": [
+        780,
+        483
+      ],
+      "axis_delta": [
+        -371,
+        418
+      ],
+      "axis_angle_deg": 131.5909719004845,
+      "sword_length_px": 558.8962336605964,
+      "body_path": "body/F03.png",
+      "guide_path": "guide/F03.png"
+    },
+    {
+      "display_frame": 4,
+      "source_frame": 28,
+      "phase": "right_contact",
+      "arm_mode": "rear_hold",
+      "weapon_hand": [
+        829,
+        537
+      ],
+      "wrist": [
+        798,
+        503
+      ],
+      "axis_delta": [
+        -380,
+        428
+      ],
+      "axis_angle_deg": 131.60028584087675,
+      "sword_length_px": 572.349543548346,
+      "body_path": "body/F04.png",
+      "guide_path": "guide/F04.png"
+    },
+    {
+      "display_frame": 5,
+      "source_frame": 30,
+      "phase": "right_support",
+      "arm_mode": "rear_recovery",
+      "weapon_hand": [
+        784,
+        467
+      ],
+      "wrist": [
+        771,
+        435
+      ],
+      "axis_delta": [
+        -364,
+        414
+      ],
+      "axis_angle_deg": 131.32280902015725,
+      "sword_length_px": 551.2640020897428,
+      "body_path": "body/F05.png",
+      "guide_path": "guide/F05.png"
+    },
+    {
+      "display_frame": 6,
+      "source_frame": 31,
+      "phase": "right_push_off",
+      "arm_mode": "rear_recovery",
+      "weapon_hand": [
+        786,
+        467
+      ],
+      "wrist": [
+        773,
+        435
+      ],
+      "axis_delta": [
+        -364,
+        414
+      ],
+      "axis_angle_deg": 131.32280902015725,
+      "sword_length_px": 551.2640020897428,
+      "body_path": "body/F06.png",
+      "guide_path": "guide/F06.png"
+    },
+    {
+      "display_frame": 7,
+      "source_frame": 33,
+      "phase": "flight_b",
+      "arm_mode": "rear_hold",
+      "weapon_hand": [
+        811,
+        517
+      ],
+      "wrist": [
+        782,
+        485
+      ],
+      "axis_delta": [
+        -371,
+        418
+      ],
+      "axis_angle_deg": 131.5909719004845,
+      "sword_length_px": 558.8962336605964,
+      "body_path": "body/F07.png",
+      "guide_path": "guide/F07.png"
+    }
+  ],
+  "artifacts": {
+    "review_html": "D:\\Projects\\super-pixel-art-generator\\artifacts\\canonical-redraw\\right-facing-run-h3-to-spag-v1\\weapon-attachment-guide-v2\\weapon-attachment-guide.html",
+    "guide_sheet": "D:\\Projects\\super-pixel-art-generator\\artifacts\\canonical-redraw\\right-facing-run-h3-to-spag-v1\\weapon-attachment-guide-v2\\weapon-guide-4x2.png",
+    "guide_loop": "D:\\Projects\\super-pixel-art-generator\\artifacts\\canonical-redraw\\right-facing-run-h3-to-spag-v1\\weapon-attachment-guide-v2\\weapon-guide-loop-100ms.apng"
+  }
+}
