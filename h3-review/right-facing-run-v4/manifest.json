@@ -23,8 +23,7 @@
   "review": {
     "artwork": "UNKNOWN",
     "alpha": "REVIEW_REQUIRED",
-    "equipment_attachment": "GUIDE_ONLY_UNAPPROVED",
-    "weapon_attachment_guide": "weapon-attachment/index.html",
+    "equipment_attachment": "NOT_STARTED",
     "unity_integration": "NOT_STARTED"
   }
 }
