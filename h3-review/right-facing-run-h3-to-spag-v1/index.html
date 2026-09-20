@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#15171b">
+  <title>H3 → SPAG Pixel Paintover Review</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, sans-serif; }
+    body { margin: 0; background: #15171b; color: #f0f2f5; }
+    main { max-width: 920px; margin: 0 auto; padding: 18px; }
+    h1 { font-size: 22px; margin: 0 0 12px; }
+    h2 { font-size: 17px; margin: 0 0 10px; }
+    p { line-height: 1.55; color: #c7ccd4; }
+    a { color: #b9d7ff; }
+    .card { background: #20232a; border: 1px solid #414650; border-radius: 10px; padding: 14px; margin: 12px 0; }
+    .warning { color: #ffdca1; background: #3e2f17; border-color: #8e672b; }
+    .links { display: grid; gap: 10px; }
+    img { display: block; width: 100%; height: auto; background: #20232a; }
+    code { color: #b9d7ff; word-break: break-word; }
+    @media (max-width: 700px) { main { padding: 10px; } h1 { font-size: 20px; } .card { padding: 10px; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>H3 → SPAG Pixel Paintover Review</h1>
+  <div class="card warning">
+    UNAPPROVED REVIEW DRAFT。H3実フレームをモーション authorityとして使用し、SPAG側でcanonical paletteへpixel paintoverした試作です。alpha、4.40H一致、モーション品質は人間レビュー待ちです。
+  </div>
+  <div class="card links">
+    <a href="review.html">フレーム送り比較レビューを開く</a>
+    <a href="paintover-loop-42ms.apng">paintover loop（24fps）を開く</a>
+    <a href="paintover-4x2.png">paintover 4×2 sheetを開く</a>
+    <a href="source-vs-redraw-4x2.png">H3 source / paintover比較を開く</a>
+    <a href="manifest.json">manifestを見る</a>
+  </div>
+  <div class="card">
+    <h2>Paintover 4×2</h2>
+    <img src="paintover-4x2.png" alt="H3 concrete frames converted to canonical-palette pixel paintover frames">
+  </div>
+  <div class="card">
+    <p>レビューHTMLでは、Previous / Nextまたは左右キーで1フレームずつ確認できます。F0〜F7のポーズは選択済みH3実フレームから直接作成しています。</p>
+  </div>
+</main>
+</body>
+</html>
