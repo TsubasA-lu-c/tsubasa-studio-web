@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Right-facing run — arm-visibility probe review (unapproved)</title>
+<style>
+body{margin:0;background:#15171b;color:#f0f2f5;font-family:system-ui,sans-serif}
+main{max-width:1500px;margin:0 auto;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;align-items:start}
+figure{margin:0;background:#20232a;border:1px solid #414650;padding:10px}
+figure img{display:block;width:100%;height:460px;object-fit:contain;background:#20232a}
+figcaption{margin-top:8px;font-size:13px;color:#c7ccd4}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:16px 0}
+button{background:#2e6edb;border:0;border-radius:4px;color:#fff;padding:8px 12px;cursor:pointer}
+button.secondary{background:#3b4049}
+input[type=range]{flex:1;min-width:260px}
+.status{color:#aeb7c4}
+.warning{margin:14px 0;padding:12px;background:#3e2f17;border:1px solid #8e672b;color:#ffdca1}
+code{color:#b9d7ff}
+@media (max-width:700px){
+  main{padding:10px}
+  h1{font-size:18px}
+  .grid{grid-template-columns:1fr;gap:10px}
+  figure{padding:6px}
+  figure img{height:auto;max-height:none;aspect-ratio:3 / 2}
+  .controls{position:sticky;top:0;z-index:2;background:#15171b;padding:8px 0}
+  button{padding:9px 10px}
+}
+</style></head><body><main>
+<h1>Right-facing run — arm-visibility probe review (unapproved)</h1>
+<div class="warning">UNAPPROVED ARTWORK REVIEW. The H3 source frame remains motion authority. The canonical redraw is an unaccepted whole-body draft. Do not attach equipment or integrate Unity from this bundle. Alpha/background acceptance is also pending.</div>
+<div class="controls"><button id="first" class="secondary">|&lt;</button><button id="prev" class="secondary">Previous</button><button id="play">Play</button><button id="next" class="secondary">Next</button><button id="last" class="secondary">&gt;|</button><input id="slider" type="range" min="0" max="7" value="0"><label><input id="loop" type="checkbox" checked> loop</label></div>
+<div class="status" id="status"></div>
+<section class="grid">
+<figure><img id="source" alt="selected concrete H3 source frame"><figcaption>Selected concrete H3 source frame — motion authority</figcaption></figure>
+<figure><img id="redraw" alt="selected canonical whole-body redraw draft"><figcaption>Canonical whole-body redraw draft — artwork under review</figcaption></figure>
+<figure><img src="canonical-reference.png" alt="canonical identity reference"><figcaption>Canonical identity/style reference</figcaption></figure>
+</section>
+<p>H3 source: <code id="sourcePath"></code><br>Original source frame: <code id="sourceFrame"></code> at <code id="sourceTime"></code><br>Draft alpha status: <code id="alpha"></code></p>
+<script>
+const frames=[{"display_frame": 0, "phase": "left_contact", "source_name": "F22.png", "source_frame": 22, "timestamp_ms": 924.0, "source_path": "source/F00.png", "redraw_path": "redraw/F00.png", "source_sha256": "d308757c63d6113262b5940e477c173bdb90f7e084026becdee4bc0198cbb014", "redraw_sha256": "01f08f952a7f9cb7e9f9aeeca2a319985d5f4927bd6080288f934337099c11c7", "alpha_status": "OPAQUE_NO_ALPHA"}, {"display_frame": 1, "phase": "left_support", "source_name": "F24.png", "source_frame": 24, "timestamp_ms": 1008.0, "source_path": "source/F01.png", "redraw_path": "redraw/F01.png", "source_sha256": "a91b793160282e1c069d849f570d877bd898a884a9392556035476e123d87993", "redraw_sha256": "8ed9fc9a335c0f7c943112a37ef6765cde880cd80fade9c05c062e9d642fe615", "alpha_status": "OPAQUE_NO_ALPHA"}, {"display_frame": 2, "phase": "left_push_off", "source_name": "F25.png", "source_frame": 25, "timestamp_ms": 1050.0, "source_path": "source/F02.png", "redraw_path": "redraw/F02.png", "source_sha256": "8cbf7d83866ab51d0444b738b4a30b021418880cf844d91d8baf1f175f798230", "redraw_sha256": "4badbf31a43ca1d8d47c6d520613de734845d6b88903945a23db9973831e523c", "alpha_status": "OPAQUE_NO_ALPHA"}, {"display_frame": 3, "phase": "flight_a", "source_name": "F27.png", "source_frame": 27, "timestamp_ms": 1134.0, "source_path": "source/F03.png", "redraw_path": "redraw/F03.png", "source_sha256": "c08d4f64b024f75afd88d1b9149ed75388c2795a0412300a19c113b0282c79d6", "redraw_sha256": "10e86c050d3d6c7e350292c83fe96827afd9f144008113098f7d3c2f763c2eed", "alpha_status": "OPAQUE_NO_ALPHA"}, {"display_frame": 4, "phase": "right_contact", "source_name": "F28.png", "source_frame": 28, "timestamp_ms": 1176.0, "source_path": "source/F04.png", "redraw_path": "redraw/F04.png", "source_sha256": "2fa9333b05d41098a4e9cc6bd93f24bac1ca7073b6c9a2c7337825ead8739542", "redraw_sha256": "872f18ea117c2db2efa4a655ccbb62c428c2a68c7a0500b8be8d143d91da71ad", "alpha_status": "OPAQUE_NO_ALPHA"}, {"display_frame": 5, "phase": "right_support", "source_name": "F30.png", "source_frame": 30, "timestamp_ms": 1260.0, "source_path": "source/F05.png", "redraw_path": "redraw/F05.png", "source_sha256": "55365317eba5f592d7bf6a023982ecd1d3d2a9875042cf8d5dbd93f17ecd2ab9", "redraw_sha256": "0cc376f19487d2a92a41bd45f356ebec819f47c01a874a11c5604744637b7b36", "alpha_status": "OPAQUE_NO_ALPHA"}, {"display_frame": 6, "phase": "right_push_off", "source_name": "F31.png", "source_frame": 31, "timestamp_ms": 1302.0, "source_path": "source/F06.png", "redraw_path": "redraw/F06.png", "source_sha256": "661bc27cd0ce43297f60255da178516535a598bd57435eb333c7af024fe9fb02", "redraw_sha256": "0c9ef421f2fa0e9a25184442f351cdb307461282c08b93e3fe4c21b85a793a24", "alpha_status": "OPAQUE_NO_ALPHA"}, {"display_frame": 7, "phase": "flight_b", "source_name": "F33.png", "source_frame": 33, "timestamp_ms": 1386.0, "source_path": "source/F07.png", "redraw_path": "redraw/F07.png", "source_sha256": "91386c38b26ecc61698e8908ae05db1a1e85d3aa9d2c2c43c3d8083434969949", "redraw_sha256": "1afc18a6647e7abe8fd09fdb327451caeb72da6f1e6445faa3f538a2704e0c9d", "alpha_status": "OPAQUE_NO_ALPHA"}]; let index=0,timer=null;
+const $=id=>document.getElementById(id);
+function render(){const f=frames[index];$('source').src=f.source_path;$('redraw').src=f.redraw_path;$('slider').value=index;$('status').textContent=`F${String(index).padStart(2,'0')} / 8 — ${f.phase}`;$('sourcePath').textContent=f.source_name;$('sourceFrame').textContent='F'+String(f.source_frame).padStart(2,'0');$('sourceTime').textContent=f.timestamp_ms.toFixed(3)+' ms';$('alpha').textContent=f.alpha_status;}
+function stop(){if(timer){clearInterval(timer);timer=null;}$('play').textContent='Play';}
+function step(delta){let n=index+delta;if(n>=frames.length)n=$('loop').checked?0:frames.length-1;if(n<0)n=$('loop').checked?frames.length-1:0;index=n;render();}
+function play(){if(timer){stop();return;}$('play').textContent='Pause';timer=setInterval(()=>{if(index===frames.length-1&&!$('loop').checked){stop();return;}step(1);},100);}
+$('first').onclick=()=>{stop();index=0;render();};$('prev').onclick=()=>{stop();step(-1);};$('next').onclick=()=>{stop();step(1);};$('last').onclick=()=>{stop();index=frames.length-1;render();};$('play').onclick=play;$('slider').oninput=e=>{stop();index=Number(e.target.value);render();};document.onkeydown=e=>{if(e.target.tagName==='INPUT')return;if(e.key==='ArrowLeft'){stop();step(-1);}if(e.key==='ArrowRight'){stop();step(1);}if(e.key===' '){e.preventDefault();play();}};render();
+</script></main></body></html>

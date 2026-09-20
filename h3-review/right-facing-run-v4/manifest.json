@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "status": "UNAPPROVED_REVIEW_DRAFT",
+  "purpose": "iPhone-friendly review of the right-facing swordless H3 redraw probe",
+  "motion_authority": "selected concrete MiniMax H3 frames F22, F24, F25, F27, F28, F30, F31, F33",
+  "identity_authority": "Survivor RPG swordsman 4.40H canonical reference",
+  "canonical_sha256": "db8a1b3a7b708ff676bf1f628bd246f56a354beafc1d882d78490978a92bf982",
+  "registration": "uniform scale plus H3-derived hair center/top translation; no pose warp",
+  "arm_gate": "human frame-by-frame review required",
+  "weapon_attachment": "NOT_STARTED",
+  "unity_integration": "NOT_STARTED"
+}
