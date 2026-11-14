@@ -2,3 +2,5 @@
 /support.html   /chikenote/support   301
 /okataduke/*   /   302
 /okataduke     /   302
+/daitai-nenpyo/*   /anokoro-sen/:splat   301
+/daitai-nenpyo     /anokoro-sen/         301
